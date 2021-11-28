@@ -10,10 +10,11 @@ function MyPage() {
   const [isLoginNeeded, setIsLoginNeeded] = useState(false);
   useEffect(() => {
     const getUserInfo = async () => {
-      const getResponse = await fetch('/api/get_user');
+      const getResponse = await fetch('/api/user/');
       if (getResponse.status === 200) {
         const responseData = await getResponse.json();
-        setAuthor(responseData.author);
+        console.log(responseData);
+        setAuthor(responseData);
       } else setIsLoginNeeded(true);
     };
     getUserInfo();

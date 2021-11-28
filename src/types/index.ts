@@ -7,7 +7,7 @@ import PageData from './Page';
 import UserData from './User';
 import WorkData from './Work';
 
-export {
+export type {
   AuthorData,
   CommentData,
   EpisodeData,

@@ -9,7 +9,7 @@ export default function LoginContainer() {
   const postLogin = async (e: FormEvent) => {
     e.preventDefault();
     if (!idRef.current || !pwRef.current) return;
-    const postResponse = await fetch('/api/login', {
+    const postResponse = await fetch('/api/user/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -19,11 +19,11 @@ export default function LoginContainer() {
         password: pwRef.current.value,
       }),
     });
-    if (postResponse.status === 400) {
+    if (postResponse.status === 200) {
+      window.location.href = '/mypage';
+    } else {
       const text = await postResponse.text();
       setErrorMessage(text);
-    } else {
-      window.location.href = '/mypage';
     }
   };
 
