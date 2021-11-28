@@ -66,4 +66,5 @@ interface IWrapper {
 const Wrapper = styled.div<IWrapper>`
   position: absolute;
   top: 0;
+  z-index: 9999;
 `;

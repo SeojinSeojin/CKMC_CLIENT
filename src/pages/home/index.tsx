@@ -8,7 +8,7 @@ import Title from '../../components/Home';
 export default function Home() {
   return (
     <>
-      <CursorContainer theme="blue" />
+      <CursorContainer theme="white" />
       <NavigationBar theme="blue" selected="MAIN" isOpened={true} />
       <Background positionY={60}>
         <TitleWrapper>
