@@ -1,8 +1,16 @@
 import React from 'react';
 import { useParams } from 'react-router';
+import CursorContainer from '../../components/common/Cursor';
+import NavigationBar from '../../components/common/NavigationBar';
 
 export default function AuthorPage() {
   const { id }: { id: string } = useParams();
 
-  return <div>author - {id}</div>;
+  return (
+    <>
+      <CursorContainer theme="blue" />
+      <NavigationBar theme="blue" selected="WORKS" />
+      <div>author - {id}</div>
+    </>
+  );
 }

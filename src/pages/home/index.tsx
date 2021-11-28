@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import Background from '../../components/common/Background';
+import CursorContainer from '../../components/common/Cursor';
 import NavigationBar from '../../components/common/NavigationBar';
 import Title from '../../components/Home';
 
 export default function Home() {
   return (
     <>
+      <CursorContainer theme="blue" />
       <NavigationBar theme="blue" selected="MAIN" isOpened={true} />
       <Background positionY={60}>
         <TitleWrapper>

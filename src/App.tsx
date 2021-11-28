@@ -33,7 +33,6 @@ function App() {
         <Route exact path="/works" component={WorksPage} />
         <Route exact path="/works/:id" component={WorkDetailPage} />
       </Switch>
-      <CursorContainer />
     </div>
   );
 }

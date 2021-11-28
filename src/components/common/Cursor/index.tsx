@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import DongIcon from '../Icons/Dong';
 import StarIcon from '../Icons/Star';
 
-export default function CursorContainer() {
+export default function CursorContainer({ theme }: { theme: 'blue' | 'white' }) {
   const [isCursorIn, setIsCursorIn] = useState(true);
   const cursorRef = useRef({
     x: 0,
@@ -50,10 +50,10 @@ export default function CursorContainer() {
   return (
     <>
       <Wrapper visible={isCursorIn} ref={starRef}>
-        <StarIcon />
+        <StarIcon theme={theme} />
       </Wrapper>
       <Wrapper visible={isCursorIn} ref={dongRef}>
-        <DongIcon />
+        <DongIcon theme={theme} />
       </Wrapper>
     </>
   );
