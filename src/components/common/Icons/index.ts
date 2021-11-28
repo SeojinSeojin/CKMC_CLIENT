@@ -6,6 +6,7 @@ import { ReactComponent as IcToggleDown } from './ic-toggle-down.svg';
 import { ReactComponent as IcArrowRight } from './ic-arrow-right.svg';
 import { ReactComponent as LogoCK } from './logo-ck.svg';
 import { ReactComponent as LogoCKMC } from './logo-ckmc.svg';
+import { ReactComponent as IcToggleUp } from './ic-toggle-up.svg';
 
 export {
   IcPaginatorFirst,
@@ -13,6 +14,7 @@ export {
   IcPaginatorNext,
   IcPaginatorPrevious,
   IcToggleDown,
+  IcToggleUp,
   IcArrowRight,
   LogoCK,
   LogoCKMC,

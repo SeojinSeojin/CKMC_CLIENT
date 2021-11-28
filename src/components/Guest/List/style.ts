@@ -20,4 +20,5 @@ export const Letters = styled.div`
   width: 800px;
   overflow-y: scroll;
   scroll-behavior: smooth;
+  border-bottom: 1px solid white;
 `;

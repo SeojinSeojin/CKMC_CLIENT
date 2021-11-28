@@ -52,7 +52,7 @@ export default function CursorContainer() {
       <Wrapper visible={isCursorIn} ref={starRef}>
         <StarIcon />
       </Wrapper>
-      <Wrapper visible={isCursorIn} ref={starRef}>
+      <Wrapper visible={isCursorIn} ref={dongRef}>
         <DongIcon />
       </Wrapper>
     </>

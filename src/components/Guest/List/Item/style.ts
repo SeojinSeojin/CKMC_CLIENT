@@ -6,10 +6,6 @@ export const TableItem = styled.div`
   border-top: 1px solid white;
   padding: 14px 0;
   white-space: pre-line;
-
-  & :last-child {
-    border-bottom: 1px solid white;
-  }
 `;
 
 export const Cover = styled.div`

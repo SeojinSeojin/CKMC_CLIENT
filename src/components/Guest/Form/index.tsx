@@ -14,7 +14,7 @@ const writeLetter = async ({
   sender: string;
   file?: string | null;
 }) => {
-  const postResponse = await fetch('/api/create_letter', {
+  const postResponse = await fetch('/api/letter', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
