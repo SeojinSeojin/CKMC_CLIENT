@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { AuthorData } from '../../types';
 import NavigationBar from '../../components/common/NavigationBar';
 import styled from 'styled-components';
@@ -8,6 +8,8 @@ import { Link } from 'react-router-dom';
 function MyPage() {
   const [author, setAuthor] = useState<AuthorData | null>(null);
   const [isLoginNeeded, setIsLoginNeeded] = useState(false);
+  const workTitleRef = useRef<HTMLInputElement>(null);
+  const workDetailRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
     const getUserInfo = async () => {
       const getResponse = await fetch('/api/user/');
@@ -50,9 +52,16 @@ function MyPage() {
                 preValue={author.work.title === '미입력 상태' ? '' : author.work.title}
                 styledInput={WorkTitle}
                 counterBottom={8}
+                ref={workTitleRef}
               />
-              <WorkTitle placeholder="작품 제목" />
-              <WorkDescription placeholder="작품 소개 내용" />
+              <Input
+                maxLength={200}
+                placeholder="작품 소개 내용"
+                preValue={author.work.title === '미입력 상태' ? '' : author.work.title}
+                styledInput={WorkDescription}
+                counterBottom={8}
+                ref={workDetailRef}
+              />
             </WorkWrapper>
             <AuthorContact placeholder="연락처" />
             {/*해시태그*/}
@@ -125,6 +134,7 @@ const WorkWrapper = styled.div`
 const WorkTitle = styled.input`
   border-bottom: 1px solid #8eaec9 !important;
   padding-bottom: 8px;
+  color: #2454a6;
 `;
 
 const WorkDescription = styled.textarea`
@@ -132,6 +142,8 @@ const WorkDescription = styled.textarea`
   border: none;
   resize: none;
   height: 100px;
+  width: 100%;
+  color: #2454a6;
   &:focus {
     outline: none;
   }

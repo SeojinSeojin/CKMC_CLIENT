@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import useLetter from '../../../hooks/useLetters';
+import Input from '../../common/Input';
 
 import { Body, Sender, Title, Wrapper, File, Submit, Bottom } from './style';
 
@@ -27,7 +28,7 @@ const writeLetter = async ({
 function GuestForm() {
   const { mutate } = useLetter({});
   const titleRef = useRef<HTMLInputElement>(null);
-  const bodyRef = useRef<HTMLTextAreaElement>(null);
+  const bodyRef = useRef<HTMLInputElement>(null);
   const senderRef = useRef<HTMLInputElement>(null);
   const fileRef = useRef<HTMLInputElement>(null);
   const [selectedFile, setSelectedFile] = useState<string | null>(null);
@@ -53,9 +54,13 @@ function GuestForm() {
       }}
     >
       <Title placeholder="제목" ref={titleRef} />
-      <Body
-        ref={bodyRef}
+      <Input
+        maxLength={300}
         placeholder="방명록 작성 후 수정 혹은 삭제가 불가능하며,&#10;문제가 되는 내용의 경우 관리자의 권한으로&#10;무통보 삭제될 수 있습니다"
+        preValue=""
+        styledInput={Body}
+        counterBottom={8}
+        ref={bodyRef}
       />
       <Sender placeholder="이름" ref={senderRef} />
       <Bottom>
