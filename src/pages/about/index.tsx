@@ -3,10 +3,13 @@ import styled from 'styled-components';
 import NavigationBar from '../../components/common/NavigationBar';
 import { LogoCK, LogoCKMC } from '../../components/common/Icons';
 import CursorContainer from '../../components/common/Cursor';
+import StudentsByClass from '../../components/About';
+import AboutBottomLeft from '../../components/About/BottomLeft';
+import AboutFooter from '../../components/About/Footer';
 
 const GridWrapper = styled.div`
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-columns: 1fr 5fr 1fr;
   width: 100vw;
   grid-template-areas: 'left middle right';
 `;
@@ -32,6 +35,7 @@ const TitleLogoContainer = styled.div`
 const Middle = styled.div`
   padding: 0 36px;
   color: #2454a6;
+  padding-bottom: 200px;
 `;
 
 const Body = styled.div`
@@ -72,7 +76,7 @@ export default function AboutPage() {
       <CursorContainer theme="blue" />
       <NavigationBar theme="blue" selected="ABOUT" />
       <GridWrapper>
-        <div style={{ gridArea: 'left', marginTop: '100vh' }}>
+        <div style={{ gridArea: 'left', alignSelf: 'end' }}>
           <AboutImage src="/statics/about-left.webp" alt="왼쪽 일러스트" />
         </div>
         <Middle>
@@ -123,12 +127,15 @@ export default function AboutPage() {
                 연계를 통해 디지털 플랫폼과 출판사를 초청해 리쿠르팅 프로젝트도 시행합니다.
               </p>
             </div>
+            <AboutBottomLeft />
+            <StudentsByClass />
           </Body>
         </Middle>
         <div style={{ gridArea: 'right' }}>
           <AboutImage src="/statics/about-right.webp" alt="오른쪽 일러스트" />
         </div>
       </GridWrapper>
+      <AboutFooter />
     </>
   );
 }
