@@ -15,6 +15,7 @@ const WorkContainer = styled.div<IWorkContainer>`
   flex-wrap: wrap;
   padding-right: 40px;
   padding-left: 40px;
+  gap: 12px;
   justify-content: center;
   width: 100%;
   margin-top: 180px;
