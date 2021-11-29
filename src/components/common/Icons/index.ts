@@ -13,6 +13,9 @@ import { ReactComponent as IcBlog } from './ic-blog.svg';
 import { ReactComponent as IcFacebook } from './ic-facebook.svg';
 import { ReactComponent as IcTwitter } from './ic-twitter.svg';
 import { ReactComponent as IcYoutube } from './ic-youtube.svg';
+import { ReactComponent as IcNineteen } from './ic-nineteen.svg';
+import { ReactComponent as IcSearch } from './ic-search.svg';
+import { ReactComponent as BtnLeftArrowBig } from './btn-left-arrow-big.svg';
 
 export {
   IcPaginatorFirst,
@@ -30,4 +33,7 @@ export {
   IcYoutube,
   IcToggleDownBlue,
   IcToggleUpBlue,
+  IcNineteen,
+  IcSearch,
+  BtnLeftArrowBig,
 };
