@@ -3,12 +3,12 @@ import { WorkData } from '../../../types';
 import { IcNineteen } from '../../common/Icons';
 import { Wrapper } from './style';
 
-function WorkItem(props: WorkData) {
+function WorkItem({ thumbnail, hashTags, title, authorName }: WorkData) {
   return (
-    <Wrapper src={props.thumbnail}>
-      {props.hashTags.includes('성인') ?? <IcNineteen />}
-      <div>{props.title}</div>
-      <div>{props.authorName}</div>
+    <Wrapper src={thumbnail}>
+      {hashTags.includes('성인') ?? <IcNineteen />}
+      <div>{title}</div>
+      <div>{authorName}</div>
     </Wrapper>
   );
 }

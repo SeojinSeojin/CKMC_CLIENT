@@ -1,4 +1,5 @@
 import useSWR from 'swr';
+import { getFetcher } from '../utils/getFetcher';
 
 export const useWorks = ({
   hashTags,
@@ -11,11 +12,13 @@ export const useWorks = ({
   workTitle?: string;
   authorName?: string;
 }) => {
-  const { data: worksData } = useSWR(
-    `/api/work?${hashTags ? `hashTags=${hashTags.join(',')}` : ''}${
+  const { data: worksData, ...rest } = useSWR(
+    `/api/work/filter?${hashTags?.length !== 0 ? `hashTags=${hashTags?.join(',')}` : ''}${
       authorFirstName ? `authorFirstName=${authorFirstName}` : ''
     }${authorName ? `authorName=${authorName}` : ''}${workTitle ? `workTitle=${workTitle}` : ''}`,
+    getFetcher,
   );
-
-  return worksData;
+  console.log(worksData);
+  console.log(rest.error);
+  return { worksData, ...rest };
 };

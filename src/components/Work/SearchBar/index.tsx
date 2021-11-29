@@ -15,7 +15,26 @@ import {
   SearchInputContainer,
 } from './style';
 
-function WorkSearchBar() {
+function WorkSearchBar({
+  hashTags,
+  authorFirstName,
+  setHashTags,
+  removeHashTag,
+  setAuthorFirstName,
+  setAuthorName,
+  setWorkTitle,
+}: {
+  hashTags: string[];
+  authorFirstName: string;
+  setHashTags: (tag: string) => void;
+  removeHashTag: (tag: string) => void;
+  setAuthorFirstName: (name: string) => void;
+  setAuthorName: (name: string) => void;
+  setWorkTitle: (title: string) => void;
+}) {
+  const toggleHashTag = (tag: string) => {
+    hashTags.includes(tag) ? removeHashTag(tag) : setHashTags(tag);
+  };
   return (
     <Wrapper>
       <BtnLeftArrowBig />
@@ -23,7 +42,7 @@ function WorkSearchBar() {
         <SelectorTitle>소재/장르별 해시태그</SelectorTitle>
         <HashTagContainer>
           {HASHTAGS.BY_GENRE.map((tag) => (
-            <HashTag selected={false} key={tag}>
+            <HashTag selected={hashTags.includes(tag)} key={tag} onClick={() => toggleHashTag(tag)}>
               #{tag}
             </HashTag>
           ))}
@@ -33,7 +52,7 @@ function WorkSearchBar() {
         <SelectorTitle>작품형식별 해시태그</SelectorTitle>
         <HashTagContainer>
           {HASHTAGS.BY_TYPE.map((tag) => (
-            <HashTag selected={false} key={tag}>
+            <HashTag selected={hashTags.includes(tag)} key={tag} onClick={() => toggleHashTag(tag)}>
               #{tag}
             </HashTag>
           ))}
@@ -43,7 +62,11 @@ function WorkSearchBar() {
         <SelectorTitle>작가명</SelectorTitle>
         <FirstNameContainer>
           {AUTHOR_FIRST_NAME.map((firstName) => (
-            <FirstName selected={false} key={firstName}>
+            <FirstName
+              selected={authorFirstName === firstName}
+              key={firstName}
+              onClick={() => setAuthorFirstName(firstName)}
+            >
               {firstName}
             </FirstName>
           ))}
