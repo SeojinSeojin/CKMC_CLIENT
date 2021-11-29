@@ -1,4 +1,4 @@
-import React, { forwardRef, RefObject, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled, { StyledComponent } from 'styled-components';
 
 interface IInput {

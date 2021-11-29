@@ -1,6 +1,5 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router';
-import CursorContainer from './components/common/Cursor';
 import { useUser } from './hooks/useUser';
 import AboutPage from './pages/about';
 import MapPage from './pages/about/map';
