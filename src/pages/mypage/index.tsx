@@ -5,12 +5,17 @@ import styled from 'styled-components';
 import Input from '../../components/common/Input';
 import { Link } from 'react-router-dom';
 import { uploadImage as uploadImageRemote } from '../../utils/imageUploader';
+import SelectedHashTags from '../../components/common/MyPage/SelectedHashTags';
+import { IcToggleDownBlue, IcToggleUpBlue } from '../../components/common/Icons';
+import HashTagSelector from '../../components/common/MyPage/HashTagSelector';
 
 function MyPage() {
   const [author, setAuthor] = useState<AuthorData | null>(null);
   const [isLoginNeeded, setIsLoginNeeded] = useState(false);
   const [fileURL, setFileURL] = useState<string>('');
   const [contact, setContact] = useState<string>('');
+  const [hashTags, setHashTags] = useState<Array<string>>([]);
+  const [showHashTagSelector, setShowHashTagSelector] = useState(true);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const workTitleRef = useRef<HTMLInputElement>(null);
   const workDetailRef = useRef<HTMLInputElement>(null);
@@ -23,6 +28,7 @@ function MyPage() {
         setAuthor(responseData);
         setContact(responseData.contact);
         setFileURL(responseData.work.thumbnail);
+        setHashTags(responseData.work.hashTags);
       } else setIsLoginNeeded(true);
     };
     getUserInfo();
@@ -37,7 +43,7 @@ function MyPage() {
   };
 
   const editAuthor = async () => {
-    const response = await fetch('/api/author/edit', {
+    await fetch('/api/author/edit', {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -50,12 +56,19 @@ function MyPage() {
         description: workDetailRef.current?.value,
       }),
     });
-    console.log(response);
   };
 
   const triggerFormClick = (e: React.MouseEvent<HTMLImageElement>) => {
     if (!fileInputRef.current) return;
     fileInputRef.current.click();
+  };
+
+  const toggleHashTags = (tag: string) => {
+    if (hashTags.includes(tag)) setHashTags(hashTags.filter((t) => t !== tag));
+    else {
+      if (hashTags.length >= 5) return;
+      setHashTags((prev) => [...prev, tag]);
+    }
   };
 
   if (isLoginNeeded)
@@ -119,7 +132,17 @@ function MyPage() {
               value={contact}
               onChange={(e) => setContact(e.target.value)}
             />
-            {/*해시태그*/}
+            <HashTagWrapper>
+              <SelectedHashTags hashTags={hashTags} />
+              {showHashTagSelector ? (
+                <IcToggleUpBlue onClick={() => setShowHashTagSelector(false)} />
+              ) : (
+                <IcToggleDownBlue onClick={() => setShowHashTagSelector(true)} />
+              )}
+            </HashTagWrapper>
+            {showHashTagSelector && (
+              <HashTagSelector hashTags={hashTags} onHashTagClick={toggleHashTags} />
+            )}
           </AuthorForm>
           <Episodes>
             <EpisodeHeader>
@@ -224,6 +247,16 @@ const FlexWrapper = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  margin-top: 8vh;
+  margin-bottom: 8vh;
+`;
+
+const HashTagWrapper = styled.div`
+  display: grid;
+  grid-template-columns: auto 20px;
+  height: 34px;
+  align-items: center;
+  box-sizing: border-box;
 `;
 
 export default MyPage;

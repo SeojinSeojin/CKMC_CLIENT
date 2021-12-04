@@ -24,7 +24,7 @@ export const ClassContainer = styled.div<IClassContainer>`
 
   & a {
     text-align: center;
-    font-family: 'NOTO Sans KR';
+    font-family: 'Noto Sans KR';
     color: #8eaec9;
     transition: all 0.5s;
     &:hover {
