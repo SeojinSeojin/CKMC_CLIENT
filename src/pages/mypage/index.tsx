@@ -10,6 +10,7 @@ function MyPage() {
   const [author, setAuthor] = useState<AuthorData | null>(null);
   const [isLoginNeeded, setIsLoginNeeded] = useState(false);
   const [fileURL, setFileURL] = useState<string>('');
+  const [contact, setContact] = useState<string>('');
   const fileInputRef = useRef<HTMLInputElement>(null);
   const workTitleRef = useRef<HTMLInputElement>(null);
   const workDetailRef = useRef<HTMLInputElement>(null);
@@ -19,8 +20,9 @@ function MyPage() {
       const getResponse = await fetch('/api/user/');
       if (getResponse.status === 200) {
         const responseData = await getResponse.json();
-        console.log(responseData);
         setAuthor(responseData);
+        setContact(responseData.contact);
+        setFileURL(responseData.work.thumbnail);
       } else setIsLoginNeeded(true);
     };
     getUserInfo();
@@ -32,6 +34,23 @@ function MyPage() {
     const file: File = (target.files as FileList)[0];
     const uploadedFileURL = await uploadImageRemote(file);
     setFileURL(uploadedFileURL);
+  };
+
+  const editAuthor = async () => {
+    const response = await fetch('/api/author/edit', {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify({
+        contact,
+        title: workTitleRef.current?.value,
+        thumbnail: fileURL,
+        description: workDetailRef.current?.value,
+      }),
+    });
+    console.log(response);
   };
 
   const triggerFormClick = (e: React.MouseEvent<HTMLImageElement>) => {
@@ -95,13 +114,17 @@ function MyPage() {
                 ref={workDetailRef}
               />
             </WorkWrapper>
-            <AuthorContact placeholder="연락처" />
+            <AuthorContact
+              placeholder="연락처"
+              value={contact}
+              onChange={(e) => setContact(e.target.value)}
+            />
             {/*해시태그*/}
           </AuthorForm>
           <Episodes>
             <EpisodeHeader>
               <Link to="mypage/write">회차 업로드</Link>
-              <div>변경사항 저장</div>
+              <div onClick={editAuthor}>변경사항 저장</div>
             </EpisodeHeader>
             {author.work.episodes.length === 0 ? (
               <div style={{ textAlign: 'center' }}>

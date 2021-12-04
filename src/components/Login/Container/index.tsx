@@ -32,7 +32,7 @@ export default function LoginContainer() {
       const getResponse = await fetch('/api/user/');
       if (getResponse.status === 200) {
         const responseData = await getResponse.json();
-        setExistAuthor(responseData.author.nickName);
+        setExistAuthor(responseData.nickName);
       } else console.log('아직 로그인하지 않았습니다.');
     };
     getUserInfo();
