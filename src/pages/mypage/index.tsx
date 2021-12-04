@@ -4,12 +4,16 @@ import NavigationBar from '../../components/common/NavigationBar';
 import styled from 'styled-components';
 import Input from '../../components/common/Input';
 import { Link } from 'react-router-dom';
+import { uploadImage as uploadImageRemote } from '../../utils/imageUploader';
 
 function MyPage() {
   const [author, setAuthor] = useState<AuthorData | null>(null);
   const [isLoginNeeded, setIsLoginNeeded] = useState(false);
+  const [fileURL, setFileURL] = useState<string>('');
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const workTitleRef = useRef<HTMLInputElement>(null);
   const workDetailRef = useRef<HTMLInputElement>(null);
+
   useEffect(() => {
     const getUserInfo = async () => {
       const getResponse = await fetch('/api/user/');
@@ -21,6 +25,19 @@ function MyPage() {
     };
     getUserInfo();
   }, []);
+
+  const uploadImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const target = e.target as HTMLInputElement;
+    if (!target.files) return;
+    const file: File = (target.files as FileList)[0];
+    const uploadedFileURL = await uploadImageRemote(file);
+    setFileURL(uploadedFileURL);
+  };
+
+  const triggerFormClick = (e: React.MouseEvent<HTMLImageElement>) => {
+    if (!fileInputRef.current) return;
+    fileInputRef.current.click();
+  };
 
   if (isLoginNeeded)
     return (
@@ -37,13 +54,28 @@ function MyPage() {
       <FlexWrapper>
         <GridWrapper>
           <AuthorForm>
+            <input
+              type="file"
+              onChange={uploadImage}
+              accept=".jpg,.png,.jpeg,.webp"
+              style={{ display: 'none' }}
+              ref={fileInputRef}
+            />
             <img
               src={
-                author.work.thumbnail === 'https://via.placeholder.com/250'
+                fileURL !== ''
+                  ? fileURL
+                  : author.work.thumbnail === 'https://via.placeholder.com/250'
                   ? 'https://via.placeholder.com/500'
                   : author.work.thumbnail
               }
               alt=""
+              style={{
+                width: 500,
+                height: 500,
+                objectFit: 'cover',
+              }}
+              onClick={triggerFormClick}
             />
             <WorkWrapper>
               <Input

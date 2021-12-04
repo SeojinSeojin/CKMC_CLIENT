@@ -29,7 +29,7 @@ export default function LoginContainer() {
 
   useEffect(() => {
     const getUserInfo = async () => {
-      const getResponse = await fetch('/api/get_user');
+      const getResponse = await fetch('/api/user/');
       if (getResponse.status === 200) {
         const responseData = await getResponse.json();
         setExistAuthor(responseData.author.nickName);
