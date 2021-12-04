@@ -1,5 +1,5 @@
 import useSWR from 'swr';
-import { getFetcher } from '../utils/getFetcher';
+import { getFetcher } from '../utils/fetchers';
 
 export default function useLetter({ mode, page }: { mode?: 10 | 5; page?: number }) {
   const { data, error, mutate } = useSWR(

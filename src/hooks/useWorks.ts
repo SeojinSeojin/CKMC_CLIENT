@@ -1,5 +1,5 @@
 import useSWR from 'swr';
-import { getFetcher } from '../utils/getFetcher';
+import { getFetcher } from '../utils/fetchers';
 
 export const useWorks = ({
   hashTags,

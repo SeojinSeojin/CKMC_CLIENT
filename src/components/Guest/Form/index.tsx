@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import useLetter from '../../../hooks/useLetters';
+import { postFetcher } from '../../../utils/fetchers';
 import Input from '../../common/Input';
 
 import { Body, Sender, Title, Wrapper, File, Submit, Bottom } from './style';
@@ -15,13 +16,7 @@ const writeLetter = async ({
   sender: string;
   file?: string | null;
 }) => {
-  const postResponse = await fetch('/api/letter', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ title, body, sender, file }),
-  });
+  const postResponse = await postFetcher('/api/letter', { title, body, sender, file });
   return postResponse.ok;
 };
 

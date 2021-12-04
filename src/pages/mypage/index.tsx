@@ -8,6 +8,7 @@ import { uploadImage as uploadImageRemote } from '../../utils/imageUploader';
 import SelectedHashTags from '../../components/common/MyPage/SelectedHashTags';
 import { IcToggleDownBlue, IcToggleUpBlue } from '../../components/common/Icons';
 import HashTagSelector from '../../components/common/MyPage/HashTagSelector';
+import { patchFetcher } from '../../utils/fetchers';
 
 function MyPage() {
   const [author, setAuthor] = useState<AuthorData | null>(null);
@@ -43,18 +44,12 @@ function MyPage() {
   };
 
   const editAuthor = async () => {
-    await fetch('/api/author/edit', {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      credentials: 'include',
-      body: JSON.stringify({
-        contact,
-        title: workTitleRef.current?.value,
-        thumbnail: fileURL,
-        description: workDetailRef.current?.value,
-      }),
+    await patchFetcher('/api/author/edit', {
+      contact,
+      title: workTitleRef.current?.value,
+      thumbnail: fileURL,
+      description: workDetailRef.current?.value,
+      hashTags: hashTags,
     });
   };
 
@@ -121,7 +116,7 @@ function MyPage() {
               <Input
                 maxLength={200}
                 placeholder="작품 소개 내용"
-                preValue={author.work.title === '미입력 상태' ? '' : author.work.title}
+                preValue={author.work.description === '미입력 상태' ? '' : author.work.description}
                 styledInput={WorkDescription}
                 counterBottom={8}
                 ref={workDetailRef}

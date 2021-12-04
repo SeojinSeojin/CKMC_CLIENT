@@ -1,4 +1,5 @@
 import React, { FormEvent, useEffect, useRef, useState } from 'react';
+import { postFetcher } from '../../../utils/fetchers';
 import { Button, Form, Inform, Input, Title, Wrapper } from './style';
 
 export default function LoginContainer() {
@@ -9,15 +10,9 @@ export default function LoginContainer() {
   const postLogin = async (e: FormEvent) => {
     e.preventDefault();
     if (!idRef.current || !pwRef.current) return;
-    const postResponse = await fetch('/api/user/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        id: idRef.current.value,
-        password: pwRef.current.value,
-      }),
+    const postResponse = await postFetcher('/api/user/login', {
+      id: idRef.current.value,
+      password: pwRef.current.value,
     });
     if (postResponse.status === 200) {
       window.location.href = '/mypage';
