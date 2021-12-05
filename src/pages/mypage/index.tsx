@@ -37,11 +37,13 @@ function MyPage() {
   }, []);
 
   const uploadImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const target = e.target as HTMLInputElement;
-    if (!target.files) return;
-    const file: File = (target.files as FileList)[0];
-    const uploadedFileURL = await uploadImageRemote(file);
-    setFileURL(uploadedFileURL);
+    try {
+      const target = e.target as HTMLInputElement;
+      if (!target.files) return;
+      const file: File = (target.files as FileList)[0];
+      const uploadedFileURL = await uploadImageRemote(file);
+      setFileURL(uploadedFileURL);
+    } catch (e) {}
   };
 
   const editAuthor = async () => {
@@ -176,6 +178,9 @@ const EpisodeHeader = styled.div`
     &:nth-child(2) {
       color: white;
       background-color: #2454a6;
+    }
+    &:hover {
+      cursor: pointer;
     }
   }
 `;

@@ -20,9 +20,9 @@ const FlexWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 92vh;
-  margin-top: 4vh;
-  margin-bottom: 4vh;
+  min-height: 88vh;
+  margin-top: 6vh;
+  margin-bottom: 6vh;
 `;
 
 export default AuthorLayout;

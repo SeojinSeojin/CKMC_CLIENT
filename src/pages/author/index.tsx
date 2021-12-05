@@ -6,7 +6,7 @@ import NavigationBar from '../../components/common/NavigationBar';
 import AuthorLayout from '../../components/layout/Author';
 import { AuthorData } from '../../types';
 import { getFetcher } from '../../utils/fetchers';
-import { Description, Title } from './style';
+import { Description, Title, Footer } from './style';
 
 export default function AuthorPage() {
   const { id }: { id: string } = useParams();
@@ -45,6 +45,10 @@ export default function AuthorPage() {
             <Title>{author.work.title}</Title>
             <Description>{author.work.description}</Description>
             {author.work.hashTags && <SelectedHashTags hashTags={author.work.hashTags} />}
+            <Footer>
+              <div>{author.nickName}</div>
+              <div>{author.contact}</div>
+            </Footer>
           </div>
         </AuthorLayout>
       )}
