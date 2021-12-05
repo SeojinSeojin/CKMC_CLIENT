@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import CursorContainer from '../../components/common/Cursor';
 import NavigationBar from '../../components/common/NavigationBar';
@@ -51,14 +52,16 @@ export default function WorksPage() {
           <Title isNavOpened={isNavOpened}>CKMC 크리에이티브 페어 2022</Title>
           <WorkContainer isNavOpened={isNavOpened}>
             {worksData.map((work: WorkData) => (
-              <WorkItem
-                title={work.title}
-                authorName={work.authorName}
-                thumbnail={work.thumbnail}
-                hashTags={work.hashTags}
-                description={work.description}
-                episodes={work.episodes}
-              />
+              <Link to={`/author/${work.authorName}`}>
+                <WorkItem
+                  title={work.title}
+                  authorName={work.authorName}
+                  thumbnail={work.thumbnail}
+                  hashTags={work.hashTags}
+                  description={work.description}
+                  episodes={work.episodes}
+                />
+              </Link>
             ))}
           </WorkContainer>
         </>

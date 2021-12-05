@@ -9,6 +9,7 @@ import SelectedHashTags from '../../components/common/MyPage/SelectedHashTags';
 import { IcToggleDownBlue, IcToggleUpBlue } from '../../components/common/Icons';
 import HashTagSelector from '../../components/common/MyPage/HashTagSelector';
 import { patchFetcher } from '../../utils/fetchers';
+import AuthorLayout from '../../components/layout/Author';
 
 function MyPage() {
   const [author, setAuthor] = useState<AuthorData | null>(null);
@@ -78,82 +79,80 @@ function MyPage() {
   return (
     <>
       <NavigationBar theme="blue" selected={null} />
-      <FlexWrapper>
-        <GridWrapper>
-          <AuthorForm>
-            <input
-              type="file"
-              onChange={uploadImage}
-              accept=".jpg,.png,.jpeg,.webp"
-              style={{ display: 'none' }}
-              ref={fileInputRef}
+      <AuthorLayout>
+        <AuthorForm>
+          <input
+            type="file"
+            onChange={uploadImage}
+            accept=".jpg,.png,.jpeg,.webp"
+            style={{ display: 'none' }}
+            ref={fileInputRef}
+          />
+          <img
+            src={
+              fileURL !== ''
+                ? fileURL
+                : author.work.thumbnail === 'https://via.placeholder.com/250'
+                ? 'https://via.placeholder.com/500'
+                : author.work.thumbnail
+            }
+            alt=""
+            style={{
+              width: 500,
+              height: 500,
+              objectFit: 'cover',
+            }}
+            onClick={triggerFormClick}
+          />
+          <WorkWrapper>
+            <Input
+              maxLength={30}
+              placeholder="작품 제목"
+              preValue={author.work.title === '미입력 상태' ? '' : author.work.title}
+              styledInput={WorkTitle}
+              counterBottom={8}
+              ref={workTitleRef}
             />
-            <img
-              src={
-                fileURL !== ''
-                  ? fileURL
-                  : author.work.thumbnail === 'https://via.placeholder.com/250'
-                  ? 'https://via.placeholder.com/500'
-                  : author.work.thumbnail
-              }
-              alt=""
-              style={{
-                width: 500,
-                height: 500,
-                objectFit: 'cover',
-              }}
-              onClick={triggerFormClick}
+            <Input
+              maxLength={200}
+              placeholder="작품 소개 내용"
+              preValue={author.work.description === '미입력 상태' ? '' : author.work.description}
+              styledInput={WorkDescription}
+              counterBottom={8}
+              ref={workDetailRef}
             />
-            <WorkWrapper>
-              <Input
-                maxLength={30}
-                placeholder="작품 제목"
-                preValue={author.work.title === '미입력 상태' ? '' : author.work.title}
-                styledInput={WorkTitle}
-                counterBottom={8}
-                ref={workTitleRef}
-              />
-              <Input
-                maxLength={200}
-                placeholder="작품 소개 내용"
-                preValue={author.work.description === '미입력 상태' ? '' : author.work.description}
-                styledInput={WorkDescription}
-                counterBottom={8}
-                ref={workDetailRef}
-              />
-            </WorkWrapper>
-            <AuthorContact
-              placeholder="연락처"
-              value={contact}
-              onChange={(e) => setContact(e.target.value)}
-            />
-            <HashTagWrapper>
-              <SelectedHashTags hashTags={hashTags} />
-              {showHashTagSelector ? (
-                <IcToggleUpBlue onClick={() => setShowHashTagSelector(false)} />
-              ) : (
-                <IcToggleDownBlue onClick={() => setShowHashTagSelector(true)} />
-              )}
-            </HashTagWrapper>
-            {showHashTagSelector && (
-              <HashTagSelector hashTags={hashTags} onHashTagClick={toggleHashTags} />
-            )}
-          </AuthorForm>
-          <Episodes>
-            <EpisodeHeader>
-              <Link to="mypage/write">회차 업로드</Link>
-              <div onClick={editAuthor}>변경사항 저장</div>
-            </EpisodeHeader>
-            {author.work.episodes.length === 0 ? (
-              <div style={{ textAlign: 'center' }}>
-                회차가 없습니다. 회차 업로드를 눌러 회차를 업로드해주세요.
-              </div>
+          </WorkWrapper>
+          <AuthorContact
+            placeholder="연락처"
+            value={contact}
+            onChange={(e) => setContact(e.target.value)}
+          />
+          <HashTagWrapper>
+            <SelectedHashTags hashTags={hashTags} />
+            {showHashTagSelector ? (
+              <IcToggleUpBlue onClick={() => setShowHashTagSelector(false)} />
             ) : (
-              <div>에피소드 목록</div>
+              <IcToggleDownBlue onClick={() => setShowHashTagSelector(true)} />
             )}
-          </Episodes>
-        </GridWrapper>
-      </FlexWrapper>
+          </HashTagWrapper>
+          {showHashTagSelector && (
+            <HashTagSelector hashTags={hashTags} onHashTagClick={toggleHashTags} />
+          )}
+        </AuthorForm>
+        <Episodes>
+          <EpisodeHeader>
+            <Link to="mypage/write">회차 업로드</Link>
+            <div onClick={editAuthor}>변경사항 저장</div>
+          </EpisodeHeader>
+          {author.work.episodes.length === 0 ? (
+            <div style={{ textAlign: 'center' }}>
+              회차가 없습니다. 회차 업로드를 눌러 회차를 업로드해주세요.
+            </div>
+          ) : (
+            <div>에피소드 목록</div>
+          )}
+        </Episodes>
+      </AuthorLayout>
     </>
   );
 }
@@ -228,22 +227,6 @@ const WorkDescription = styled.textarea`
 const AuthorContact = styled.input`
   border: 1px solid #2454a6 !important;
   padding: 10px;
-`;
-
-const GridWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 500px auto;
-  width: 80%;
-  gap: 80px;
-`;
-
-const FlexWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  margin-top: 8vh;
-  margin-bottom: 8vh;
 `;
 
 const HashTagWrapper = styled.div`
