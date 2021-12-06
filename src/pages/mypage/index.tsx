@@ -10,6 +10,7 @@ import { IcToggleDownBlue, IcToggleUpBlue } from '../../components/common/Icons'
 import HashTagSelector from '../../components/common/MyPage/HashTagSelector';
 import { patchFetcher } from '../../utils/fetchers';
 import AuthorLayout from '../../components/layout/Author';
+import EpisodeContainer from '../../components/Episode/Container';
 
 function MyPage() {
   const [author, setAuthor] = useState<AuthorData | null>(null);
@@ -151,7 +152,7 @@ function MyPage() {
               회차가 없습니다. 회차 업로드를 눌러 회차를 업로드해주세요.
             </div>
           ) : (
-            <div>에피소드 목록</div>
+            <EpisodeContainer episodes={author.work.episodes} isEditable={true} />
           )}
         </Episodes>
       </AuthorLayout>

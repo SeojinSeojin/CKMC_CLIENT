@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import { IcToggleDownBlue, IcToggleUpBlue } from '../../../components/common/Icons';
 import ModeController from '../../../components/common/MyPage/ModeController';
 import NavigationBar from '../../../components/common/NavigationBar';
+import { postFetcher } from '../../../utils/fetchers';
 import { uploadImage as uploadImageRemote } from '../../../utils/imageUploader';
+import { isAllFilled } from '../../../utils/nullOrEmptyChecker';
 
 type imageType = { remote: string; local: string };
 
@@ -11,6 +13,9 @@ function Upload() {
   const [thumbnail, setThumbnail] = useState<imageType>({ remote: '', local: '' });
   const [files, setFiles] = useState<Array<imageType>>([]);
   const [mode, setMode] = useState<'scroll' | 'page' | 'link'>('scroll');
+  const titleRef = useRef<HTMLInputElement>(null);
+  const linkRef = useRef<HTMLInputElement>(null);
+  const descriptionRef = useRef<HTMLTextAreaElement>(null);
   const thumbnailRef = useRef<HTMLInputElement>(null);
   const workRef = useRef<HTMLInputElement>(null);
 
@@ -34,6 +39,22 @@ function Upload() {
     } catch (e) {}
   };
 
+  const uploadEpisode = async () => {
+    if (mode === 'link') if (!isAllFilled(linkRef.current?.value)) return;
+    if (mode !== 'link')
+      if (!isAllFilled(titleRef.current?.value, descriptionRef.current?.value)) return;
+
+    await postFetcher('/api/episode', {
+      viewMethod: mode,
+      title: titleRef.current?.value,
+      description: descriptionRef.current?.value,
+      isForNineteen: false,
+      thumbnail: thumbnail.remote,
+      link: linkRef.current?.value,
+      pages: files.map((file) => file.remote),
+    });
+  };
+
   return (
     <>
       <NavigationBar theme="blue" selected={null} />
@@ -48,14 +69,19 @@ function Upload() {
                 mode={mode}
                 setMode={(mode: 'scroll' | 'page' | 'link') => setMode(mode)}
               />
-              <input type="text" placeholder="http://ckmc.co.kr" disabled={mode !== 'link'} />
+              <input
+                type="text"
+                placeholder="http://ckmc.co.kr"
+                disabled={mode !== 'link'}
+                ref={linkRef}
+              />
             </ViewModeWrapper>
           </FormItem>
           <FormItem>
             <Label>
               <div>회차 제목</div>
             </Label>
-            <input type="text" />
+            <input type="text" ref={titleRef} />
           </FormItem>
           <FormItem>
             <Label>
@@ -115,9 +141,10 @@ function Upload() {
                 18pt로 보여집니다.
               </div>
             </Label>
-            <textarea disabled={mode === 'link'} />
+            <textarea disabled={mode === 'link'} ref={descriptionRef} />
           </FormItem>
         </Form>
+        <SubmitButton onClick={uploadEpisode}>변경사항 저장</SubmitButton>
       </Wrapper>
     </>
   );
@@ -128,15 +155,20 @@ export default Upload;
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   min-height: 100vh;
 `;
 
 const Form = styled.form`
-  min-width: 700px;
+  min-width: 800px;
   display: flex;
   flex-direction: column;
   gap: 36px;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid #8eaec9;
   & input,
   textarea {
     border: 1px solid #2454a6;
@@ -267,5 +299,21 @@ const ThumbnailInput = styled.div`
     &:hover {
       cursor: pointer;
     }
+  }
+`;
+
+const SubmitButton = styled.div`
+  border-radius: 40px;
+  width: 230px;
+  height: 40px;
+  color: white;
+  font-size: 18px;
+  line-height: 40px;
+  background-color: #2454a6;
+  text-align: center;
+  margin-top: 52px;
+
+  &:hover {
+    cursor: pointer;
   }
 `;

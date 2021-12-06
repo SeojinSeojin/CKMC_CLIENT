@@ -1,14 +1,13 @@
 import CommentData from './Comment';
-import PageData from './Page';
 
 export default interface EpisodeData {
-  workTitle: string;
-  viewMethod: number;
+  viewMethod: 'scroll' | 'page' | 'link';
   title: string;
-  thumbnail: string;
   description: string;
   isForNineteen: boolean;
+  thumbnail: string;
   link?: string;
-  pages?: PageData[];
-  comments: CommentData[];
+  pages?: string[];
+  comments?: CommentData[];
+  authorName: string;
 }
