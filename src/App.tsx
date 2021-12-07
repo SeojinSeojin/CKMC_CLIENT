@@ -13,7 +13,8 @@ import Upload from './pages/mypage/write';
 import WorksPage from './pages/works';
 
 function App() {
-  const { userData } = useUser();
+  const { isValidating, author } = useUser();
+
   return (
     <div className="App">
       <Switch>
@@ -25,10 +26,10 @@ function App() {
         <Route exact path="/guest" component={GuestPage} />
         <Route exact path="/login" component={LoginPage} />
         <Route exact path="/mypage">
-          {userData ? <Redirect to="/" /> : <MyPage />}
+          {!isValidating && !author ? <Redirect to="/" /> : <MyPage />}
         </Route>
         <Route exact path="/mypage/write" component={Upload}>
-          {userData ? <Redirect to="/" /> : <Upload />}
+          {!isValidating && !author ? <Redirect to="/" /> : <Upload />}
         </Route>
         <Route exact path="/works" component={WorksPage} />
       </Switch>

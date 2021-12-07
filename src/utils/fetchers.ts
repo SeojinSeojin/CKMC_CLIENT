@@ -22,3 +22,5 @@ export const patchFetcher = (url: string, body: object) =>
     credentials: 'include',
     body: JSON.stringify(body),
   });
+
+export const deleteFetcher = (url: string) => fetch(url, { method: 'DELETE' });

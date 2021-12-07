@@ -1,6 +1,7 @@
 import useSWR from 'swr';
+import { getFetcher } from '../utils/fetchers';
 
 export const useUser = () => {
-  const { data: userData, ...rest } = useSWR('/api/user');
-  return { userData, ...rest };
+  const { data: author, ...rest } = useSWR('/api/user', getFetcher);
+  return { author, ...rest };
 };

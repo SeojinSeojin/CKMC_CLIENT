@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { AuthorData } from '../../types';
 import NavigationBar from '../../components/common/NavigationBar';
 import styled from 'styled-components';
 import Input from '../../components/common/Input';
@@ -11,10 +10,9 @@ import HashTagSelector from '../../components/common/MyPage/HashTagSelector';
 import { patchFetcher } from '../../utils/fetchers';
 import AuthorLayout from '../../components/layout/Author';
 import EpisodeContainer from '../../components/Episode/Container';
+import { useUser } from '../../hooks/useUser';
 
 function MyPage() {
-  const [author, setAuthor] = useState<AuthorData | null>(null);
-  const [isLoginNeeded, setIsLoginNeeded] = useState(false);
   const [fileURL, setFileURL] = useState<string>('');
   const [contact, setContact] = useState<string>('');
   const [hashTags, setHashTags] = useState<Array<string>>([]);
@@ -22,20 +20,17 @@ function MyPage() {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const workTitleRef = useRef<HTMLInputElement>(null);
   const workDetailRef = useRef<HTMLInputElement>(null);
+  const { author, isValidating, error } = useUser();
 
   useEffect(() => {
-    const getUserInfo = async () => {
-      const getResponse = await fetch('/api/user/');
-      if (getResponse.status === 200) {
-        const responseData = await getResponse.json();
-        setAuthor(responseData);
-        setContact(responseData.contact);
-        setFileURL(responseData.work.thumbnail);
-        setHashTags(responseData.work.hashTags);
-      } else setIsLoginNeeded(true);
-    };
-    getUserInfo();
-  }, []);
+    console.log(error);
+    console.log(author);
+    if (author) {
+      setContact(author.contact);
+      setFileURL(author.work.thumbnail);
+      setHashTags(author.work.hashTags);
+    }
+  }, [author, error]);
 
   const uploadImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
     try {
@@ -70,7 +65,7 @@ function MyPage() {
     }
   };
 
-  if (isLoginNeeded)
+  if (error)
     return (
       <div>
         <NavigationBar theme="blue" selected={null} />
@@ -78,7 +73,7 @@ function MyPage() {
         <Link to="/login">로그인 바로가기</Link>
       </div>
     );
-  if (!author) return <div>로딩중</div>;
+  if (isValidating || !author) return <div>로딩중</div>;
   return (
     <>
       <NavigationBar theme="blue" selected={null} />
@@ -144,7 +139,7 @@ function MyPage() {
         </AuthorForm>
         <Episodes>
           <EpisodeHeader>
-            <Link to="mypage/write">회차 업로드</Link>
+            <Link to="/mypage/write">회차 업로드</Link>
             <div onClick={editAuthor}>변경사항 저장</div>
           </EpisodeHeader>
           {author.work.episodes.length === 0 ? (
