@@ -1,5 +1,5 @@
 import React from 'react';
-import { ThumbnailImage, Wrapper, Title, TitleWrapper, EditButton } from './style';
+import { ThumbnailImage, Wrapper, Title, TitleWrapper, Editors } from './style';
 
 function EpisodeItem({
   thumbnail,
@@ -27,7 +27,12 @@ function EpisodeItem({
       <ThumbnailImage src={thumbnail} alt={`${title} thumbnail`} />
       <TitleWrapper>
         <Title>{title}</Title>
-        {isEditable && <EditButton>수정</EditButton>}
+        {isEditable && (
+          <Editors>
+            <button>수정</button>
+            <button>삭제</button>
+          </Editors>
+        )}
       </TitleWrapper>
     </Wrapper>
   );

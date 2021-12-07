@@ -1,8 +1,10 @@
 import React, { useRef, useState } from 'react';
+import { useHistory } from 'react-router';
 import styled from 'styled-components';
 import { IcToggleDownBlue, IcToggleUpBlue } from '../../../components/common/Icons';
 import ModeController from '../../../components/common/MyPage/ModeController';
 import NavigationBar from '../../../components/common/NavigationBar';
+import { AuthorData } from '../../../types';
 import { postFetcher } from '../../../utils/fetchers';
 import { uploadImage as uploadImageRemote } from '../../../utils/imageUploader';
 import { isAllFilled } from '../../../utils/nullOrEmptyChecker';
@@ -18,6 +20,7 @@ function Upload() {
   const descriptionRef = useRef<HTMLTextAreaElement>(null);
   const thumbnailRef = useRef<HTMLInputElement>(null);
   const workRef = useRef<HTMLInputElement>(null);
+  const history = useHistory();
 
   const triggerFileRefClick = (ref: React.RefObject<HTMLInputElement>) => {
     if (!ref.current) return;
@@ -44,7 +47,7 @@ function Upload() {
     if (mode !== 'link')
       if (!isAllFilled(titleRef.current?.value, descriptionRef.current?.value)) return;
 
-    await postFetcher('/api/episode', {
+    const response = await postFetcher('/api/episode', {
       viewMethod: mode,
       title: titleRef.current?.value,
       description: descriptionRef.current?.value,
@@ -53,6 +56,12 @@ function Upload() {
       link: linkRef.current?.value,
       pages: files.map((file) => file.remote),
     });
+    if (response.ok) {
+      const author: AuthorData = await response.json();
+      if (mode !== 'link')
+        history.push(`/author/${author.nickName}/${author.work.episodes.length - 1}`);
+      else history.goBack();
+    }
   };
 
   return (
