@@ -200,3 +200,14 @@ input,
 textarea {
   font-family: Noto Sans KR;
 }
+
+:root {
+  --toastify-color-success: #2454a6 !important;
+  --toastify-color-error: #ff4d62 !important;
+  --toastify-color-progress-success: var(--toastify-color-success) !important;
+  --toastify-color-progress-error: var(--toastify-color-error) !important;
+}
+
+.Toastify__progress-bar--error {
+  color: #ff4d62 !important;
+}

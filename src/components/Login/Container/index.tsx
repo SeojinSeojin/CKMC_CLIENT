@@ -1,48 +1,46 @@
-import React, { FormEvent, useEffect, useRef, useState } from 'react';
+import React, { FormEvent, useRef } from 'react';
 import { postFetcher } from '../../../utils/fetchers';
 import { Button, Form, Inform, Input, Title, Wrapper } from './style';
+import { isAllFilled } from '../../../utils/nullOrEmptyChecker';
+import { toast } from 'react-toastify';
+import { useUser } from '../../../hooks/useUser';
 
 export default function LoginContainer() {
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [existAuthor, setExistAuthor] = useState<string | null>(null);
   const idRef = useRef<HTMLInputElement>(null);
   const pwRef = useRef<HTMLInputElement>(null);
-  const postLogin = async (e: FormEvent) => {
-    e.preventDefault();
-    if (!idRef.current || !pwRef.current) return;
-    const postResponse = await postFetcher('/api/user/login', {
-      id: idRef.current.value,
-      password: pwRef.current.value,
-    });
-    if (postResponse.status === 200) {
-      window.location.href = '/mypage';
-    } else {
-      const text = await postResponse.text();
-      setErrorMessage(text);
-    }
-  };
+  const { author } = useUser();
 
-  useEffect(() => {
-    const getUserInfo = async () => {
-      const getResponse = await fetch('/api/user/');
-      if (getResponse.status === 200) {
-        const responseData = await getResponse.json();
-        setExistAuthor(responseData.nickName);
-      } else console.log('아직 로그인하지 않았습니다.');
-    };
-    getUserInfo();
-  }, []);
+  const login = async (e: FormEvent) => {
+    e.preventDefault();
+    const loginPromise = new Promise((resolve, reject) => {
+      if (!isAllFilled(idRef.current?.value, pwRef.current?.value))
+        reject('ref가 초기화되지 않았습니다.');
+      postFetcher('/api/user/login', {
+        id: idRef.current?.value,
+        password: pwRef.current?.value,
+      }).then((res) => {
+        if (res.status === 200) {
+          resolve('로그인 성공');
+          window.location.href = '/mypage';
+        } else reject('로그인 실패');
+      });
+    });
+    toast.promise(loginPromise, {
+      pending: '로그인 중입니다',
+      success: '로그인에 성공했습니다.',
+      error: '로그인에 실패했습니다.',
+    });
+  };
 
   return (
     <Wrapper>
       <Title>LOG IN</Title>
       <Inform>아이디와 비밀번호가 기억나지 않으실 경우 졸준위에 문의 바랍니다.</Inform>
-      <Form onSubmit={postLogin}>
+      <Form onSubmit={login}>
         <Input type="text" placeholder="ID" ref={idRef} />
         <Input type="password" placeholder="Password" ref={pwRef} />
         <Button type="submit" value="LOG IN" />
-        <div style={{ color: 'red', paddingBottom: 20, textAlign: 'center' }}>{errorMessage}</div>
-        {existAuthor && (
+        {author && (
           <div
             style={{
               textAlign: 'center',
@@ -53,7 +51,7 @@ export default function LoginContainer() {
               lineHeight: '18px',
             }}
           >
-            <div>{existAuthor}(으)로 이미 로그인되어있습니다.</div>
+            <div>{author.name}(으)로 이미 로그인되어있습니다.</div>
             <a href="/mypage" style={{ borderBottom: '1px solid #2554A5' }}>
               마이페이지 바로가기
             </a>

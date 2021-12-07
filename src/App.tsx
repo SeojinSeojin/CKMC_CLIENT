@@ -11,12 +11,15 @@ import LoginPage from './pages/login';
 import MyPage from './pages/mypage';
 import Upload from './pages/mypage/write';
 import WorksPage from './pages/works';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const { isValidating, author } = useUser();
 
   return (
     <div className="App">
+      <ToastContainer />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/about" component={AboutPage} />
