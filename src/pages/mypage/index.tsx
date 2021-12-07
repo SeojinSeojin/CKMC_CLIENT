@@ -11,6 +11,7 @@ import { patchFetcher } from '../../utils/fetchers';
 import AuthorLayout from '../../components/layout/Author';
 import EpisodeContainer from '../../components/Episode/Container';
 import { useUser } from '../../hooks/useUser';
+import Loader from '../../components/common/Loader';
 
 function MyPage() {
   const [fileURL, setFileURL] = useState<string>('');
@@ -23,8 +24,6 @@ function MyPage() {
   const { author, isValidating, error } = useUser();
 
   useEffect(() => {
-    console.log(error);
-    console.log(author);
     if (author) {
       setContact(author.contact);
       setFileURL(author.work.thumbnail);
@@ -73,7 +72,7 @@ function MyPage() {
         <Link to="/login">로그인 바로가기</Link>
       </div>
     );
-  if (isValidating || !author) return <div>로딩중</div>;
+  if (isValidating || !author) return <Loader />;
   return (
     <>
       <NavigationBar theme="blue" selected={null} />
@@ -143,9 +142,7 @@ function MyPage() {
             <div onClick={editAuthor}>변경사항 저장</div>
           </EpisodeHeader>
           {author.work.episodes.length === 0 ? (
-            <div style={{ textAlign: 'center' }}>
-              회차가 없습니다. 회차 업로드를 눌러 회차를 업로드해주세요.
-            </div>
+            <div style={{ textAlign: 'center' }}>등록된 회차가 없습니다.</div>
           ) : (
             <EpisodeContainer episodes={author.work.episodes} isEditable={true} />
           )}

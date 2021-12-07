@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Loader from '../../components/common/Loader';
 import styled from 'styled-components';
 import CursorContainer from '../../components/common/Cursor';
 import NavigationBar from '../../components/common/NavigationBar';
@@ -65,7 +66,12 @@ export default function WorksPage() {
   const [authorName, setAuthorName] = useState('');
   const [workTitle, setWorkTitle] = useState('');
   const [isNavOpened, setIsNavOpened] = useState(true);
-  const { worksData } = useWorks({ hashTags, authorFirstName, authorName, workTitle });
+  const { worksData, isValidating } = useWorks({
+    hashTags,
+    authorFirstName,
+    authorName,
+    workTitle,
+  });
 
   const toggleIsNavOpened = () => {
     if (isNavOpened) {
@@ -80,6 +86,7 @@ export default function WorksPage() {
   };
   const [animation, setAnimation] = useState<'' | 'close'>('');
 
+  if (isValidating) return <Loader />;
   return (
     <>
       <CursorContainer theme="blue" />

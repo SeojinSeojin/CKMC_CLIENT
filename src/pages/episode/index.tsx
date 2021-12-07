@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import Loader from '../../components/common/Loader';
 import CursorContainer from '../../components/common/Cursor';
 import SelectedHashTags from '../../components/common/MyPage/SelectedHashTags';
 import NavigationBar from '../../components/common/NavigationBar';
@@ -26,7 +27,7 @@ function EpisodePage() {
     getEpisode();
   }, [episodeIdx, authorId]);
 
-  if (!episode || !author) return <>로딩중</>;
+  if (!episode || !author) return <Loader />;
   return (
     <>
       <CursorContainer theme="blue" />

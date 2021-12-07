@@ -10,6 +10,7 @@ import {
 import { Paginator, Wrapper, Letters } from './style';
 import useLetter from '../../../hooks/useLetters';
 import { LetterData } from '../../../types';
+import Loader from '../../common/Loader';
 
 function GuestList() {
   const [pageIndex, setPageIndex] = useState(0);
@@ -18,7 +19,12 @@ function GuestList() {
 
   const { data, error } = useLetter({ mode: mode, page: pageIndex });
   if (error) return <Wrapper>에러 발생</Wrapper>;
-  if (!data) return <Wrapper>로딩중</Wrapper>;
+  if (!data)
+    return (
+      <Wrapper>
+        <Loader />
+      </Wrapper>
+    );
 
   const { letters, lettersCount } = data;
   return (
