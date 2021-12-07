@@ -6,7 +6,7 @@ interface IWrapper {
 
 export const Wrapper = styled.div<IWrapper>`
   background-image: ${({ src }) => `url(${src})`};
-  object-fit: cover;
+  background-size: contain;
   width: 250px;
   height: 250px;
   position: relative;
@@ -14,16 +14,24 @@ export const Wrapper = styled.div<IWrapper>`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
   & div {
     visibility: hidden;
     color: white;
     font-weight: 900;
     font-size: 24px;
     z-index: 900;
+    &:nth-child(2) {
+      position: absolute;
+      bottom: 0px;
+      font-weight: 200;
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
   }
 
   height: 250px;
-  transition: all 0.5s;
+  transition: all 0.3s;
 
   & svg {
     position: absolute;
@@ -31,7 +39,7 @@ export const Wrapper = styled.div<IWrapper>`
     right: 0;
   }
   &:hover {
-    transform: scale(104%);
+    transform: translateY(-15px);
     cursor: pointer;
     & div {
       visibility: visible;

@@ -19,7 +19,10 @@ const Base = styled.div<ISelected>`
       : ''}
 `;
 
-export const Wrapper = styled.div`
+interface IWrapper {
+  animation: '' | 'close';
+}
+export const Wrapper = styled.div<IWrapper>`
   position: fixed;
   right: 0;
   top: 0;
@@ -30,10 +33,44 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   height: 100vh;
+  animation: 0.4s linear ${(props) => (props.animation === '' ? 'slideIn' : 'slideOut')};
 
   & > svg {
     margin-bottom: 20px;
     margin-left: 28px;
+    &:hover {
+      cursor: pointer;
+    }
+    ${({ animation }) =>
+      animation === ''
+        ? ''
+        : 'animation: 0.2s linear rotateOut; transform: rotateZ(180deg); & path{ stroke: #2454a6; }'}
+  }
+  @keyframes slideIn {
+    0% {
+      transform: translateX(400px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideOut {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(400px);
+    }
+  }
+
+  @keyframes rotateOut {
+    0% {
+      transform: rotateZ(0);
+    }
+    100% {
+      transform: rotateZ(180deg);
+    }
   }
 `;
 
@@ -127,5 +164,37 @@ export const SearchInputContainer = styled.div`
     position: absolute;
     right: 12px;
     bottom: 12px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+`;
+
+export const SingleWrapper = styled.div`
+  position: fixed;
+  right: 40px;
+  top: 0;
+  padding-top: calc(100vh - 842px);
+  height: 100vh;
+  animation: 0.2s linear slideIn;
+
+  & svg {
+    margin-left: 28px;
+    margin-bottom: 20px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  @keyframes slideIn {
+    0% {
+      transform: translateX(30px);
+    }
+    20% {
+      transform: translateX(30px);
+    }
+    100% {
+      transform: translateX(0);
+    }
   }
 `;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { AUTHOR_FIRST_NAME, HASHTAGS } from '../../../utils/HASHTAGS';
-import { BtnLeftArrowBig, IcSearch } from '../../common/Icons';
+import { BtnLeftArrowBig, BtnRightArrowBig, IcSearch } from '../../common/Icons';
 import {
   HashTag,
   Wrapper,
@@ -13,6 +13,7 @@ import {
   SearchType,
   SearchInput,
   SearchInputContainer,
+  SingleWrapper,
 } from './style';
 
 function WorkSearchBar({
@@ -23,6 +24,9 @@ function WorkSearchBar({
   setAuthorFirstName,
   setAuthorName,
   setWorkTitle,
+  toggleIsNavOpened,
+  animation,
+  isNavOpened,
 }: {
   hashTags: string[];
   authorFirstName: string;
@@ -31,13 +35,17 @@ function WorkSearchBar({
   setAuthorFirstName: (name: string) => void;
   setAuthorName: (name: string) => void;
   setWorkTitle: (title: string) => void;
+  toggleIsNavOpened: () => void;
+  isNavOpened: boolean;
+  animation: '' | 'close';
 }) {
   const toggleHashTag = (tag: string) => {
     hashTags.includes(tag) ? removeHashTag(tag) : setHashTags(tag);
   };
-  return (
-    <Wrapper>
-      <BtnLeftArrowBig />
+
+  return isNavOpened ? (
+    <Wrapper animation={animation}>
+      <BtnLeftArrowBig onClick={toggleIsNavOpened} />
       <SelectorWrapper>
         <SelectorTitle>소재/장르별 해시태그</SelectorTitle>
         <HashTagContainer>
@@ -83,6 +91,10 @@ function WorkSearchBar({
         </SearchInputContainer>
       </SelectorWrapper>
     </Wrapper>
+  ) : (
+    <SingleWrapper>
+      <BtnRightArrowBig onClick={toggleIsNavOpened} />
+    </SingleWrapper>
   );
 }
 

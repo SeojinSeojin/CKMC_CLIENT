@@ -16,6 +16,7 @@ import { ReactComponent as IcYoutube } from './ic-youtube.svg';
 import { ReactComponent as IcNineteen } from './ic-nineteen.svg';
 import { ReactComponent as IcSearch } from './ic-search.svg';
 import { ReactComponent as BtnLeftArrowBig } from './btn-left-arrow-big.svg';
+import { ReactComponent as BtnRightArrowBig } from './btn-right-arrow-big.svg';
 import { ReactComponent as IcRadioSelected } from './ic-radio-selected.svg';
 import { ReactComponent as IcRadioUnselected } from './ic-radio-unselected.svg';
 
@@ -38,6 +39,7 @@ export {
   IcNineteen,
   IcSearch,
   BtnLeftArrowBig,
+  BtnRightArrowBig,
   IcRadioSelected,
   IcRadioUnselected,
 };

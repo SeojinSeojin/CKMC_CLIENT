@@ -18,7 +18,5 @@ export const useWorks = ({
     }${authorName ? `authorName=${authorName}` : ''}${workTitle ? `workTitle=${workTitle}` : ''}`,
     getFetcher,
   );
-  console.log(worksData);
-  console.log(rest.error);
   return { worksData, ...rest };
 };
