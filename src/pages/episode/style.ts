@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Header = styled.div`
   color: #2454a6;
   padding-bottom: 40px;
+  margin-bottom: 50px;
   border-bottom: 1px solid #8eaec9;
   display: flex;
   gap: 40px;
