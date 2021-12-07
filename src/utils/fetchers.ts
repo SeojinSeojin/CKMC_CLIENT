@@ -1,4 +1,8 @@
-export const getFetcher = (url: string) => fetch(url).then((res) => res.json());
+export const getFetcher = (url: string) =>
+  fetch(url).then((res) => {
+    if (res.ok) return res.json();
+    else return res.body;
+  });
 
 export const postFetcher = (url: string, body: object) =>
   fetch(url, {

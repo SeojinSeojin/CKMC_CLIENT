@@ -18,6 +18,8 @@ function EpisodeContainer({
           thumbnail={episode.thumbnail}
           title={episode.title}
           isEditable={isEditable}
+          link={episode.link}
+          viewMethod={episode.viewMethod}
         />
       ))}
     </div>

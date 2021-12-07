@@ -1,7 +1,6 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const Wrapper = styled(Link)`
+export const Wrapper = styled.a`
   display: grid;
   grid-template-columns: 320px auto;
   gap: 12px;
@@ -11,6 +10,9 @@ export const Wrapper = styled(Link)`
     & > div {
       border-top: 1px solid #2454a6;
     }
+  }
+  &:hover {
+    cursor: pointer;
   }
 `;
 

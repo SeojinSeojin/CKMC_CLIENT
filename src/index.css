@@ -178,12 +178,13 @@ body {
 }
 
 a {
-  color: inherit;
+  color: #2454a6;
   text-decoration: none;
 }
 
 * {
   box-sizing: border-box;
+  color: #2454a6;
 }
 
 div {

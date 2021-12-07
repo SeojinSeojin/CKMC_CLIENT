@@ -3,27 +3,28 @@ import { useParams, useHistory } from 'react-router';
 import CursorContainer from '../../components/common/Cursor';
 import SelectedHashTags from '../../components/common/MyPage/SelectedHashTags';
 import NavigationBar from '../../components/common/NavigationBar';
+import EpisodeContainer from '../../components/Episode/Container';
 import AuthorLayout from '../../components/layout/Author';
 import { AuthorData } from '../../types';
 import { getFetcher } from '../../utils/fetchers';
 import { Description, Title, Footer } from './style';
 
 export default function AuthorPage() {
-  const { id }: { id: string } = useParams();
+  const { authorId }: { authorId: string } = useParams();
   const history = useHistory();
   const [author, setAuthor] = useState<AuthorData | null>(null);
 
   useEffect(() => {
     const getAuthorInfo = async () => {
       try {
-        const authorData = await getFetcher(`/api/author/${id}`);
+        const authorData = await getFetcher(`/api/author/${authorId}`);
         setAuthor(authorData);
       } catch (e) {
         history.replace('/');
       }
     };
     getAuthorInfo();
-  }, [id]);
+  }, [authorId, history]);
 
   return (
     <>
@@ -49,6 +50,9 @@ export default function AuthorPage() {
               <div>{author.nickName}</div>
               <div>{author.contact}</div>
             </Footer>
+          </div>
+          <div>
+            <EpisodeContainer episodes={author.work.episodes} isEditable={false} />
           </div>
         </AuthorLayout>
       )}

@@ -7,15 +7,23 @@ function EpisodeItem({
   isEditable,
   index,
   authorName,
+  viewMethod,
+  link,
 }: {
   thumbnail: string;
   title: string;
   isEditable: boolean;
   index: number;
   authorName: string;
+  viewMethod: string;
+  link: undefined | string;
 }) {
+  const moveToDetail = () => {
+    const path = viewMethod === 'link' && link ? link : `/author/${authorName}/${index}`;
+    window.location.href = path;
+  };
   return (
-    <Wrapper to={`episode/${authorName}/${index}`}>
+    <Wrapper onClick={moveToDetail}>
       <ThumbnailImage src={thumbnail} alt={`${title} thumbnail`} />
       <TitleWrapper>
         <Title>{title}</Title>
