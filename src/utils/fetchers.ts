@@ -1,7 +1,7 @@
 export const getFetcher = (url: string) =>
   fetch(url).then((res) => {
     if (res.ok) return res.json();
-    else return res.body;
+    else return res.text();
   });
 
 export const postFetcher = (url: string, body: object) =>

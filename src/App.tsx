@@ -32,7 +32,10 @@ function App() {
           {!isValidating && !author ? <Redirect to="/" /> : <MyPage />}
         </Route>
         <Route exact path="/mypage/write" component={Upload}>
-          {!isValidating && !author ? <Redirect to="/" /> : <Upload />}
+          {!isValidating && !author ? <Redirect to="/" /> : <Upload isUpload={true} />}
+        </Route>
+        <Route exact path="/mypage/edit/:episodeIdx" component={Upload}>
+          {!isValidating && !author ? <Redirect to="/" /> : <Upload isUpload={false} />}
         </Route>
         <Route exact path="/works" component={WorksPage} />
       </Switch>

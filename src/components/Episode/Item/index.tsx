@@ -27,6 +27,10 @@ function EpisodeItem({
     const path = viewMethod === 'link' && link ? link : `/author/${authorName}/${index}`;
     window.location.href = path;
   };
+  const moveToEdit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, index: number) => {
+    e.stopPropagation();
+    history.push(`/mypage/edit/${index}`);
+  };
   const deleteItem = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, index: number) => {
     e.preventDefault();
     e.stopPropagation();
@@ -44,7 +48,7 @@ function EpisodeItem({
         <Title>{title}</Title>
         {isEditable && (
           <Editors>
-            <button>수정</button>
+            <button onClick={(e) => moveToEdit(e, index)}>수정</button>
             <button onClick={(e) => deleteItem(e, index)}>삭제</button>
           </Editors>
         )}

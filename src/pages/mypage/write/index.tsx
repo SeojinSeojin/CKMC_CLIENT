@@ -1,67 +1,97 @@
-import React, { useRef, useState } from 'react';
-import { useHistory } from 'react-router';
+import React, { useEffect, useRef, useState } from 'react';
+import { useHistory, useParams } from 'react-router';
 import styled from 'styled-components';
 import { IcToggleDownBlue, IcToggleUpBlue } from '../../../components/common/Icons';
 import ModeController from '../../../components/common/MyPage/ModeController';
 import NavigationBar from '../../../components/common/NavigationBar';
-import { AuthorData } from '../../../types';
-import { postFetcher } from '../../../utils/fetchers';
+import { useUser } from '../../../hooks/useUser';
+import { AuthorData, PageData } from '../../../types';
+import ImageData from '../../../types/Image';
+import { postFetcher, patchFetcher, getFetcher } from '../../../utils/fetchers';
 import { uploadImage as uploadImageRemote } from '../../../utils/imageUploader';
 import { isAllFilled } from '../../../utils/nullOrEmptyChecker';
 
-type imageType = { remote: string; local: string };
-
-function Upload() {
-  const [thumbnail, setThumbnail] = useState<imageType>({ remote: '', local: '' });
-  const [files, setFiles] = useState<Array<imageType>>([]);
+function Upload({ isUpload }: { isUpload: boolean }) {
+  const [thumbnail, setThumbnail] = useState<ImageData>({ remotePath: '', localPath: '' });
+  const [pages, setPages] = useState<Array<PageData>>([]);
   const [mode, setMode] = useState<'scroll' | 'page' | 'link'>('scroll');
+  const { episodeIdx }: { episodeIdx: string } = useParams();
   const titleRef = useRef<HTMLInputElement>(null);
   const linkRef = useRef<HTMLInputElement>(null);
   const descriptionRef = useRef<HTMLTextAreaElement>(null);
   const thumbnailRef = useRef<HTMLInputElement>(null);
   const workRef = useRef<HTMLInputElement>(null);
   const history = useHistory();
+  const { author } = useUser();
+
+  useEffect(() => {
+    if (!author) return;
+    if (!isUpload) {
+      const getPreviousData = async () => {
+        const response = await getFetcher(`/api/episode/${author.nickName}/${episodeIdx}`);
+        const { episode } = response;
+        if (!episode) return history.push('/');
+
+        setMode(episode.viewMethod);
+        setThumbnail(episode.thumbnail);
+        if (episode.pages) setPages(episode.pages);
+        if (titleRef.current) titleRef.current.defaultValue = episode.title;
+        if (linkRef.current && episode.link) linkRef.current.defaultValue = episode.link;
+        if (descriptionRef.current && episode.description)
+          descriptionRef.current.defaultValue = episode.description;
+      };
+      getPreviousData();
+    }
+  }, [author]);
 
   const triggerFileRefClick = (ref: React.RefObject<HTMLInputElement>) => {
     if (!ref.current) return;
     ref.current.click();
   };
 
-  const uploadThumbnail = (image: imageType) => setThumbnail(image);
-  const addFile = (image: imageType) => setFiles((prev) => [...prev, image]);
+  const uploadThumbnail = (image: ImageData) => setThumbnail(image);
+  const addFile = (image: PageData) => setPages((prev) => [...prev, image]);
   const uploadImage = async (
     e: React.ChangeEvent<HTMLInputElement>,
-    callback: (image: imageType) => void,
+    callback: (image: any) => void,
   ) => {
     try {
       const target = e.target as HTMLInputElement;
       if (!target.files) return;
       const file: File = (target.files as FileList)[0];
       const uploadedFileURL = await uploadImageRemote(file);
-      callback({ local: file.name, remote: uploadedFileURL });
+      callback({ localPath: file.name, remotePath: uploadedFileURL });
     } catch (e) {}
   };
 
-  const uploadEpisode = async () => {
+  const uploadEpisode = async (handler: Function) => {
     if (mode === 'link') if (!isAllFilled(linkRef.current?.value)) return;
     if (mode !== 'link')
       if (!isAllFilled(titleRef.current?.value, descriptionRef.current?.value)) return;
 
-    const response = await postFetcher('/api/episode', {
+    const body: any = {
       viewMethod: mode,
       title: titleRef.current?.value,
       description: descriptionRef.current?.value,
       isForNineteen: false,
-      thumbnail: thumbnail.remote,
+      thumbnail: thumbnail,
       link: linkRef.current?.value,
-      pages: files.map((file) => file.remote),
-    });
+      pages: pages,
+    };
+    if (!isUpload) body['index'] = +episodeIdx;
+    console.log(body);
+    const response = await handler('/api/episode', body);
     if (response.ok) {
       const author: AuthorData = await response.json();
       if (mode !== 'link')
         history.push(`/author/${author.nickName}/${author.work.episodes.length - 1}`);
       else history.goBack();
     }
+  };
+
+  const submitEpisode = () => {
+    if (isUpload) uploadEpisode(postFetcher);
+    else uploadEpisode(patchFetcher);
   };
 
   return (
@@ -103,7 +133,7 @@ function Upload() {
               type="file"
             />
             <ThumbnailInput>
-              <input type="text" value={thumbnail.local} />
+              <input type="text" defaultValue={thumbnail.localPath} />
               <div onClick={() => triggerFileRefClick(thumbnailRef)}>파일 찾기</div>
             </ThumbnailInput>
           </FormItem>
@@ -126,8 +156,8 @@ function Upload() {
                 <div onClick={() => triggerFileRefClick(workRef)}>파일 찾기</div>
               </div>
               <div>
-                {files.map((file) => (
-                  <div key={file.local}>{file.local}</div>
+                {pages.map((file) => (
+                  <div key={file.localPath}>{file.localPath}</div>
                 ))}
               </div>
               <div>
@@ -153,7 +183,7 @@ function Upload() {
             <textarea disabled={mode === 'link'} ref={descriptionRef} />
           </FormItem>
         </Form>
-        <SubmitButton onClick={uploadEpisode}>변경사항 저장</SubmitButton>
+        <SubmitButton onClick={submitEpisode}>변경사항 저장</SubmitButton>
       </Wrapper>
     </>
   );

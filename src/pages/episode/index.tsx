@@ -22,7 +22,6 @@ function EpisodePage() {
       const response = await getFetcher(`/api/episode/${authorId}/${episodeIdx}`);
       setEpisode(response.episode);
       setAuthor(response.author);
-      console.log(response);
     };
     getEpisode();
   }, [episodeIdx, authorId]);
@@ -39,9 +38,19 @@ function EpisodePage() {
             <div>{episode.title}</div>
           </Header>
           {episode.pages && episode.viewMethod === 'page' ? (
-            <PageViewer pages={episode.pages.map((page) => urlEncoder(page))} />
+            <PageViewer
+              pages={episode.pages
+                .sort((a, b) => a.index - b.index)
+                .map((page) => urlEncoder(page.remotePath))}
+            />
           ) : (
-            episode.pages && <ScrollViewer pages={episode.pages.map((page) => urlEncoder(page))} />
+            episode.pages && (
+              <ScrollViewer
+                pages={episode.pages
+                  .sort((a, b) => a.index - b.index)
+                  .map((page) => urlEncoder(page.remotePath))}
+              />
+            )
           )}
           <EpisodeDescription>{episode.description}</EpisodeDescription>
           <AuthorDescription>

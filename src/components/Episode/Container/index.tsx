@@ -11,17 +11,20 @@ function EpisodeContainer({
 }) {
   return (
     <div>
-      {episodes.map((episode, index) => (
-        <EpisodeItem
-          authorName={episode.authorName}
-          index={index}
-          thumbnail={episode.thumbnail}
-          title={episode.title}
-          isEditable={isEditable}
-          link={episode.link}
-          viewMethod={episode.viewMethod}
-        />
-      ))}
+      {episodes
+        .sort((a, b) => a.index - b.index)
+        .map((episode) => (
+          <EpisodeItem
+            key={episode.index}
+            authorName={episode.authorName}
+            index={episode.index}
+            thumbnail={episode.thumbnail.remotePath}
+            title={episode.title}
+            isEditable={isEditable}
+            link={episode.link}
+            viewMethod={episode.viewMethod}
+          />
+        ))}
     </div>
   );
 }
