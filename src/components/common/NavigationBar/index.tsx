@@ -18,15 +18,15 @@ export default function NavigationBar({
   isNotFoldable,
 }: INavigationBar) {
   const [isOpen, setIsOpen] = useState(isOpened ?? false);
-  const [animation, setAnimation] = useState<'' | 'close'>('');
+  const [animation, setAnimation] = useState<'slideIn' | 'slideOut'>('slideIn');
   const toggleOpen = () => {
     if (isNotFoldable) return;
     if (!isOpen) setIsOpen(true);
     else {
-      setAnimation('close');
+      setAnimation('slideOut');
       setTimeout(() => {
         setIsOpen(false);
-        setAnimation('');
+        setAnimation('slideIn');
       }, 800);
     }
   };

@@ -10,15 +10,15 @@ import { useWorks } from '../../hooks/useWorks';
 import { WorkData } from '../../types';
 
 interface IWorkContainer {
-  isNavOpened: boolean;
+  isNavOpened?: boolean;
   animation: '' | 'close';
 }
-const WorkContainer = styled.div`
+const WorkContainer = styled.div<IWorkContainer>`
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
   justify-content: center;
-  width: min(1500px, 100%);
+  width: min(1500px, 100vw - 400px);
   margin-top: 180px;
 `;
 
@@ -96,7 +96,7 @@ export default function WorksPage() {
         <Wrapper isNavOpened={isNavOpened} animation={animation}>
           <Title>CKMC 크리에이티브 페어 2022</Title>
           <FlexContainer>
-            <WorkContainer>
+            <WorkContainer animation={animation}>
               {worksData.map((work: WorkData) => (
                 <Link to={`/author/${work.authorName}`}>
                   <WorkItem

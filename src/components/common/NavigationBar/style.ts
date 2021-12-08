@@ -5,21 +5,20 @@ import WhiteStar from '../Icons/ic-white-star.svg';
 import WhiteStarFull from '../Icons/ic-white-star-selected.svg';
 
 interface IWrapper {
-  animation: '' | 'close';
+  animation: 'slideIn' | 'slideOut';
 }
 export const Wrapper = styled.div<IWrapper>`
   position: fixed;
   z-index: 9998;
   top: 0;
+  left: 0;
   height: 100vh;
-  animation: 0.8s ease-in-out
-    ${(props) => (props.animation === '' ? 'slideIn' : 'slideOut')};
+  animation: 0.8s ease-in-out ${({ animation }) => animation};
   padding-top: 198px;
   padding-left: 60px;
   width: 180px;
   color: ${(props) => (props.theme === 'white' ? 'white' : '#2454A6')};
-  border-right: 1px solid
-    ${(props) => (props.theme === 'white' ? 'white' : '#2454A6')};
+  border-right: 1px solid ${(props) => (props.theme === 'white' ? 'white' : '#2454A6')};
   background-color: rgba(256, 256, 256, 0.1);
   backdrop-filter: blur(5px);
 
@@ -65,8 +64,7 @@ export const BlueButton = styled.div<IButton>`
   width: 26px;
   height: 26px;
   z-index: 9999;
-  background-image: ${(props) =>
-    props.isOpen ? `url(${BlueStarFull})` : `url(${BlueStar})`};
+  background-image: ${(props) => (props.isOpen ? `url(${BlueStarFull})` : `url(${BlueStar})`)};
   animation: ${(props) =>
     props.isOpen
       ? 'none'
@@ -86,8 +84,7 @@ export const WhiteButton = styled.div<IButton>`
   width: 26px;
   height: 26px;
   z-index: 9999;
-  background-image: ${(props) =>
-    props.isOpen ? `url(${WhiteStarFull})` : `url(${WhiteStar})`};
+  background-image: ${(props) => (props.isOpen ? `url(${WhiteStarFull})` : `url(${WhiteStar})`)};
   animation: ${(props) =>
     props.isOpen
       ? 'none'
@@ -105,8 +102,7 @@ interface IItem {
 export const Item = styled.a<IItem>`
   display: inline-block;
   margin-bottom: 34px;
-  ${(props) =>
-    props.selected ? 'font-family: NEXON Lv1 Gothic OTF Bold;' : ''}
+  ${(props) => (props.selected ? 'font-family: NEXON Lv1 Gothic OTF Bold;' : '')}
 `;
 
 export const BlueGradation = styled.div`

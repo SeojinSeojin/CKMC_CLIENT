@@ -33,7 +33,7 @@ export const Wrapper = styled.div<IWrapper>`
   flex-direction: column;
   justify-content: flex-end;
   height: 100vh;
-  animation: 0.4s linear ${(props) => (props.animation === '' ? 'slideIn' : 'slideOut')};
+  animation: 0.4s linear ${(props) => (props.animation === '' ? 'searchNavIn' : 'searchNavOut')};
 
   & > svg {
     margin-bottom: 20px;
@@ -46,7 +46,7 @@ export const Wrapper = styled.div<IWrapper>`
         ? ''
         : 'animation: 0.2s linear rotateOut; transform: rotateZ(180deg); & path{ stroke: #2454a6; }'}
   }
-  @keyframes slideIn {
+  @keyframes searchNavIn {
     0% {
       transform: translateX(400px);
     }
@@ -55,7 +55,7 @@ export const Wrapper = styled.div<IWrapper>`
     }
   }
 
-  @keyframes slideOut {
+  @keyframes searchNavOut {
     0% {
       transform: translateX(0);
     }
@@ -176,7 +176,7 @@ export const SingleWrapper = styled.div`
   top: 0;
   padding-top: calc(100vh - 842px);
   height: 100vh;
-  animation: 0.2s linear slideIn;
+  animation: 0.2s linear searchNavIn;
 
   & svg {
     margin-left: 28px;
@@ -186,7 +186,7 @@ export const SingleWrapper = styled.div`
     }
   }
 
-  @keyframes slideIn {
+  @keyframes searchNavIn {
     0% {
       transform: translateX(30px);
     }
