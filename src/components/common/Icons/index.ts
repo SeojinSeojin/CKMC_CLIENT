@@ -19,6 +19,9 @@ import { ReactComponent as BtnLeftArrowBig } from './btn-left-arrow-big.svg';
 import { ReactComponent as BtnRightArrowBig } from './btn-right-arrow-big.svg';
 import { ReactComponent as IcRadioSelected } from './ic-radio-selected.svg';
 import { ReactComponent as IcRadioUnselected } from './ic-radio-unselected.svg';
+import { ReactComponent as IcAllEpisodes } from './ic-all-episodes.svg';
+import { ReactComponent as IcArrowPrevious } from './ic-arrow-previous.svg';
+import { ReactComponent as IcArrowNext } from './ic-arrow-next.svg';
 
 export {
   IcPaginatorFirst,
@@ -42,4 +45,7 @@ export {
   BtnRightArrowBig,
   IcRadioSelected,
   IcRadioUnselected,
+  IcAllEpisodes,
+  IcArrowPrevious,
+  IcArrowNext,
 };

@@ -11,6 +11,7 @@ import { EpisodeData, AuthorData } from '../../types';
 import { getFetcher } from '../../utils/fetchers';
 import { urlEncoder } from '../../utils/urlEncoder';
 import { AuthorDescription, FlexWrapper, EpisodeDescription, Header } from './style';
+import PageNavigator from '../../components/Episode/PageNavigator';
 
 function EpisodePage() {
   const { authorId, episodeIdx }: { authorId: string; episodeIdx: string } = useParams();
@@ -58,6 +59,11 @@ function EpisodePage() {
             <div>
               {author.work.hashTags && <SelectedHashTags hashTags={author.work.hashTags} />}
             </div>
+            <PageNavigator
+              totalPage={author.work.episodes.length}
+              currentPage={episode.index}
+              authorName={author.nickName}
+            />
           </AuthorDescription>
         </FlexWrapper>
       </FlexCenterLayout>
