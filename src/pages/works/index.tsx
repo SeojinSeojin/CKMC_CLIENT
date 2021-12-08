@@ -11,7 +11,7 @@ import { WorkData } from '../../types';
 
 interface IWorkContainer {
   isNavOpened?: boolean;
-  animation: '' | 'close';
+  animation: 'initial' | '' | 'close';
 }
 const WorkContainer = styled.div<IWorkContainer>`
   display: flex;
@@ -23,8 +23,12 @@ const WorkContainer = styled.div<IWorkContainer>`
 `;
 
 const Wrapper = styled.div<IWorkContainer>`
-  animation: 0.4s linear ${({ animation }) => (animation === '' ? 'shorten' : 'extend')};
-  ${({ animation }) => (animation === '' ? 'padding-right: 400px' : '')};
+  ${({ animation }) =>
+    animation === 'initial'
+      ? ''
+      : `animation: 0.4s linear ${animation === '' ? 'shorten' : 'extend'};`}
+
+  ${({ animation }) => (animation === '' || animation === 'initial' ? 'padding-right: 400px' : '')};
 
   @keyframes shorten {
     from {
@@ -84,7 +88,7 @@ export default function WorksPage() {
       setIsNavOpened((prev) => !prev);
     }
   };
-  const [animation, setAnimation] = useState<'' | 'close'>('');
+  const [animation, setAnimation] = useState<'' | 'close' | 'initial'>('initial');
 
   if (isValidating) return <Loader />;
   return (

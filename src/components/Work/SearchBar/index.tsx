@@ -37,7 +37,7 @@ function WorkSearchBar({
   setWorkTitle: (title: string) => void;
   toggleIsNavOpened: () => void;
   isNavOpened: boolean;
-  animation: '' | 'close';
+  animation: '' | 'close' | 'initial';
 }) {
   const toggleHashTag = (tag: string) => {
     hashTags.includes(tag) ? removeHashTag(tag) : setHashTags(tag);

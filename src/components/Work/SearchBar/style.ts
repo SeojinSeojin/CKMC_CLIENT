@@ -20,7 +20,7 @@ const Base = styled.div<ISelected>`
 `;
 
 interface IWrapper {
-  animation: '' | 'close';
+  animation: '' | 'close' | 'initial';
 }
 export const Wrapper = styled.div<IWrapper>`
   position: fixed;
@@ -33,7 +33,10 @@ export const Wrapper = styled.div<IWrapper>`
   flex-direction: column;
   justify-content: flex-end;
   height: 100vh;
-  animation: 0.4s linear ${(props) => (props.animation === '' ? 'searchNavIn' : 'searchNavOut')};
+  ${({ animation }) =>
+    animation === 'initial'
+      ? ''
+      : `animation: 0.4s linear ${animation === '' ? 'searchNavIn' : 'searchNavOut'};`}
 
   & > svg {
     margin-bottom: 20px;
@@ -42,7 +45,7 @@ export const Wrapper = styled.div<IWrapper>`
       cursor: pointer;
     }
     ${({ animation }) =>
-      animation === ''
+      animation === '' || animation === 'initial'
         ? ''
         : 'animation: 0.2s linear rotateOut; transform: rotateZ(180deg); & path{ stroke: #2454a6; }'}
   }
