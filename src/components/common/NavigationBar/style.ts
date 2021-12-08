@@ -17,10 +17,13 @@ export const Wrapper = styled.div<IWrapper>`
   padding-top: 198px;
   padding-left: 60px;
   width: 180px;
-  color: ${(props) => (props.theme === 'white' ? 'white' : '#2454A6')};
   border-right: 1px solid ${(props) => (props.theme === 'white' ? 'white' : '#2454A6')};
   background-color: rgba(256, 256, 256, 0.1);
   backdrop-filter: blur(5px);
+
+  & a {
+    color: ${(props) => (props.theme === 'white' ? 'white' : '#2454A6')};
+  }
 
   @keyframes slideIn {
     0% {
