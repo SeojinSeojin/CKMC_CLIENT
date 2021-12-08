@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useHistory, useParams } from 'react-router';
 import styled from 'styled-components';
-import { IcToggleDownBlue, IcToggleUpBlue } from '../../../components/common/Icons';
 import ModeController from '../../../components/common/MyPage/ModeController';
 import NavigationBar from '../../../components/common/NavigationBar';
+import PageSelector from '../../../components/MyPage/PageSelector';
 import { useUser } from '../../../hooks/useUser';
 import { AuthorData, PageData } from '../../../types';
 import ImageData from '../../../types/Image';
@@ -50,7 +50,37 @@ function Upload({ isUpload }: { isUpload: boolean }) {
   };
 
   const uploadThumbnail = (image: ImageData) => setThumbnail(image);
-  const addFile = (image: PageData) => setPages((prev) => [...prev, image]);
+  const addFile = (image: PageData) =>
+    setPages((prev) => [...prev, { ...image, index: prev.length }]);
+  const deleteFile = (idx: number) =>
+    setPages((prev) =>
+      prev
+        .filter((page) => page.index !== idx)
+        .map((page) => {
+          if (page.index > idx) return { ...page, index: page.index - 1 };
+          else return page;
+        }),
+    );
+  const swipeFile = (idx: number, isUp: boolean) => {
+    if (idx === 0 && isUp) return;
+    if (idx === pages.length - 1 && !isUp) return;
+    isUp
+      ? setPages((prev) =>
+          prev.map((page) => {
+            if (page.index === idx) return { ...page, index: page.index - 1 };
+            if (page.index === idx - 1) return { ...page, index: page.index + 1 };
+            else return page;
+          }),
+        )
+      : setPages((prev) =>
+          prev.map((page) => {
+            if (page.index === idx) return { ...page, index: page.index + 1 };
+            if (page.index === idx + 1) return { ...page, index: page.index - 1 };
+            else return page;
+          }),
+        );
+  };
+
   const uploadImage = async (
     e: React.ChangeEvent<HTMLInputElement>,
     callback: (image: any) => void,
@@ -155,21 +185,7 @@ function Upload({ isUpload }: { isUpload: boolean }) {
                 <div>파일 목록</div>
                 <div onClick={() => triggerFileRefClick(workRef)}>파일 찾기</div>
               </div>
-              <div>
-                {pages.map((file) => (
-                  <div key={file.localPath}>{file.localPath}</div>
-                ))}
-              </div>
-              <div>
-                <div>
-                  <IcToggleUpBlue />
-                </div>
-                <div>
-                  <IcToggleDownBlue />
-                </div>
-                <div></div>
-                <div>삭제</div>
-              </div>
+              <PageSelector pages={pages} deleteFile={deleteFile} swipeFile={swipeFile} />
             </WorksInput>
           </FormItem>
           <FormItem>
