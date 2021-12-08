@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const TableItem = styled.div`
   width: 100%;
-  color: white;
   border-top: 1px solid white;
   padding: 14px 0;
   white-space: pre-line;
@@ -14,6 +13,9 @@ export const Cover = styled.div`
   grid-template-columns: 1fr 4fr 1fr 1fr 0.5fr;
   gap: 12px;
 
+  & > div {
+    color: white;
+  }
   & > div:nth-child(1) {
     font-size: 14px;
   }
@@ -63,6 +65,7 @@ export const Detail = styled.div`
     height: 30px;
     box-sizing: border-box;
     width: 440px;
+    color: white;
     & :last-child {
       border-bottom: 1px solid #8eaec9;
     }
