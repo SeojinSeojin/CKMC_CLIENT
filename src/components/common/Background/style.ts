@@ -35,3 +35,16 @@ export const Blur = styled.div`
   top: 0;
   left: 0;
 `;
+
+export const NonBlur = styled.div`
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+`;

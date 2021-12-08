@@ -9,14 +9,16 @@ export default function Home() {
   return (
     <>
       <CursorContainer theme="white" />
-      <NavigationBar theme="blue" selected="MAIN" isOpened={true} />
-      <Background positionY={60}>
+      <NavigationBar theme="blue" selected="MAIN" isOpened={true} isNotFoldable={true} />
+      <Background positionY={60} needGradient={false}>
         <TitleWrapper>
           <Title theme="blue" />
         </TitleWrapper>
+        {/*
         <ImageWrapper>
           <img src="/statics/bg-main.webp" alt="201512119_김미연" />
-        </ImageWrapper>
+        </ImageWrapper>*/}
+        <Image src="/statics/bg-main.webp" alt="201512119_김미연" />
       </Background>
     </>
   );
@@ -28,17 +30,11 @@ export const TitleWrapper = styled.div`
   height: 100vh;
   padding-top: 20px;
   padding-left: 180px;
-  background: linear-gradient(
-    rgba(256, 256, 256, 0.1),
-    rgba(256, 256, 256, 0.3),
-    rgba(256, 256, 256, 0.5),
-    rgba(256, 256, 256, 0.7),
-    rgba(256, 256, 256, 1)
-  );
-  backdrop-filter: blur(1px);
+  backdrop-filter: blur(4px);
+  background: linear-gradient(rgba(256, 256, 256, 0.6), rgba(256, 256, 256, 1));
 
   & svg {
-    height: calc(100vh - 28px);
+    height: calc((100vh - 28px) * 117 / 111);
   }
 `;
 
@@ -46,11 +42,20 @@ export const ImageWrapper = styled.div`
   position: absolute;
   right: 0;
   top: 0;
-  width: calc(100% - 100vh * 451 / 566 + 28px * 451 / 566 - 180px);
-  height: 100%;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
+  width: calc(100% - 100vh * 451 * 117 / 111 / 566 + 28px * 451 * 117 / 111 / 566 - 180px);
+  height: calc((100vh - 28px) * 117 / 111 + 20px);
+  overflow-y: hidden;
   & img {
     width: 100%;
   }
+`;
+
+export const Image = styled.img`
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: calc(100% - 100vh * 451 * 117 / 111 / 566 + 28px * 451 * 117 / 111 / 566 - 180px);
+  height: calc((100vh - 28px) * 117 / 111 + 20px);
+  overflow-y: hidden;
+  object-fit: cover;
 `;

@@ -6,14 +6,21 @@ interface INavigationBar {
   theme: 'white' | 'blue';
   selected: keyof typeof SIDE_NAV | null;
   isOpened?: boolean;
+  isNotFoldable?: boolean;
 }
 
 type sideNavKey = keyof typeof SIDE_NAV;
 
-export default function NavigationBar({ theme, selected, isOpened }: INavigationBar) {
+export default function NavigationBar({
+  theme,
+  selected,
+  isOpened,
+  isNotFoldable,
+}: INavigationBar) {
   const [isOpen, setIsOpen] = useState(isOpened ?? false);
   const [animation, setAnimation] = useState<'' | 'close'>('');
   const toggleOpen = () => {
+    if (isNotFoldable) return;
     if (!isOpen) setIsOpen(true);
     else {
       setAnimation('close');
