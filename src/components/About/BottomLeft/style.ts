@@ -25,8 +25,10 @@ export const LinkButton = styled.div`
   }
   &:hover {
     background-color: #2454a6;
-    color: white;
     cursor: pointer;
+    & div {
+      color: white;
+    }
     & svg {
       & path {
         stroke: white;
