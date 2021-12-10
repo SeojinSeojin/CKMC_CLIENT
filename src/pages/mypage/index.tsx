@@ -12,6 +12,7 @@ import AuthorLayout from '../../components/layout/Author';
 import EpisodeContainer from '../../components/Episode/Container';
 import { useUser } from '../../hooks/useUser';
 import Loader from '../../components/common/Loader';
+import { toast } from 'react-toastify';
 
 function MyPage() {
   const [fileURL, setFileURL] = useState<string>('');
@@ -42,12 +43,22 @@ function MyPage() {
   };
 
   const editAuthor = async () => {
-    await patchFetcher('/api/author/edit', {
-      contact,
-      title: workTitleRef.current?.value,
-      thumbnail: fileURL,
-      description: workDetailRef.current?.value,
-      hashTags: hashTags,
+    const patchPromise = new Promise((resolve, reject) => {
+      patchFetcher('/api/author/edit', {
+        contact,
+        title: workTitleRef.current?.value,
+        thumbnail: fileURL,
+        description: workDetailRef.current?.value,
+        hashTags: hashTags,
+      }).then((res) => {
+        if (res.ok) resolve('정보 수정 성공');
+        else reject('정보 수정 실패');
+      });
+    });
+    toast.promise(patchPromise, {
+      pending: '정보를 수정하고 있습니다',
+      error: '정보 수정에 실패했습니다. 다시 시도해 주세요',
+      success: '정보가 성공적으로 수정되었습니다.',
     });
   };
 
@@ -125,7 +136,7 @@ function MyPage() {
             onChange={(e) => setContact(e.target.value)}
           />
           <HashTagWrapper>
-            <SelectedHashTags hashTags={hashTags} />
+            {hashTags && <SelectedHashTags hashTags={hashTags} />}
             {showHashTagSelector ? (
               <IcToggleUpBlue onClick={() => setShowHashTagSelector(false)} />
             ) : (
@@ -133,7 +144,7 @@ function MyPage() {
             )}
           </HashTagWrapper>
           {showHashTagSelector && (
-            <HashTagSelector hashTags={hashTags} onHashTagClick={toggleHashTags} />
+            <HashTagSelector hashTags={hashTags ?? []} onHashTagClick={toggleHashTags} />
           )}
         </AuthorForm>
         <Episodes>
