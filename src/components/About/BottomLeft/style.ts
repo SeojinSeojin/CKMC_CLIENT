@@ -5,6 +5,8 @@ export const GridWrapper = styled.div`
   width: 60%;
   grid-template-columns: repeat(3, 1fr);
   margin-top: auto;
+  line-height: 36px;
+  font-size: 18px;
 `;
 
 export const LinkButton = styled.div`
