@@ -1,53 +1,55 @@
-import React, { useRef, useState } from 'react';
-import useLetter from '../../../hooks/useLetters';
+import React, { FormEvent, useRef, useState } from 'react';
 import { postFetcher } from '../../../utils/fetchers';
 import Input from '../../common/Input';
-
+import { uploadImage as uploadImageRemote } from '../../../utils/imageUploader';
 import { Body, Sender, Title, Wrapper, File, Submit, Bottom } from './style';
-
-const writeLetter = async ({
-  title,
-  body,
-  sender,
-  file,
-}: {
-  title: string;
-  body: string;
-  sender: string;
-  file?: string | null;
-}) => {
-  const postResponse = await postFetcher('/api/letter', { title, body, sender, file });
-  return postResponse.ok;
-};
+import { toast } from 'react-toastify';
 
 function GuestForm() {
-  const { mutate } = useLetter({});
   const titleRef = useRef<HTMLInputElement>(null);
   const bodyRef = useRef<HTMLInputElement>(null);
   const senderRef = useRef<HTMLInputElement>(null);
   const fileRef = useRef<HTMLInputElement>(null);
   const [selectedFile, setSelectedFile] = useState<string | null>(null);
 
-  return (
-    <Wrapper
-      onSubmit={async (e) => {
-        e.preventDefault();
-        if (!titleRef.current || !bodyRef.current || !senderRef.current) return;
-        const writeResponse = await writeLetter({
-          title: titleRef.current.value,
-          body: bodyRef.current.value,
-          sender: senderRef.current.value,
-          file: selectedFile,
-        });
-        if (writeResponse) {
+  const uploadImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    try {
+      const target = e.target as HTMLInputElement;
+      if (!target.files) return;
+      const file: File = (target.files as FileList)[0];
+      const uploadedFileURL = await uploadImageRemote(file);
+      setSelectedFile(uploadedFileURL);
+    } catch (e) {}
+  };
+
+  const uploadLetter = async (e: FormEvent) => {
+    e.preventDefault();
+    const uploadPromise = new Promise((resolve, reject) => {
+      if (!titleRef.current || !bodyRef.current || !senderRef.current) return;
+      postFetcher('/api/letter', {
+        title: titleRef.current.value,
+        body: bodyRef.current.value,
+        sender: senderRef.current.value,
+        file: selectedFile,
+      }).then((res) => {
+        if (res.status === 200) {
+          resolve('편지 작성 성공');
           setSelectedFile(null);
-          mutate();
-          titleRef.current.value = '';
-          bodyRef.current.value = '';
-          senderRef.current.value = '';
-        }
-      }}
-    >
+          titleRef.current!.value = '';
+          bodyRef.current!.value = '';
+          senderRef.current!.value = '';
+        } else reject('편지 작성 실패');
+      });
+    });
+    toast.promise(uploadPromise, {
+      pending: '편지를 보내고 있습니다.',
+      success: '편지를 보냈습니다.',
+      error: '편지 업로드에 실패했습니다. ',
+    });
+  };
+
+  return (
+    <Wrapper onSubmit={uploadLetter}>
       <Title placeholder="제목" ref={titleRef} />
       <Input
         maxLength={300}
@@ -60,7 +62,13 @@ function GuestForm() {
       <Sender placeholder="이름" ref={senderRef} />
       <Bottom>
         <File htmlFor="file-input">사진 추가</File>
-        <input id="file-input" type="file" style={{ display: 'none' }} ref={fileRef} />
+        <input
+          id="file-input"
+          type="file"
+          style={{ display: 'none' }}
+          ref={fileRef}
+          onChange={uploadImage}
+        />
         <Submit type="submit" value="보내기" />
       </Bottom>
     </Wrapper>
