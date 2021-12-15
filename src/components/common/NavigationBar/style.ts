@@ -21,10 +21,6 @@ export const Wrapper = styled.div<IWrapper>`
   background-color: rgba(256, 256, 256, 0.1);
   backdrop-filter: blur(5px);
 
-  & a {
-    color: ${(props) => (props.theme === 'white' ? 'white' : '#2454A6')};
-  }
-
   @keyframes slideIn {
     0% {
       opacity: 0;
@@ -104,8 +100,15 @@ interface IItem {
 }
 export const Item = styled.a<IItem>`
   display: inline-block;
-  margin-bottom: 34px;
+  margin-bottom: 40px;
   ${(props) => (props.selected ? 'font-family: NEXON Lv1 Gothic OTF Bold;' : '')}
+  color: ${({ theme, selected }) =>
+    theme === 'white' ? (selected ? 'white' : '#C6DAE3') : selected ? '#2454a6' : '#8EAEC9'};
+
+  &:hover {
+    font-family: NEXON Lv1 Gothic OTF Bold;
+    color: ${(props) => (props.theme === 'white' ? 'white' : '#2454A6')};
+  }
 `;
 
 export const BlueGradation = styled.div`
