@@ -58,10 +58,11 @@ const Title = styled.div`
   width: 100%;
   text-align: center;
   top: 120px;
-  color: #2454a6;
   font-size: 24px;
   position: sticky;
   z-index: 100;
+  font-weight: 100;
+  font-family: NEXON Lv1 Gothic OTF Light;
 `;
 
 export default function WorksPage() {
@@ -90,32 +91,35 @@ export default function WorksPage() {
   };
   const [animation, setAnimation] = useState<'' | 'close' | 'initial'>('initial');
 
-  if (isValidating) return <Loader />;
   return (
     <>
       <CursorContainer theme="blue" />
       <NavigationBar theme="blue" selected="WORKS" />
 
-      {worksData && (
-        <Wrapper isNavOpened={isNavOpened} animation={animation}>
-          <Title>CKMC 크리에이티브 페어 2022</Title>
-          <FlexContainer>
-            <WorkContainer animation={animation}>
-              {worksData.map((work: WorkData) => (
-                <Link to={`/author/${work.authorName}`}>
-                  <WorkItem
-                    title={work.title}
-                    authorName={work.authorName}
-                    thumbnail={work.thumbnail}
-                    hashTags={work.hashTags}
-                    description={work.description}
-                    episodes={work.episodes}
-                  />
-                </Link>
-              ))}
-            </WorkContainer>
-          </FlexContainer>
-        </Wrapper>
+      {isValidating ? (
+        <Loader />
+      ) : (
+        worksData && (
+          <Wrapper isNavOpened={isNavOpened} animation={animation}>
+            <Title>CKMC 크리에이티브 페어 2022</Title>
+            <FlexContainer>
+              <WorkContainer animation={animation}>
+                {worksData.map((work: WorkData) => (
+                  <Link to={`/author/${work.authorName}`}>
+                    <WorkItem
+                      title={work.title}
+                      authorName={work.authorName}
+                      thumbnail={work.thumbnail}
+                      hashTags={work.hashTags}
+                      description={work.description}
+                      episodes={work.episodes}
+                    />
+                  </Link>
+                ))}
+              </WorkContainer>
+            </FlexContainer>
+          </Wrapper>
+        )
       )}
 
       <WorkSearchBar
