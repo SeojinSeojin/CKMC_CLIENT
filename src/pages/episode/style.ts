@@ -20,12 +20,13 @@ export const Header = styled.div`
 `;
 
 export const AuthorDescription = styled.div`
-  display: flex;
+  display: grid;
   gap: 24px;
   align-items: center;
   color: #2454a6;
   font-size: 20px;
   padding-top: 120px;
+  grid-template-columns: 120px auto 100px;
 `;
 
 export const EpisodeDescription = styled.div`
@@ -40,4 +41,7 @@ export const FlexWrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   min-width: 1060px;
+  > * {
+    font-family: Noto Sans KR;
+  }
 `;

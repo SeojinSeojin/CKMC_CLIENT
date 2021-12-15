@@ -7,6 +7,12 @@ export const Tag = styled.div`
   border: 1px solid #2454a6;
   color: #2454a6;
   font-family: 'Noto Sans KR';
+
+  &:hover {
+    color: white;
+    background-color: #2454a6;
+    cursor: pointer;
+  }
 `;
 
 export const Wrapper = styled.div`
