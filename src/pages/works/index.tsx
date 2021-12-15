@@ -23,6 +23,7 @@ const WorkContainer = styled.div<IWorkContainer>`
 `;
 
 const Wrapper = styled.div<IWorkContainer>`
+  min-height: 400px;
   ${({ animation }) =>
     animation === 'initial'
       ? ''
@@ -65,6 +66,17 @@ const Title = styled.div`
   font-family: NEXON Lv1 Gothic OTF Light;
 `;
 
+const EmptyWrapper = styled.div`
+  width: 100%;
+  text-align: center;
+  position: sticky;
+  top: 340px;
+  color: #8eaec9;
+  font-size: 18px;
+  line-height: 30px;
+  font-family: Noto Sans KR;
+`;
+
 export default function WorksPage() {
   const [hashTags, setHashTags] = useState<string[]>([]);
   const [authorFirstName, setAuthorFirstName] = useState('');
@@ -99,13 +111,13 @@ export default function WorksPage() {
       {isValidating ? (
         <Loader />
       ) : (
-        worksData && (
-          <Wrapper isNavOpened={isNavOpened} animation={animation}>
-            <Title>CKMC 크리에이티브 페어 2022</Title>
+        <Wrapper isNavOpened={isNavOpened} animation={animation}>
+          <Title>CKMC 크리에이티브 페어 2022</Title>
+          {worksData && worksData.length ? (
             <FlexContainer>
               <WorkContainer animation={animation}>
                 {worksData.map((work: WorkData) => (
-                  <Link to={`/author/${work.authorName}`}>
+                  <Link to={`/author/${work.authorName}`} key={work.authorName}>
                     <WorkItem
                       title={work.title}
                       authorName={work.authorName}
@@ -118,8 +130,13 @@ export default function WorksPage() {
                 ))}
               </WorkContainer>
             </FlexContainer>
-          </Wrapper>
-        )
+          ) : (
+            <EmptyWrapper>
+              앗, 도착한 편지가 없나 봐요. <br />
+              다른 검색어를 입력해 주세요.
+            </EmptyWrapper>
+          )}
+        </Wrapper>
       )}
 
       <WorkSearchBar
