@@ -20,6 +20,8 @@ export const Wrapper = styled.div<IWrapper>`
   border-right: 1px solid ${(props) => (props.theme === 'white' ? 'white' : '#2454A6')};
   background-color: rgba(256, 256, 256, 0.1);
   backdrop-filter: blur(5px);
+  display: inline-flex;
+  flex-direction: column;
 
   @keyframes slideIn {
     0% {
@@ -99,7 +101,7 @@ interface IItem {
   selected: boolean;
 }
 export const Item = styled.a<IItem>`
-  display: inline-block;
+  display: block;
   margin-bottom: 40px;
   ${(props) => (props.selected ? 'font-family: NEXON Lv1 Gothic OTF Bold;' : '')}
   color: ${({ theme, selected }) =>
@@ -108,6 +110,27 @@ export const Item = styled.a<IItem>`
   &:hover {
     font-family: NEXON Lv1 Gothic OTF Bold;
     color: ${(props) => (props.theme === 'white' ? 'white' : '#2454A6')};
+    cursor: pointer;
+  }
+`;
+
+export const UserItem = styled(Item)`
+  border-top: 1px solid #c6dae3;
+  margin-top: auto;
+  margin-bottom: 95px;
+  padding-top: 20px;
+  width: 64px;
+  text-align: center;
+
+  &:hover {
+    border-top: 1px solid #2454a6;
+    & > * {
+      color: ${(props) => (props.theme === 'white' ? 'white' : '#2454A6')};
+    }
+  }
+  & > * {
+    color: ${({ theme, selected }) =>
+      theme === 'white' ? (selected ? 'white' : '#C6DAE3') : selected ? '#2454a6' : '#8EAEC9'};
   }
 `;
 
