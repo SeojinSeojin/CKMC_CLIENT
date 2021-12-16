@@ -19,7 +19,7 @@ function ModeController({
   return (
     <>
       {modeItems.map((item) => (
-        <Wrapper onClick={() => setMode(item.mode)} isSelected={mode === item.mode}>
+        <Wrapper onClick={() => setMode(item.mode)} isSelected={mode === item.mode} key={item.mode}>
           {mode === item.mode ? <IcRadioSelected /> : <IcRadioUnselected />}
           <div>{item.text}</div>
         </Wrapper>
