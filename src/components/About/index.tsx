@@ -22,21 +22,26 @@ function StudentsByClass() {
     getStudentsByClass();
   }, []);
 
+  const toggleSelectedClass = (className: string) => {
+    if (selectedClass === className) setSelectedClass(null);
+    else setSelectedClass(className);
+  };
+
   return (
     <AboutWrapper>
       <div>졸업자</div>
       {students &&
         ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'].map((className) => (
-          <ClassWrapper key={className} onClick={() => setSelectedClass(className)}>
+          <ClassWrapper key={className}>
             <div>만화콘텐츠프로젝트 {className}</div>
-            <Header>
+            <Header onClick={() => toggleSelectedClass(className)}>
               <div>지도교수 {students[className].professor}</div>
               {className === selectedClass ? <IcToggleUpBlue /> : <IcToggleDownBlue />}
             </Header>
             <ClassContainer visible={className === selectedClass}>
-              {students[className].students.map((student) => (
-                <Link key={student.authorNumber} to={`/author/${student.authorNumber}`}>
-                  {student.authorName}
+              {students[className].students.sort().map((student) => (
+                <Link key={student.authorNumber} to={`/author/${student}`}>
+                  {student}
                 </Link>
               ))}
             </ClassContainer>

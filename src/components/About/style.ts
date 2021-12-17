@@ -7,7 +7,7 @@ export const ClassContainer = styled.div<IClassContainer>`
   display: ${({ visible }) => (visible ? 'grid' : 'none')};
   grid-template-columns: repeat(5, 1fr);
   width: 100%;
-  animation: 0.8s forwards slideDown;
+  animation: 0.4s forwards slideDown;
   padding-top: 20px;
   padding-bottom: 10px;
 
@@ -40,6 +40,9 @@ export const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   padding-bottom: 20px;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const ClassWrapper = styled.div`

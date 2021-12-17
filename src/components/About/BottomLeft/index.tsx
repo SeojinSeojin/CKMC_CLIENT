@@ -5,7 +5,7 @@ import { IcArrowRight } from '../../common/Icons';
 function AboutBottomLeft() {
   return (
     <BottomLeftWrapper>
-      <AbsolutePart>2021 청강대학교 만화콘텐츠스쿨 졸업전시</AbsolutePart>
+      <AbsolutePart>2022 청강대학교 만화콘텐츠스쿨 졸업전시</AbsolutePart>
       <div>
         <div>오프라인 전시회</div>
         <LinkButton>
@@ -31,7 +31,7 @@ function AboutBottomLeft() {
         <div>김지영</div>
         <div>차다빈</div>
         <div>디자인</div>
-        <div>김지아</div>
+        <div>강지아</div>
         <div>김여진</div>
         <div></div>
         <div>신지민</div>
