@@ -17,6 +17,10 @@ export const useWorks = ({
       authorFirstName ? `authorFirstName=${authorFirstName}` : ''
     }${authorName ? `authorName=${authorName}` : ''}${workTitle ? `workTitle=${workTitle}` : ''}`,
     getFetcher,
+    {
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false,
+    },
   );
   return { worksData, ...rest };
 };

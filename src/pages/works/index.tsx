@@ -1,80 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Loader from '../../components/common/Loader';
-import styled from 'styled-components';
 import CursorContainer from '../../components/common/Cursor';
 import NavigationBar from '../../components/common/NavigationBar';
 import WorkItem from '../../components/Work/Item';
 import WorkSearchBar from '../../components/Work/SearchBar';
 import { useWorks } from '../../hooks/useWorks';
-
-interface IWorkContainer {
-  isNavOpened?: boolean;
-  animation: 'initial' | '' | 'close';
-}
-const WorkContainer = styled.div<IWorkContainer>`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  justify-content: center;
-  width: min(1500px, 100vw - 400px);
-  margin-top: 180px;
-`;
-
-const Wrapper = styled.div<IWorkContainer>`
-  min-height: 400px;
-  ${({ animation }) =>
-    animation === 'initial'
-      ? ''
-      : `animation: 0.4s linear ${animation === '' ? 'shorten' : 'extend'};`}
-
-  ${({ animation }) => (animation === '' || animation === 'initial' ? 'padding-right: 400px' : '')};
-
-  @keyframes shorten {
-    from {
-      padding-right: 0;
-    }
-    to {
-      padding-right: 400px;
-    }
-  }
-  @keyframes extend {
-    from {
-      padding-right: 400px;
-    }
-    to {
-      padding-right: 0;
-    }
-  }
-`;
-
-const FlexContainer = styled.div`
-  justify-content: center;
-  display: flex;
-  width: 100%;
-`;
-
-const Title = styled.div`
-  width: 100%;
-  text-align: center;
-  top: 120px;
-  font-size: 24px;
-  position: sticky;
-  z-index: 100;
-  font-weight: 100;
-  font-family: NEXON Lv1 Gothic OTF Light;
-`;
-
-const EmptyWrapper = styled.div`
-  width: 100%;
-  text-align: center;
-  position: sticky;
-  top: 340px;
-  color: #8eaec9;
-  font-size: 18px;
-  line-height: 30px;
-  font-family: Noto Sans KR;
-`;
+import { shuffle } from '../../utils/array';
+import { WorkContainer, Wrapper, FlexContainer, Title, EmptyWrapper } from './style';
 
 export default function WorksPage() {
   const [hashTags, setHashTags] = useState<string[]>([]);
@@ -115,7 +48,7 @@ export default function WorksPage() {
           {worksData && worksData.length ? (
             <FlexContainer>
               <WorkContainer animation={animation}>
-                {worksData.map((work: WorkData) => (
+                {shuffle(worksData).map((work: WorkData) => (
                   <Link to={`/author/${work.authorName}`} key={work.authorName}>
                     <WorkItem
                       title={work.title}
