@@ -1,6 +1,4 @@
-import WorkData from './Work';
-
-export default interface AuthorData {
+interface AuthorData {
   name: string;
   number: string;
   projectClass: string;

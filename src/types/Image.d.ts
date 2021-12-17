@@ -1,4 +1,4 @@
-export default interface ImageData {
+interface PageImageData {
   localPath: string;
   remotePath: string;
 }

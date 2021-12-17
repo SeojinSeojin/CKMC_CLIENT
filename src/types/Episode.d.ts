@@ -1,13 +1,9 @@
-import { PageData } from '.';
-import CommentData from './Comment';
-import ImageData from './Image';
-
-export default interface EpisodeData {
+interface EpisodeData {
   viewMethod: 'scroll' | 'page' | 'link';
   title: string;
   description: string;
   isForNineteen: boolean;
-  thumbnail: ImageData;
+  thumbnail: PageImageData;
   link?: string;
   pages?: PageData[];
   comments?: CommentData[];

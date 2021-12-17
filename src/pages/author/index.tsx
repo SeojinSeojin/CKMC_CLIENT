@@ -5,7 +5,6 @@ import SelectedHashTags from '../../components/common/MyPage/SelectedHashTags';
 import NavigationBar from '../../components/common/NavigationBar';
 import EpisodeContainer from '../../components/Episode/Container';
 import AuthorLayout from '../../components/layout/Author';
-import { AuthorData } from '../../types';
 import { getFetcher } from '../../utils/fetchers';
 import { Description, Title, Footer } from './style';
 

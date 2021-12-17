@@ -7,7 +7,6 @@ import NavigationBar from '../../components/common/NavigationBar';
 import WorkItem from '../../components/Work/Item';
 import WorkSearchBar from '../../components/Work/SearchBar';
 import { useWorks } from '../../hooks/useWorks';
-import { WorkData } from '../../types';
 
 interface IWorkContainer {
   isNavOpened?: boolean;

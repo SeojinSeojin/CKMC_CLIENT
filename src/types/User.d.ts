@@ -1,6 +1,4 @@
-import AuthorData from './Author';
-
-export default interface UserData {
+interface UserData {
   studentNumber: string;
   loginId: string;
   password: string;

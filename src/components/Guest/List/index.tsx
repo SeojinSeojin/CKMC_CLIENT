@@ -9,7 +9,6 @@ import {
 } from '../../common/Icons';
 import { Paginator, Wrapper, Letters } from './style';
 import useLetter from '../../../hooks/useLetters';
-import { LetterData } from '../../../types';
 import Loader from '../../common/Loader';
 
 function GuestList() {

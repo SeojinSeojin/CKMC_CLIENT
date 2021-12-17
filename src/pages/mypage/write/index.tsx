@@ -5,14 +5,12 @@ import ModeController from '../../../components/common/MyPage/ModeController';
 import NavigationBar from '../../../components/common/NavigationBar';
 import PageSelector from '../../../components/MyPage/PageSelector';
 import { useUser } from '../../../hooks/useUser';
-import { AuthorData, PageData } from '../../../types';
-import ImageData from '../../../types/Image';
 import { postFetcher, patchFetcher, getFetcher } from '../../../utils/fetchers';
 import { uploadImage as uploadImageRemote } from '../../../utils/imageUploader';
 import { isAllFilled } from '../../../utils/nullOrEmptyChecker';
 
 function Upload({ isUpload }: { isUpload: boolean }) {
-  const [thumbnail, setThumbnail] = useState<ImageData>({ remotePath: '', localPath: '' });
+  const [thumbnail, setThumbnail] = useState<PageImageData>({ remotePath: '', localPath: '' });
   const [pages, setPages] = useState<Array<PageData>>([]);
   const [mode, setMode] = useState<'scroll' | 'page' | 'link'>('scroll');
   const { episodeIdx }: { episodeIdx: string } = useParams();
@@ -49,7 +47,7 @@ function Upload({ isUpload }: { isUpload: boolean }) {
     ref.current.click();
   };
 
-  const uploadThumbnail = (image: ImageData) => setThumbnail(image);
+  const uploadThumbnail = (image: PageImageData) => setThumbnail(image);
   const addFile = (image: PageData) =>
     setPages((prev) => [...prev, { ...image, index: prev.length }]);
   const deleteFile = (idx: number) =>

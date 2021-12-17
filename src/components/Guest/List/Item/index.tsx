@@ -1,5 +1,4 @@
 import React, { MouseEventHandler } from 'react';
-import { LetterData } from '../../../../types';
 import { TableItem, Detail, Cover } from './style';
 import { parseDate } from '../../../../utils/parseDate';
 import { IcToggleDown, IcToggleUp } from '../../../common/Icons';

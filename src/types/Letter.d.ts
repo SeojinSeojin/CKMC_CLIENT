@@ -1,4 +1,4 @@
-export default interface LetterData {
+interface LetterData {
   title: string;
   body: string;
   sender: string;

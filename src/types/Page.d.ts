@@ -1,5 +1,3 @@
-import ImageData from './Image';
-
-export default interface PageData extends ImageData {
+interface PageData extends PageImageData {
   index: number;
 }

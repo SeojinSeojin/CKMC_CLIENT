@@ -1,4 +1,4 @@
-export default interface CommentData {
+interface CommentData {
   username: string;
   password: string;
   content: string;

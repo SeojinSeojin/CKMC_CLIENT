@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { Item } from './style';
-import { PageData } from '../../../types';
 import { IcToggleDownBlue, IcToggleUpBlue } from '../../common/Icons';
 
 function PageSelector({

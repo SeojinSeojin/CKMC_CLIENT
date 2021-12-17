@@ -7,7 +7,6 @@ import NavigationBar from '../../components/common/NavigationBar';
 import PageViewer from '../../components/Episode/PageViewer';
 import ScrollViewer from '../../components/Episode/ScrollViewer';
 import FlexCenterLayout from '../../components/layout/FlexCenter';
-import { EpisodeData, AuthorData } from '../../types';
 import { getFetcher } from '../../utils/fetchers';
 import { urlEncoder } from '../../utils/urlEncoder';
 import { AuthorDescription, FlexWrapper, EpisodeDescription, Header } from './style';

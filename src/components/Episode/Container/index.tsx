@@ -1,5 +1,4 @@
 import React from 'react';
-import { EpisodeData } from '../../../types';
 import EpisodeItem from '../Item';
 
 function EpisodeContainer({

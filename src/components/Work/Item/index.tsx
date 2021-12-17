@@ -1,5 +1,4 @@
 import React from 'react';
-import { WorkData } from '../../../types';
 import { IcNineteen } from '../../common/Icons';
 import { Wrapper } from './style';
 

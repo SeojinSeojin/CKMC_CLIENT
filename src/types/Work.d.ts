@@ -1,6 +1,4 @@
-import EpisodeData from './Episode';
-
-export default interface WorkData {
+interface WorkData {
   title: string;
   description: string;
   authorName: string;
