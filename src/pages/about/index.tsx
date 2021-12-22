@@ -48,7 +48,7 @@ const Body = styled.div`
   font-size: 18px;
   line-height: 30px;
   letter-spacing: -5%;
-  font-family: 'Noto Sans KR';
+
   & > div {
     padding: 0 20px;
     display: flex;
@@ -63,6 +63,7 @@ const Body = styled.div`
   & p {
     font-size: 18px;
     margin-bottom: 36px;
+    font-family: 'Noto Sans KR';
     &:last-child {
       margin-bottom: 0;
     }
