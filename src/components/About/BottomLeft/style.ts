@@ -4,9 +4,16 @@ export const GridWrapper = styled.div`
   display: grid;
   width: 60%;
   grid-template-columns: repeat(3, 1fr);
-  margin-top: auto;
   line-height: 36px;
   font-size: 18px;
+  font-family: NEXON Lv1 Gothic OTF;
+`;
+
+export const Bottom = styled.div`
+  margin-top: auto;
+  & > div:first-child {
+    margin-bottom: 32px;
+  }
 `;
 
 export const LinkButton = styled.div`
