@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useUser } from '../../../hooks/useUser';
 import { postFetcher } from '../../../utils/fetchers';
+import { openReservation } from '../../../utils/openExternalSiteInOuterWindow';
 import { SIDE_NAV } from '../../../utils/SIDE_NAV';
 import { BlueButton, Item, WhiteButton, BlueGradation, Wrapper, UserItem } from './style';
 
@@ -69,6 +70,7 @@ export default function NavigationBar({
               theme={theme}
               selected={key === selected}
               href={SIDE_NAV[key as sideNavKey].route!}
+              onClick={key === 'BOOK' ? openReservation : () => {}}
             >
               {SIDE_NAV[key as sideNavKey].title}
             </Item>

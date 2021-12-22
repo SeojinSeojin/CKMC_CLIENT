@@ -4,6 +4,7 @@ import CursorContainer from '../../../components/common/Cursor';
 import { IcArrowRight } from '../../../components/common/Icons';
 import NavigationBar from '../../../components/common/NavigationBar';
 import Map from '../../../components/Map';
+import { openReservation } from '../../../utils/openExternalSiteInOuterWindow';
 
 const FlexWrapper = styled.div`
   display: flex;
@@ -127,7 +128,7 @@ export default function MapPage() {
             </div>
           </Wrapper>
         </GridWrapper>
-        <ReservButton>
+        <ReservButton onClick={openReservation}>
           전시 예약 바로가기 <IcArrowRight />
         </ReservButton>
       </FlexWrapper>

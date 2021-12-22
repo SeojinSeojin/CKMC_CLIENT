@@ -1,6 +1,7 @@
 import React from 'react';
 import { AbsolutePart, BottomLeftWrapper, GridWrapper, LinkButton, Bottom } from './style';
 import { IcArrowRight } from '../../common/Icons';
+import { openReservation } from '../../../utils/openExternalSiteInOuterWindow';
 
 function AboutBottomLeft() {
   return (
@@ -12,7 +13,7 @@ function AboutBottomLeft() {
           <div>전시장 안내 보기</div>
           <IcArrowRight width="20" />
         </LinkButton>
-        <LinkButton>
+        <LinkButton onClick={openReservation}>
           <div>전시 예약 바로가기</div>
           <IcArrowRight width="20" />
         </LinkButton>
