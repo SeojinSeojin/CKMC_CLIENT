@@ -49,7 +49,7 @@ const Body = styled.div`
   margin-top: 280px;
   font-size: 18px;
   line-height: 30px;
-  letter-spacing: -5%;
+  letter-spacing: -0.05em;
 
   & > div {
     padding: 0 20px;

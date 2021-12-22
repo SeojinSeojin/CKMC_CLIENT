@@ -18,7 +18,7 @@ export const Description = styled(Text)`
   margin-bottom: 56px;
   min-height: 80px;
   line-height: 25px;
-  letter-spacing: -2%;
+  letter-spacing: -0.02em;
 `;
 
 export const Footer = styled.div`

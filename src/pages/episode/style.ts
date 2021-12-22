@@ -34,7 +34,7 @@ export const EpisodeDescription = styled.div`
   line-height: 26px;
   color: #2454a6;
   padding-top: 50px;
-  letter-spacing: -2%;
+  letter-spacing: -0.02em;
 `;
 
 export const FlexWrapper = styled.div`

@@ -4,7 +4,6 @@ export const TableItem = styled.div`
   width: 100%;
   border-top: 1px solid white;
   padding: 14px 0;
-  white-space: pre-line;
 `;
 
 export const Cover = styled.div`
@@ -35,7 +34,6 @@ export const Cover = styled.div`
 export const Detail = styled.div`
   margin-top: 20px;
   margin-bottom: 40px;
-  white-space: pre-line;
   display: flex;
   justify-content: center;
   gap: 24px;
