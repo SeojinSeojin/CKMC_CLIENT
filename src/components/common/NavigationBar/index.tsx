@@ -4,7 +4,7 @@ import { useUser } from '../../../hooks/useUser';
 import { postFetcher } from '../../../utils/fetchers';
 import { openReservation } from '../../../utils/openExternalSiteInOuterWindow';
 import { SIDE_NAV } from '../../../utils/SIDE_NAV';
-import { BlueButton, Item, WhiteButton, BlueGradation, Wrapper, UserItem } from './style';
+import { BlueButton, Item, WhiteButton, Wrapper, UserItem } from './style';
 
 interface INavigationBar {
   theme: 'white' | 'blue';
@@ -54,10 +54,7 @@ export default function NavigationBar({
   return (
     <>
       {theme === 'white' ? (
-        <>
-          <WhiteButton theme={theme} isOpen={isOpen} onClick={toggleOpen} />
-          <BlueGradation />
-        </>
+        <WhiteButton theme={theme} isOpen={isOpen} onClick={toggleOpen} />
       ) : (
         <BlueButton theme={theme} isOpen={isOpen} onClick={toggleOpen} />
       )}

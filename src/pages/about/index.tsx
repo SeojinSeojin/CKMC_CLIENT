@@ -24,6 +24,8 @@ const Title = styled.div`
   font-size: 68px;
   line-height: 96px;
   position: relative;
+  font-family: 'NEXON Lv1 Gothic OTF Light';
+  padding: 0 16px;
 `;
 
 const TitleLogoContainer = styled.div`
@@ -63,7 +65,7 @@ const Body = styled.div`
   & p {
     font-size: 18px;
     margin-bottom: 36px;
-    font-family: 'Noto Sans KR';
+    font-family: 'Noto Sans Regular';
     &:last-child {
       margin-bottom: 0;
     }

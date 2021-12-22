@@ -190,6 +190,7 @@ body {
   font-family: NEXON Lv1 Gothic OTF, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   scroll-behavior: smooth;
+  white-space: pre-wrap;
 }
 
 a {
@@ -213,7 +214,7 @@ div::-webkit-scrollbar {
 
 input,
 textarea {
-  font-family: Noto Sans KR;
+  font-family: 'Noto Sans Regular';
 }
 
 :root {

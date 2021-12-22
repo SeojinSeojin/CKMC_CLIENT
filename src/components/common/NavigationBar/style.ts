@@ -62,9 +62,11 @@ export const BlueButton = styled.div<IButton>`
   position: fixed;
   top: 100px;
   left: 60px;
-  width: 26px;
-  height: 26px;
+  width: min(max(2.5vw, 26px), 50px);
+  height: min(max(2.5vw, 26px), 50px);
   z-index: 9999;
+  background-repeat: no-repeat;
+  background-size: cover;
   background-image: ${(props) => (props.isOpen ? `url(${BlueStarFull})` : `url(${BlueStar})`)};
   animation: ${(props) =>
     props.isOpen
@@ -82,9 +84,11 @@ export const WhiteButton = styled.div<IButton>`
   position: fixed;
   top: 100px;
   left: 60px;
-  width: 26px;
-  height: 26px;
+  width: min(max(2.5vw, 26px), 50px);
+  height: min(max(2.5vw, 26px), 50px);
   z-index: 9999;
+  background-repeat: no-repeat;
+  background-size: cover;
   background-image: ${(props) => (props.isOpen ? `url(${WhiteStarFull})` : `url(${WhiteStar})`)};
   animation: ${(props) =>
     props.isOpen
@@ -132,12 +136,4 @@ export const UserItem = styled(Item)`
     color: ${({ theme, selected }) =>
       theme === 'white' ? (selected ? 'white' : '#C6DAE3') : selected ? '#2454a6' : '#8EAEC9'};
   }
-`;
-
-export const BlueGradation = styled.div`
-  width: 180px;
-  height: 100vh;
-  position: absolute;
-  z-index: 9997;
-  background: linear-gradient(0.25turn, #2454a699, #2454a64f, rgba(0, 0, 0, 0));
 `;

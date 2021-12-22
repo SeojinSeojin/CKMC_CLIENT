@@ -7,12 +7,6 @@ export const GridWrapper = styled.div`
   line-height: 36px;
   font-size: 18px;
   gap: 15px 0;
-  font-family: 'Noto Sans Regular';
-
-  & > div:nth-child(3n-2) {
-    font-size: 16px;
-    font-family: 'NEXON Lv1 Gothic OTF';
-  }
 `;
 
 export const Bottom = styled.div`

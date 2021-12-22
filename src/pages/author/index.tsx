@@ -34,7 +34,11 @@ export default function AuthorPage() {
         <AuthorLayout>
           <div>
             <img
-              src={author.work.thumbnail}
+              src={
+                author.work.thumbnail === 'https://via.placeholder.com/250'
+                  ? 'https://via.placeholder.com/500'
+                  : author.work.thumbnail
+              }
               alt="thumbnail"
               style={{
                 width: 500,

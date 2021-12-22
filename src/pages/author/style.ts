@@ -17,6 +17,8 @@ export const Description = styled(Text)`
   margin-top: 24px;
   margin-bottom: 56px;
   min-height: 80px;
+  line-height: 25px;
+  letter-spacing: -2%;
 `;
 
 export const Footer = styled.div`
@@ -27,4 +29,10 @@ export const Footer = styled.div`
   padding-top: 24px;
   display: flex;
   gap: 36px;
+  align-items: center;
+
+  & > div:nth-child(1) {
+    font-family: 'Noto Sans Regular';
+    font-size: 20px;
+  }
 `;

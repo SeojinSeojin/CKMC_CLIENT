@@ -25,6 +25,7 @@ export const Title = styled.h1`
   width: 40%;
   min-width: 240px;
   text-align: center;
+  font-family: 'NEXON Lv1 Gothic OTF Light';
 `;
 
 export const Inform = styled.div`
@@ -40,6 +41,7 @@ export const Input = styled.input`
   margin-top: 8px;
   font-size: 18px;
   background: transparent;
+  font-family: 'NEXON Lv1 Gothic OTF Bold';
 
   &:focus {
     outline: none;
@@ -48,9 +50,11 @@ export const Input = styled.input`
   ::placeholder,
   ::-webkit-input-placeholder {
     color: #8eaec9;
+    font-family: 'NEXON Lv1 Gothic OTF';
   }
   :-ms-input-placeholder {
     color: #8eaec9;
+    font-family: 'NEXON Lv1 Gothic OTF';
   }
 `;
 
@@ -63,4 +67,5 @@ export const Button = styled.input`
   text-align: center;
   margin-top: 60px;
   font-size: 18px;
+  font-family: 'NEXON Lv1 Gothic OTF Light';
 `;
