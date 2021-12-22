@@ -29,7 +29,7 @@ export const Wrapper = styled.div`
   grid-template-columns: 2fr 1fr;
   gap: 20px;
   font-size: 13px;
-  font-family: 'Noto Sans KR';
+  font-family: 'Noto Sans Regular';
   margin-top: 20px;
   border-top: 1px solid #2454a6;
   border-bottom: 1px solid #2454a6;

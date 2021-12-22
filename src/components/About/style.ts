@@ -8,8 +8,8 @@ export const ClassContainer = styled.div<IClassContainer>`
   grid-template-columns: repeat(5, 1fr);
   width: 100%;
   animation: 0.4s forwards slideDown;
-  padding-top: 20px;
-  padding-bottom: 10px;
+  padding-top: 25px;
+  gap: 15px 0;
 
   @keyframes slideDown {
     from {
@@ -24,7 +24,7 @@ export const ClassContainer = styled.div<IClassContainer>`
 
   & a {
     text-align: center;
-    font-family: 'Noto Sans KR';
+    font-family: 'Noto Sans Regular';
     color: #8eaec9;
     transition: all 0.5s;
     &:hover {

@@ -12,7 +12,7 @@ export const Title = styled(Text)`
 `;
 
 export const Description = styled(Text)`
-  font-family: 'Noto Sans KR';
+  font-family: 'Noto Sans Regular';
   font-size: 16px;
   margin-top: 24px;
   margin-bottom: 56px;

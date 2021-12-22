@@ -6,7 +6,7 @@ export const Tag = styled.div`
   border-radius: 20px;
   border: 1px solid #2454a6;
   color: #2454a6;
-  font-family: 'Noto Sans KR';
+  font-family: 'Noto Sans Regular';
 
   &:hover {
     color: white;

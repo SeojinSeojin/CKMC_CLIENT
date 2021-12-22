@@ -6,11 +6,18 @@ export const GridWrapper = styled.div`
   grid-template-columns: repeat(3, 1fr);
   line-height: 36px;
   font-size: 18px;
-  font-family: NEXON Lv1 Gothic OTF;
+  gap: 15px 0;
+  font-family: 'Noto Sans Regular';
+
+  & > div:nth-child(3n-2) {
+    font-size: 16px;
+    font-family: 'NEXON Lv1 Gothic OTF';
+  }
 `;
 
 export const Bottom = styled.div`
   margin-top: auto;
+  font-family: 'NEXON Lv1 Gothic OTF';
   & > div:first-child {
     margin-bottom: 32px;
   }

@@ -27,13 +27,12 @@ const Wrapper = styled.div`
   height: 500px;
   width: 100%;
   flex-direction: column;
-  color: #2454a6;
   border-bottom: 1px solid #2454a6;
 
   & > div:first-child {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid #2454a6;
+    border-bottom: 1px solid #8eaec9;
     padding-bottom: 14px;
     font-size: 22px;
   }
@@ -51,6 +50,7 @@ const Wrapper = styled.div`
     margin-bottom: 24px;
     line-height: 28px;
     transition: all 0.5s;
+    color: #8eaec9;
     & > div {
       & > div:first-child {
         font-weight: 800;
@@ -58,6 +58,7 @@ const Wrapper = styled.div`
       &:hover {
         font-family: NEXON Lv1 Gothic OTF Bold;
         cursor: pointer;
+        color: #2454a6;
       }
     }
     & > div:nth-child(4) {

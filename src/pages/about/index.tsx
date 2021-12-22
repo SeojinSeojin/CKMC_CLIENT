@@ -45,12 +45,16 @@ const Body = styled.div`
   line-height: 27px;
   word-break: keep-all;
   margin-top: 280px;
+  font-size: 18px;
+  line-height: 30px;
+  letter-spacing: -5%;
+  font-family: 'Noto Sans KR';
   & > div {
-    padding: 0 8px;
+    padding: 0 20px;
     display: flex;
     flex-direction: column;
     &:first-child {
-      border-right: 1px solid #2454a6;
+      border-right: 1px solid #8eaec9;
     }
     &:nth-child(2) {
       margin-top: 380px;

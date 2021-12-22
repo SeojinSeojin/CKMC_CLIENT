@@ -42,6 +42,6 @@ export const FlexWrapper = styled.div`
   flex-direction: column;
   min-width: 1060px;
   > * {
-    font-family: Noto Sans KR;
+    font-family: 'Noto Sans Regular';
   }
 `;

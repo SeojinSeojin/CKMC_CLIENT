@@ -66,5 +66,5 @@ export const EmptyWrapper = styled.div`
   color: #8eaec9;
   font-size: 18px;
   line-height: 30px;
-  font-family: Noto Sans KR;
+  font-family: 'Noto Sans Regular';
 `;
