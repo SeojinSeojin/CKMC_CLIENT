@@ -17,8 +17,11 @@ export const Wrapper = styled.div<IWrapper>`
   padding-top: 198px;
   padding-left: 60px;
   width: 180px;
-  border-right: 1px solid ${(props) => (props.theme === 'white' ? 'white' : '#2454A6')};
-  background-color: rgba(256, 256, 256, 0.1);
+  border-right: 1px solid ${({ theme }) => (theme === 'white' ? 'white' : '#2454A6')};
+  background: ${({ theme }) =>
+    theme === 'white'
+      ? 'linear-gradient(to right, #2454a6, rgb(0,0,0,0))'
+      : 'linear-gradient(to right, #ffffff, rgb(0,0,0,0))'};
   backdrop-filter: blur(5px);
   display: inline-flex;
   flex-direction: column;

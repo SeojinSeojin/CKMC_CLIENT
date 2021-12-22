@@ -22,6 +22,8 @@ import { ReactComponent as IcRadioUnselected } from './ic-radio-unselected.svg';
 import { ReactComponent as IcAllEpisodes } from './ic-all-episodes.svg';
 import { ReactComponent as IcArrowPrevious } from './ic-arrow-previous.svg';
 import { ReactComponent as IcArrowNext } from './ic-arrow-next.svg';
+import { ReactComponent as BgTitleHeaderSmall } from './bg-title-header-small.svg';
+import { ReactComponent as BgFooterSmall } from './bg-footer-small.svg';
 
 export {
   IcPaginatorFirst,
@@ -48,4 +50,6 @@ export {
   IcAllEpisodes,
   IcArrowPrevious,
   IcArrowNext,
+  BgTitleHeaderSmall,
+  BgFooterSmall,
 };
