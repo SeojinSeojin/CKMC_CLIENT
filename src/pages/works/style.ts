@@ -5,13 +5,17 @@ interface IWorkContainer {
   animation: 'initial' | '' | 'close';
 }
 export const WorkContainer = styled.div<IWorkContainer>`
-  display: flex;
+  display: inline-flex;
   flex-wrap: wrap;
   gap: 12px;
-  justify-content: center;
-  width: min(1500px, 100vw - 400px);
   margin-top: 320px;
   margin-bottom: 80px;
+`;
+
+export const CenterContainer = styled.div`
+  width: min(1500px, 100% - 400px);
+  display: flex;
+  justify-content: center;
 `;
 
 export const Wrapper = styled.div<IWorkContainer>`

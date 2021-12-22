@@ -7,7 +7,14 @@ import WorkItem from '../../components/Work/Item';
 import WorkSearchBar from '../../components/Work/SearchBar';
 import { useWorks } from '../../hooks/useWorks';
 import { shuffle } from '../../utils/array';
-import { WorkContainer, Wrapper, FlexContainer, Title, EmptyWrapper } from './style';
+import {
+  WorkContainer,
+  CenterContainer,
+  Wrapper,
+  FlexContainer,
+  Title,
+  EmptyWrapper,
+} from './style';
 
 export default function WorksPage() {
   const [hashTags, setHashTags] = useState<string[]>([]);
@@ -47,20 +54,22 @@ export default function WorksPage() {
           <Title>CKMC 크리에이티브 페어 2022</Title>
           {worksData && worksData.length ? (
             <FlexContainer>
-              <WorkContainer animation={animation}>
-                {shuffle(worksData).map((work: WorkData) => (
-                  <Link to={`/author/${work.authorName}`} key={work.authorName}>
-                    <WorkItem
-                      title={work.title}
-                      authorName={work.authorName}
-                      thumbnail={work.thumbnail}
-                      hashTags={work.hashTags}
-                      description={work.description}
-                      episodes={work.episodes}
-                    />
-                  </Link>
-                ))}
-              </WorkContainer>
+              <CenterContainer>
+                <WorkContainer animation={animation}>
+                  {shuffle(worksData).map((work: WorkData) => (
+                    <Link to={`/author/${work.authorName}`} key={work.authorName}>
+                      <WorkItem
+                        title={work.title}
+                        authorName={work.authorName}
+                        thumbnail={work.thumbnail}
+                        hashTags={work.hashTags}
+                        description={work.description}
+                        episodes={work.episodes}
+                      />
+                    </Link>
+                  ))}
+                </WorkContainer>
+              </CenterContainer>
             </FlexContainer>
           ) : (
             <EmptyWrapper>
