@@ -5,7 +5,7 @@ interface IWorkContainer {
   animation: 'initial' | '' | 'close';
 }
 export const WorkContainer = styled.div<IWorkContainer>`
-  display: inline-flex;
+  display: flex;
   flex-wrap: wrap;
   gap: 12px;
   margin-top: 320px;
@@ -13,9 +13,18 @@ export const WorkContainer = styled.div<IWorkContainer>`
 `;
 
 export const CenterContainer = styled.div`
-  width: min(1500px, 100% - 400px);
   display: flex;
   justify-content: center;
+
+  @media (min-width: 1174px) {
+    width: 774px;
+  }
+  @media (min-width: 1436px) {
+    width: 1036px;
+  }
+  @media (min-width: 1698px) {
+    width: 1298px;
+  }
 `;
 
 export const Wrapper = styled.div<IWorkContainer>`
