@@ -21,7 +21,7 @@ export const Wrapper = styled.div<IWrapper>`
   background: ${({ theme }) =>
     theme === 'white'
       ? 'linear-gradient(to right, #2454a6, rgb(0,0,0,0))'
-      : 'linear-gradient(to right, #ffffff, rgb(0,0,0,0))'};
+      : 'linear-gradient(to right, #ffffff, rgb(256,256,256,0))'};
   backdrop-filter: blur(5px);
   display: inline-flex;
   flex-direction: column;
