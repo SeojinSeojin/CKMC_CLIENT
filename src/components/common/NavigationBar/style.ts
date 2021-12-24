@@ -109,13 +109,22 @@ export const WhiteButton = styled.div<IButton>`
 
 interface IItem {
   selected: boolean;
+  isSmall: boolean;
 }
 export const Item = styled.a<IItem>`
   display: block;
   margin-bottom: 40px;
   ${(props) => (props.selected ? 'font-family: NEXON Lv1 Gothic OTF Bold;' : '')}
-  color: ${({ theme, selected }) =>
-    theme === 'white' ? (selected ? 'white' : '#C6DAE3') : selected ? '#2454a6' : '#8EAEC9'};
+  color: ${({ theme, selected, isSmall }) =>
+    theme === 'white'
+      ? selected
+        ? 'white'
+        : '#C6DAE3'
+      : isSmall
+      ? '#2454a6'
+      : selected
+      ? '#2454a6'
+      : '#8EAEC9'};
 
   &:hover {
     font-family: NEXON Lv1 Gothic OTF Bold;
@@ -139,7 +148,15 @@ export const UserItem = styled(Item)`
     }
   }
   & > * {
-    color: ${({ theme, selected }) =>
-      theme === 'white' ? (selected ? 'white' : '#C6DAE3') : selected ? '#2454a6' : '#8EAEC9'};
+    color: ${({ theme, selected, isSmall }) =>
+      theme === 'white'
+        ? selected
+          ? 'white'
+          : '#C6DAE3'
+        : isSmall
+        ? '#2454a6'
+        : selected
+        ? '#2454a6'
+        : '#8EAEC9'};
   }
 `;

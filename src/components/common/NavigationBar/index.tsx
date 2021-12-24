@@ -81,6 +81,7 @@ export default function NavigationBar({
             <Item
               key={key}
               theme={theme}
+              isSmall={isSmall}
               selected={key === selected}
               href={SIDE_NAV[key as sideNavKey].route!}
               onClick={key === 'BOOK' ? openReservation : () => {}}
@@ -89,11 +90,11 @@ export default function NavigationBar({
             </Item>
           ))}
           {author ? (
-            <UserItem selected={false}>
+            <UserItem selected={false} theme={theme} isSmall={isSmall}>
               <div onClick={logOut}>로그아웃</div>
             </UserItem>
           ) : (
-            <UserItem href="/login" selected={false}>
+            <UserItem href="/login" theme={theme} selected={false} isSmall={isSmall}>
               로그인
             </UserItem>
           )}
