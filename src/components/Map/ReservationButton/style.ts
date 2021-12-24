@@ -16,6 +16,11 @@ export const ReservButton = styled.div`
     font-family: 'NEXON Lv1 Gothic OTF Light';
   }
 
+  & > svg {
+    width: 28px;
+    height: 24px;
+  }
+
   &:hover {
     cursor: pointer;
   }
@@ -23,5 +28,10 @@ export const ReservButton = styled.div`
   @media (max-width: 1200px) {
     font-size: 18px;
     padding: 13px 26px;
+
+    & > svg {
+      width: 24px;
+      height: 21px;
+    }
   }
 `;
