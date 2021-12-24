@@ -24,6 +24,9 @@ export const ReservationButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   position: relative;
+  & > div:nth-child(2) {
+    height: 45px;
+  }
 `;
 
 export const Line = styled.div`
