@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+interface IWrapper {
+  height: number;
+}
+export const Wrapper = styled.div<IWrapper>`
   font: normal normal 400 12px / normal dotum, sans-serif;
-  width: 500px;
-  height: 500px;
+  width: ${({ height }) => height}px;
+  height: ${({ height }) => height}px;
   color: #333;
   position: relative;
 `;

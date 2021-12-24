@@ -10,7 +10,7 @@ export default function Home() {
 
   return (
     <>
-      <CursorContainer theme="white" />
+      {!(isSmall || isSmallMiddle) && <CursorContainer theme="white" />}
       <NavigationBar
         theme={isBig || isBigMiddle ? 'blue' : 'white'}
         selected="MAIN"

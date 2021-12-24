@@ -1,10 +1,10 @@
 import React from 'react';
 import { Middle, Right, RoadBig, RoadFind, RoadView, Span, Wrapper } from './style';
 
-function Map() {
+function Map({ dimension }: { dimension: number }) {
   return (
-    <Wrapper>
-      <div style={{ height: 470 }}>
+    <Wrapper height={dimension}>
+      <div style={{ height: dimension - 30 }}>
         <a
           href="https://map.kakao.com/?urlX=496652.0&amp;urlY=1131667.0&amp;itemId=502438956&amp;q=%EB%A7%88%EB%A3%A8%EC%95%84%ED%8A%B8%EC%84%BC%ED%84%B0&amp;srcid=502438956&amp;map_type=TYPE_MAP&amp;from=roughmap"
           target="_blank"
@@ -13,8 +13,8 @@ function Map() {
           <img
             className="map"
             src="http://t1.daumcdn.net/roughmap/imgmap/c5fc6e4c57d8a120d7d787ed673134921858340e72758109c389c1167032828b"
-            width="498px"
-            height="458px"
+            width={`${dimension - 2}px`}
+            height={`${dimension - 30}px`}
             style={{ border: '1px solid #ccc', objectFit: 'cover' }}
             alt="오시는 길"
           />
