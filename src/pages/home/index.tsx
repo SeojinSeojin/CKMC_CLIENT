@@ -7,7 +7,7 @@ import HomeSmall from './small';
 
 export default function Home() {
   const { isBig, isBigMiddle, isSmall, isSmallMiddle } = useResponsive();
-  console.log(isSmall || isSmallMiddle);
+
   return (
     <>
       <CursorContainer theme="white" />
