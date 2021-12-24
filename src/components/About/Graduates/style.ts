@@ -52,4 +52,7 @@ export const ClassWrapper = styled.div`
 export const AboutWrapper = styled.div`
   height: 1070px;
   margin-top: 300px;
+  & > div:nth-child(1) {
+    margin-bottom: 30px;
+  }
 `;

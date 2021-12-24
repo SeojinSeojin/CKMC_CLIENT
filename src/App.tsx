@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect, Route, Switch } from 'react-router';
 import { useUser } from './hooks/useUser';
 import AboutPage from './pages/about';
-import MapPage from './pages/about/map';
+import MapPage from './pages/map';
 import AuthorPage from './pages/author';
 import EpisodePage from './pages/episode';
 import GuestPage from './pages/guest';

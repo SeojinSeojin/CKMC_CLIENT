@@ -4,6 +4,7 @@ export const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   margin-top: 130px;
+  max-width: 900px;
 `;
 
 export const Title = styled.div`
@@ -15,6 +16,11 @@ export const Title = styled.div`
   left: 0;
 `;
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 100vh;
+`;
 
 export const EmptyWrapper = styled.div``;

@@ -11,16 +11,19 @@ export const Description = styled.div`
   line-height: 20px;
   text-align: center;
   margin-top: 22px;
+  padding: 0 20px;
+  word-break: keep-all;
 `;
 
 export const Wrapper = styled.div`
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 600px;
 `;
 
 export const ReservationButtonWrapper = styled.div`
-  margin-top: auto;
+  margin-top: 200px;
   display: flex;
   justify-content: center;
   position: relative;
@@ -43,6 +46,7 @@ export const WrapperBottom = styled.div`
   flex-direction: column;
   gap: 52px;
   align-items: center;
+  padding: 0 20px;
 
   & > div {
     color: #8eaec9;
@@ -59,7 +63,6 @@ export const WrapperBottom = styled.div`
   & > div:nth-child(2) {
     display: grid;
     font-size: 10px;
-    width: 288px;
     grid-template-columns: repeat(2, 1fr);
     gap: 34px 36px;
     font-family: 'Noto Sans Bold';
@@ -87,4 +90,10 @@ export const WrapperBottom = styled.div`
       }
     }
   }
+`;
+
+export const TotalWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;

@@ -21,7 +21,7 @@ export const Wrapper = styled.div`
   height: 500px;
   width: 100%;
   flex-direction: column;
-  border-bottom: 1px solid #2454a6;
+  border-bottom: 1px solid #8eaec9;
 
   & > div:first-child {
     display: flex;
@@ -29,11 +29,16 @@ export const Wrapper = styled.div`
     border-bottom: 1px solid #8eaec9;
     padding-bottom: 14px;
     font-size: 22px;
+    flex-wrap: wrap;
+    gap: 5px;
   }
   & > div:nth-child(2) {
     font-size: 16px;
     line-height: 24px;
     margin-top: 40px;
+    font-family: 'Noto Sans Bold';
+    font-weight: 600;
+    word-break: keep-all;
   }
   & > div:nth-child(3) {
     margin-top: auto;
@@ -44,15 +49,19 @@ export const Wrapper = styled.div`
     margin-bottom: 24px;
     line-height: 28px;
     transition: all 0.5s;
-    color: #8eaec9;
     & > div {
+      & > div {
+        color: #8eaec9;
+      }
       & > div:first-child {
         font-weight: 800;
       }
       &:hover {
-        font-family: NEXON Lv1 Gothic OTF Bold;
-        cursor: pointer;
-        color: #2454a6;
+        & > div {
+          font-family: NEXON Lv1 Gothic OTF Bold;
+          cursor: pointer;
+          color: #2454a6;
+        }
       }
     }
     & > div:nth-child(4) {

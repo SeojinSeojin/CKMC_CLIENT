@@ -24,6 +24,8 @@ import { ReactComponent as IcArrowPrevious } from './ic-arrow-previous.svg';
 import { ReactComponent as IcArrowNext } from './ic-arrow-next.svg';
 import { ReactComponent as BgTitleHeaderSmall } from './bg-title-header-small.svg';
 import { ReactComponent as BgFooterSmall } from './bg-footer-small.svg';
+import { ReactComponent as BgAboutTitleSmall } from './bg-about-title-small.svg';
+import { ReactComponent as BgMapFooterSmall } from './bg-map-footer-small.svg';
 
 export {
   IcPaginatorFirst,
@@ -52,4 +54,6 @@ export {
   IcArrowNext,
   BgTitleHeaderSmall,
   BgFooterSmall,
+  BgAboutTitleSmall,
+  BgMapFooterSmall,
 };

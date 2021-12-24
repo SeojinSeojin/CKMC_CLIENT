@@ -1,7 +1,7 @@
 import React from 'react';
-import CursorContainer from '../../../components/common/Cursor';
-import NavigationBar from '../../../components/common/NavigationBar';
-import useResponsive from '../../../hooks/useResponsive';
+import CursorContainer from '../../components/common/Cursor';
+import NavigationBar from '../../components/common/NavigationBar';
+import useResponsive from '../../hooks/useResponsive';
 import MapBig from './big';
 import MapSmall from './small';
 

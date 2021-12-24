@@ -7,6 +7,7 @@ export const GridWrapper = styled.div`
   line-height: 36px;
   font-size: 18px;
   gap: 15px 0;
+  margin-top: 30px;
 `;
 
 export const Bottom = styled.div`

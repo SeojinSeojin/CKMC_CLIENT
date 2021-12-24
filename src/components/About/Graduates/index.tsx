@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { IcToggleDownBlue, IcToggleUpBlue } from '../common/Icons';
+import { IcToggleDownBlue, IcToggleUpBlue } from '../../common/Icons';
 import { AboutWrapper, ClassContainer, ClassWrapper, Header } from './style';
 
 type student = { authorName: string; authorNumber: string };
