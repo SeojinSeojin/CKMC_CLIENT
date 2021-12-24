@@ -26,6 +26,9 @@ export const Wrapper = styled(Link)`
 
   & > div {
     padding: 0 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
   }
 
   & > div:nth-child(2) {
