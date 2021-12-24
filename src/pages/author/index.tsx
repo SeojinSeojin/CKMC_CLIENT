@@ -7,6 +7,7 @@ import EpisodeContainer from '../../components/Episode/Container';
 import AuthorLayout from '../../components/layout/Author';
 import { getFetcher } from '../../utils/fetchers';
 import { Description, Title, Footer } from './style';
+import emptyBox from '../../components/common/Icons/ic-empty-box.svg';
 
 export default function AuthorPage() {
   const { authorId }: { authorId: string } = useParams();
@@ -36,7 +37,7 @@ export default function AuthorPage() {
             <img
               src={
                 author.work.thumbnail === 'https://via.placeholder.com/250'
-                  ? 'https://via.placeholder.com/500'
+                  ? emptyBox
                   : author.work.thumbnail
               }
               alt="thumbnail"
