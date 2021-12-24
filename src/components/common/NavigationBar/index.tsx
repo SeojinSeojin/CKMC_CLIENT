@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
+import useResponsive from '../../../hooks/useResponsive';
 import { useUser } from '../../../hooks/useUser';
 import { postFetcher } from '../../../utils/fetchers';
 import { openReservation } from '../../../utils/openExternalSiteInOuterWindow';
@@ -34,6 +35,7 @@ export default function NavigationBar({
       }, 800);
     }
   };
+  const { isBig, isBigMiddle, isSmall, isSmallMiddle } = useResponsive();
   const { author, mutate } = useUser();
   const logOut = () => {
     const logoutPromise = new Promise((resolve, reject) => {
@@ -54,9 +56,23 @@ export default function NavigationBar({
   return (
     <>
       {theme === 'white' ? (
-        <WhiteButton theme={theme} isOpen={isOpen} onClick={toggleOpen} />
+        <WhiteButton
+          theme={theme}
+          isOpen={isOpen}
+          onClick={toggleOpen}
+          isBig={isBig}
+          isMiddle={isBigMiddle || isSmallMiddle}
+          isSmall={isSmall}
+        />
       ) : (
-        <BlueButton theme={theme} isOpen={isOpen} onClick={toggleOpen} />
+        <BlueButton
+          theme={theme}
+          isOpen={isOpen}
+          onClick={toggleOpen}
+          isBig={isBig}
+          isMiddle={isBigMiddle || isSmallMiddle}
+          isSmall={isSmall}
+        />
       )}
 
       {isOpen && (

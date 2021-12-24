@@ -60,13 +60,16 @@ const rotate = keyframes`
 
 interface IButton {
   isOpen: boolean;
+  isBig: boolean;
+  isMiddle: boolean;
+  isSmall: boolean;
 }
 export const BlueButton = styled.div<IButton>`
   position: fixed;
-  top: 100px;
-  left: 60px;
-  width: min(max(2.5vw, 26px), 50px);
-  height: min(max(2.5vw, 26px), 50px);
+  top: ${({ isSmall }) => (isSmall ? '50px' : '100px')};
+  left: ${({ isSmall }) => (isSmall ? '30px' : '60px')};
+  width: ${({ isBig, isMiddle }) => (isBig ? '46px' : isMiddle ? '30px' : '26px')};
+  height: ${({ isBig, isMiddle }) => (isBig ? '46px' : isMiddle ? '30px' : '26px')};
   z-index: 9999;
   background-repeat: no-repeat;
   background-size: cover;
