@@ -95,16 +95,17 @@ export default function NavigationBar({
               {SIDE_NAV[key as sideNavKey].title}
             </Item>
           ))}
-          {author ? (
-            <UserItem selected={false} theme={theme} isSmall={isSmall}>
-              <div onClick={logOut}>로그아웃</div>
-              <div onClick={navigateMyPage}>마이페이지</div>
-            </UserItem>
-          ) : (
-            <UserItem href="/login" theme={theme} selected={false} isSmall={isSmall}>
-              로그인
-            </UserItem>
-          )}
+          {!isSmall &&
+            (author ? (
+              <UserItem selected={false} theme={theme} isSmall={isSmall}>
+                <div onClick={logOut}>로그아웃</div>
+                <div onClick={navigateMyPage}>마이페이지</div>
+              </UserItem>
+            ) : (
+              <UserItem href="/login" theme={theme} selected={false} isSmall={isSmall}>
+                로그인
+              </UserItem>
+            ))}
         </Wrapper>
       )}
     </>
