@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
 
 import {
-  IcModeBox,
-  IcModeBoxSelected,
-  IcModeList,
   IcPaginatorFirst,
   IcPaginatorLast,
   IcPaginatorNext,
   IcPaginatorPrevious,
 } from '../../common/Icons';
-import { Paginator, Wrapper, Letters, ModeSwitcher } from './style';
+import { Paginator, Wrapper, Letters } from './style';
 import useLetter from '../../../hooks/useLetters';
 import Loader from '../../common/Loader';
 import GuestItem from './Item';
+import ModeSwitcher from './ModeSwitcher';
 
 function GuestList() {
   const [pageIndex, setPageIndex] = useState(0);
@@ -27,7 +25,7 @@ function GuestList() {
   if (!data)
     return (
       <Wrapper>
-        <Loader />
+        <Loader />å
       </Wrapper>
     );
 
@@ -35,19 +33,7 @@ function GuestList() {
 
   return (
     <Wrapper>
-      <ModeSwitcher>
-        {mode === 5 ? (
-          <>
-            <IcModeList onClick={setLinearMode} />
-            <IcModeBoxSelected onClick={setSquareMode} />
-          </>
-        ) : (
-          <>
-            <IcModeList onClick={setLinearMode} />
-            <IcModeBox onClick={setSquareMode} />
-          </>
-        )}
-      </ModeSwitcher>
+      <ModeSwitcher mode={mode} setLinearMode={setLinearMode} setSquareMode={setSquareMode} />
       <Letters>
         {letters.map((letter: LetterData, index: number) => (
           <GuestItem

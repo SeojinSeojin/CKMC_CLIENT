@@ -23,11 +23,3 @@ export const Letters = styled.div`
   scroll-behavior: smooth;
   border-bottom: 1px solid white;
 `;
-
-export const ModeSwitcher = styled.div`
-  display: flex;
-  gap: 10px;
-  position: absolute;
-  left: 0;
-  margin-top: -40px;
-`;
