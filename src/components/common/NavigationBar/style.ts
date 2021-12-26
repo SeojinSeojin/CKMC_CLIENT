@@ -66,7 +66,7 @@ interface IButton {
 }
 export const BlueButton = styled.div<IButton>`
   position: fixed;
-  top: ${({ isSmall }) => (isSmall ? '50px' : '100px')};
+  top: ${({ isSmall }) => (isSmall ? '10px' : '100px')};
   left: ${({ isSmall }) => (isSmall ? '30px' : '60px')};
   width: ${({ isBig, isMiddle }) => (isBig ? '46px' : isMiddle ? '30px' : '22px')};
   height: ${({ isBig, isMiddle }) => (isBig ? '46px' : isMiddle ? '30px' : '22px')};
@@ -85,7 +85,7 @@ export const BlueButton = styled.div<IButton>`
 
 export const WhiteButton = styled.div<IButton>`
   position: fixed;
-  top: ${({ isSmall }) => (isSmall ? '50px' : '100px')};
+  top: ${({ isSmall }) => (isSmall ? '10px' : '100px')};
   left: ${({ isSmall }) => (isSmall ? '30px' : '60px')};
   width: ${({ isBig, isMiddle }) => (isBig ? '46px' : isMiddle ? '30px' : '22px')};
   height: ${({ isBig, isMiddle }) => (isBig ? '46px' : isMiddle ? '30px' : '22px')};
