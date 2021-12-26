@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import useResponsive from '../../../hooks/useResponsive';
 import { useUser } from '../../../hooks/useUser';
 import { deleteFetcher } from '../../../utils/fetchers';
 import { ThumbnailImage, Wrapper, Title, TitleWrapper, Editors } from './style';
@@ -24,6 +25,7 @@ function EpisodeItem({
 }) {
   const history = useHistory();
   const { mutate } = useUser();
+  const { isSmall, isSmallMiddle } = useResponsive();
   const moveToDetail = () => {
     const path = viewMethod === 'link' && link ? link : `/author/${authorName}/${index}`;
     window.location.href = path;
@@ -51,10 +53,10 @@ function EpisodeItem({
     });
   };
   return (
-    <Wrapper onClick={moveToDetail}>
-      <ThumbnailImage src={thumbnail} alt={`${title} thumbnail`} />
-      <TitleWrapper>
-        <Title>{title}</Title>
+    <Wrapper onClick={moveToDetail} isSmall={isSmall || isSmallMiddle}>
+      <ThumbnailImage src={thumbnail} alt={title} isSmall={isSmall || isSmallMiddle} />
+      <TitleWrapper isSmall={isSmall || isSmallMiddle}>
+        <Title isSmall={isSmall || isSmallMiddle}>{title}</Title>
         {isEditable && (
           <Editors>
             <button onClick={(e) => moveToEdit(e, index)}>수정</button>

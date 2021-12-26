@@ -3,36 +3,51 @@ import styled from 'styled-components';
 const Text = styled.div`
   color: #2454a6;
   word-break: keep-all;
+  box-sizing: border-box;
+  width: 100%;
 `;
 
-export const Title = styled(Text)`
+interface IIsSmall {
+  isSmall: boolean;
+}
+
+export const Title = styled(Text)<IIsSmall>`
   font-weight: 900;
-  font-size: 30px;
+  font-size: ${({ isSmall }) => (isSmall ? 13 : 30)}px;
   margin-top: 20px;
+  font-family: 'NEXON Lv1 Gothic OTF Bold';
 `;
 
-export const Description = styled(Text)`
+export const Description = styled(Text)<IIsSmall>`
   font-family: 'Noto Sans Regular';
-  font-size: 16px;
+  font-size: ${({ isSmall }) => (isSmall ? 9 : 16)}px;
   margin-top: 24px;
   margin-bottom: 56px;
-  min-height: 80px;
-  line-height: 25px;
+  min-height: ${({ isSmall }) => (isSmall ? 65 : 80)}px;
+  line-height: ${({ isSmall }) => (isSmall ? 13 : 25)}px;
   letter-spacing: -0.02em;
 `;
 
-export const Footer = styled.div`
+export const Footer = styled.div<IIsSmall>`
   color: #8eaec9;
   border-top: 1px solid #8eaec9;
-  font-size: 16px;
-  margin-top: 28px;
-  padding-top: 24px;
+  font-size: ${({ isSmall }) => (isSmall ? 9 : 16)}px;
+  margin-top: ${({ isSmall }) => (isSmall ? 18 : 28)}px;
+  padding-top: ${({ isSmall }) => (isSmall ? 4 : 24)}px;
   display: flex;
-  gap: 36px;
+  gap: ${({ isSmall }) => (isSmall ? 12 : 36)}px;
   align-items: center;
+  line-height: 25px;
 
   & > div:nth-child(1) {
     font-family: 'Noto Sans Regular';
-    font-size: 20px;
+    font-size: ${({ isSmall }) => (isSmall ? 9 : 20)}px;
   }
+`;
+
+export const Image = styled.img<IIsSmall>`
+  width: ${({ isSmall }) => (isSmall ? 180 : 500)}px;
+  height: ${({ isSmall }) => (isSmall ? 180 : 500)}px;
+  margin-left: ${({ isSmall }) => (isSmall ? 'calc(50% - 90px)' : 0)};
+  object-fit: cover;
 `;

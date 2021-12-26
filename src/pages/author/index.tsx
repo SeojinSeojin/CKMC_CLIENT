@@ -6,13 +6,15 @@ import NavigationBar from '../../components/common/NavigationBar';
 import EpisodeContainer from '../../components/Episode/Container';
 import AuthorLayout from '../../components/layout/Author';
 import { getFetcher } from '../../utils/fetchers';
-import { Description, Title, Footer } from './style';
+import { Description, Title, Footer, Image } from './style';
 import emptyBox from '../../components/common/Icons/ic-empty-box.svg';
+import useResponsive from '../../hooks/useResponsive';
 
 export default function AuthorPage() {
   const { authorId }: { authorId: string } = useParams();
   const history = useHistory();
   const [author, setAuthor] = useState<AuthorData | null>(null);
+  const { isSmall, isSmallMiddle } = useResponsive();
 
   useEffect(() => {
     const getAuthorInfo = async () => {
@@ -28,29 +30,25 @@ export default function AuthorPage() {
 
   return (
     <>
-      <CursorContainer theme="blue" />
+      {!(isSmall || isSmallMiddle) && <CursorContainer theme="blue" />}
       <NavigationBar theme="blue" selected="WORKS" />
 
       {author && (
         <AuthorLayout>
           <div>
-            <img
+            <Image
               src={
                 author.work.thumbnail === 'https://via.placeholder.com/250'
                   ? emptyBox
                   : author.work.thumbnail
               }
+              isSmall={isSmall || isSmallMiddle}
               alt="thumbnail"
-              style={{
-                width: 500,
-                height: 500,
-                objectFit: 'cover',
-              }}
             />
-            <Title>{author.work.title}</Title>
-            <Description>{author.work.description}</Description>
+            <Title isSmall={isSmall || isSmallMiddle}>{author.work.title}</Title>
+            <Description isSmall={isSmall || isSmallMiddle}>{author.work.description}</Description>
             {author.work.hashTags && <SelectedHashTags hashTags={author.work.hashTags} />}
-            <Footer>
+            <Footer isSmall={isSmall || isSmallMiddle}>
               <div>{author.nickName}</div>
               <div>{author.contact}</div>
             </Footer>

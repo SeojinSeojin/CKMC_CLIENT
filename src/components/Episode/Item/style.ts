@@ -1,14 +1,17 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.a`
+interface IIsSmall {
+  isSmall: boolean;
+}
+export const Wrapper = styled.a<IIsSmall>`
   display: grid;
-  grid-template-columns: 320px auto;
+  grid-template-columns: ${({ isSmall }) => (isSmall ? '120px auto' : '320px auto')};
   gap: 12px;
   margin-bottom: 8px;
 
   &:nth-child(1) {
     & > div {
-      border-top: 1px solid #2454a6;
+      ${({ isSmall }) => !isSmall && 'border-top: 1px solid #2454a6;'}
     }
   }
   &:hover {
@@ -16,22 +19,22 @@ export const Wrapper = styled.a`
   }
 `;
 
-export const ThumbnailImage = styled.img`
-  width: 320px;
-  height: 240px;
+export const ThumbnailImage = styled.img<IIsSmall>`
+  width: ${({ isSmall }) => (isSmall ? '120px' : '320px')};
+  height: ${({ isSmall }) => (isSmall ? '90px' : '240px')};
   object-fit: cover;
 `;
 
-export const Title = styled.div`
+export const Title = styled.div<IIsSmall>`
   color: #2454a6;
   font-weight: 800;
-  font-size: 24px;
-  margin-top: 20px;
+  font-size: ${({ isSmall }) => (isSmall ? '11px' : '24px')};
+  margin-top: ${({ isSmall }) => (isSmall ? '11px' : '20px')};
 `;
 
-export const TitleWrapper = styled.div`
+export const TitleWrapper = styled.div<IIsSmall>`
   position: relative;
-  height: 240px;
+  height: ${({ isSmall }) => (isSmall ? '90px' : '240px')};
   border-bottom: 1px solid #2454a6;
 `;
 
