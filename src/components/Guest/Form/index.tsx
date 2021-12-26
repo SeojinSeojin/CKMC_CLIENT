@@ -68,6 +68,7 @@ function GuestForm() {
           style={{ display: 'none' }}
           ref={fileRef}
           onChange={uploadImage}
+          accept=".jpg,.png,.jpeg,.webp"
         />
         <Submit type="submit" value="보내기" />
       </Bottom>

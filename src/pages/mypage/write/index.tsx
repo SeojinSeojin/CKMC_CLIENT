@@ -86,9 +86,11 @@ function Upload({ isUpload }: { isUpload: boolean }) {
     try {
       const target = e.target as HTMLInputElement;
       if (!target.files) return;
-      const file: File = (target.files as FileList)[0];
-      const uploadedFileURL = await uploadImageRemote(file);
-      callback({ localPath: file.name, remotePath: uploadedFileURL });
+      const files = target.files as FileList;
+      [...files].forEach(async (file) => {
+        const uploadedFileURL = await uploadImageRemote(file);
+        callback({ localPath: file.name, remotePath: uploadedFileURL });
+      });
     } catch (e) {}
   };
 
@@ -159,6 +161,7 @@ function Upload({ isUpload }: { isUpload: boolean }) {
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => uploadImage(e, uploadThumbnail)}
               ref={thumbnailRef}
               type="file"
+              accept=".jpg,.png,.jpeg,.webp"
             />
             <ThumbnailInput>
               <input type="text" defaultValue={thumbnail.localPath} />
@@ -177,6 +180,8 @@ function Upload({ isUpload }: { isUpload: boolean }) {
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => uploadImage(e, addFile)}
               ref={workRef}
               type="file"
+              accept=".jpg,.png,.jpeg,.webp"
+              multiple={true}
             />
             <WorksInput disabled={mode === 'link'}>
               <div>

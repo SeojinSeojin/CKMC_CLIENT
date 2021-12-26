@@ -13,6 +13,7 @@ import EpisodeContainer from '../../components/Episode/Container';
 import { useUser } from '../../hooks/useUser';
 import Loader from '../../components/common/Loader';
 import { toast } from 'react-toastify';
+import emptyBox from '../../components/common/Icons/ic-empty-box.svg';
 
 function MyPage() {
   const [fileURL, setFileURL] = useState<string>('');
@@ -25,6 +26,7 @@ function MyPage() {
   const { author, isValidating, error } = useUser();
 
   useEffect(() => {
+    console.log('author', author);
     if (author) {
       setContact(author.contact);
       setFileURL(author.work.thumbnail);
@@ -101,7 +103,7 @@ function MyPage() {
               fileURL !== ''
                 ? fileURL
                 : author.work.thumbnail === 'https://via.placeholder.com/250'
-                ? 'https://via.placeholder.com/500'
+                ? emptyBox
                 : author.work.thumbnail
             }
             alt=""

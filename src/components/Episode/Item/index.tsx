@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { useUser } from '../../../hooks/useUser';
 import { deleteFetcher } from '../../../utils/fetchers';
 import { ThumbnailImage, Wrapper, Title, TitleWrapper, Editors } from './style';
@@ -34,12 +35,20 @@ function EpisodeItem({
   const deleteItem = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, index: number) => {
     e.preventDefault();
     e.stopPropagation();
-    const deleteResponse = await deleteFetcher(`/api/episode/${index}`);
-    if (deleteResponse.ok) {
-      const authorAfterDelete = deleteResponse.json();
-      mutate(authorAfterDelete);
-    }
-    history.go(0);
+    const deletePromise = new Promise((resolve, reject) => {
+      deleteFetcher(`/api/episode/${index}`).then((res) => {
+        if (res.ok) {
+          const authorAfterDelete = res.json();
+          mutate(authorAfterDelete);
+          resolve('삭제 성공');
+        } else reject('삭제 실패');
+      });
+    });
+    toast.promise(deletePromise, {
+      pending: '삭제 중입니다. \n버튼을 다시 누르지 마시고 조금만 기다려주세요.',
+      success: '삭제에 성공했습니다',
+      error: '삭제에 실패했습니다. 다시 시도해주세요',
+    });
   };
   return (
     <Wrapper onClick={moveToDetail}>
