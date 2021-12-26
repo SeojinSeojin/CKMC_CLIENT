@@ -81,6 +81,7 @@ export const Submit = styled.input`
   background-color: transparent;
   border: none;
   color: white;
+  cursor: pointer;
 `;
 
 export const Bottom = styled.div`
@@ -90,4 +91,35 @@ export const Bottom = styled.div`
   width: 100%;
   margin-top: auto;
   margin-bottom: 20px;
+  position: relative;
+`;
+
+export const UploadedImage = styled.div`
+  width: 140px;
+  height: 140px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  & img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    transition: all 0.4s;
+  }
+  & div {
+    color: white;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    visibility: hidden;
+    cursor: pointer;
+  }
+  &:hover {
+    & > img {
+      filter: brightness(50%);
+    }
+    & > div {
+      visibility: visible;
+    }
+  }
 `;

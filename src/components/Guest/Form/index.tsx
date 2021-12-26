@@ -2,7 +2,7 @@ import React, { FormEvent, useRef, useState } from 'react';
 import { postFetcher } from '../../../utils/fetchers';
 import Input from '../../common/Input';
 import { uploadImage as uploadImageRemote } from '../../../utils/imageUploader';
-import { Body, Sender, Title, Wrapper, File, Submit, Bottom } from './style';
+import { Body, Sender, Title, Wrapper, File, Submit, Bottom, UploadedImage } from './style';
 import { toast } from 'react-toastify';
 
 function GuestForm() {
@@ -62,6 +62,12 @@ function GuestForm() {
       <Sender placeholder="이름" ref={senderRef} />
       <Bottom>
         <File htmlFor="file-input">사진 추가</File>
+        {selectedFile && (
+          <UploadedImage>
+            <img src={selectedFile} alt="업로드된 이미지" />
+            <div onClick={() => setSelectedFile(null)}>X</div>
+          </UploadedImage>
+        )}
         <input
           id="file-input"
           type="file"
