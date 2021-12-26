@@ -4,6 +4,7 @@ import Input from '../../common/Input';
 import { uploadImage as uploadImageRemote } from '../../../utils/imageUploader';
 import { Body, Sender, Title, Wrapper, File, Submit, Bottom, UploadedImage } from './style';
 import { toast } from 'react-toastify';
+import { isAllFilled } from '../../../utils/nullOrEmptyChecker';
 
 function GuestForm() {
   const titleRef = useRef<HTMLInputElement>(null);
@@ -24,12 +25,16 @@ function GuestForm() {
 
   const uploadLetter = async (e: FormEvent) => {
     e.preventDefault();
+    if (!titleRef.current || !bodyRef.current || !senderRef.current) return;
+    if (!isAllFilled(titleRef.current.value || bodyRef.current.value || senderRef.current.value)) {
+      toast.error('칸을 모두 채워주세요!');
+      return;
+    }
     const uploadPromise = new Promise((resolve, reject) => {
-      if (!titleRef.current || !bodyRef.current || !senderRef.current) return;
       postFetcher('/api/letter', {
-        title: titleRef.current.value,
-        body: bodyRef.current.value,
-        sender: senderRef.current.value,
+        title: titleRef.current!.value,
+        body: bodyRef.current!.value,
+        sender: senderRef.current!.value,
         file: selectedFile,
       }).then((res) => {
         if (res.status === 200) {
