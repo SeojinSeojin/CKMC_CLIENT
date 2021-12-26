@@ -36,7 +36,7 @@ function PageSelector({
 
   return (
     <>
-      <div>
+      <div style={{ overflowY: 'scroll' }}>
         {pages
           .sort((a, b) => a.index - b.index)
           .map((file) => (

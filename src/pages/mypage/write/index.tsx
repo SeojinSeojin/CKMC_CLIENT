@@ -89,8 +89,21 @@ function Upload({ isUpload }: { isUpload: boolean }) {
       if (!target.files) return;
       const files = target.files as FileList;
       [...files].forEach(async (file) => {
-        const uploadedFileURL = await uploadImageRemote(file);
-        callback({ localPath: file.name, remotePath: uploadedFileURL });
+        const uploadPromise = new Promise((resolve, reject) => {
+          try {
+            uploadImageRemote(file).then((uploadedFileURL) => {
+              callback({ localPath: file.name, remotePath: uploadedFileURL });
+              resolve('이미지 업로드 성공');
+            });
+          } catch (error) {
+            reject(error);
+          }
+        });
+        toast.promise(uploadPromise, {
+          pending: `${file.name} 업로드 중입니다. \n버튼을 다시 누르지 마시고 기다려주세요.`,
+          error: `${file.name} 업로드에 실패하였습니다. \n버튼을 다시 누르지 마시고 기다려주세요.`,
+          success: `${file.name} 업로드에 성공하였습니다.`,
+        });
       });
     } catch (e) {}
   };
