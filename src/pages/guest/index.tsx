@@ -5,12 +5,14 @@ import GuestList from '../../components/Guest/List';
 import GuestForm from '../../components/Guest/Form';
 import styled from 'styled-components';
 import CursorContainer from '../../components/common/Cursor';
+import useResponsive from '../../hooks/useResponsive';
 
 export default function GuestPage() {
+  const { isBig, isBigMiddle } = useResponsive();
   return (
     <>
-      <CursorContainer theme="white" />
-      <NavigationBar theme="white" selected="GUEST" />
+      {(isBig || isBigMiddle) && <CursorContainer theme="white" />}
+      <NavigationBar theme={isBig || isBigMiddle ? 'white' : 'blue'} selected="GUEST" />
       <Background>
         <div style={{ color: 'white' }}>당신의 편지를 파도에 흘려보내 주세요</div>
         <FlexWrapper>

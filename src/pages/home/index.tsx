@@ -12,7 +12,7 @@ export default function Home() {
     <>
       {!(isSmall || isSmallMiddle) && <CursorContainer theme="white" />}
       <NavigationBar
-        theme={isBig || isBigMiddle ? 'blue' : 'white'}
+        theme="blue"
         selected="MAIN"
         isOpened={isBig || isBigMiddle}
         isNotFoldable={isBig || isBigMiddle}

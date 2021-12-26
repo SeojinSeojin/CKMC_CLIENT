@@ -3,7 +3,7 @@ import Loader from 'react-spinners/PuffLoader';
 import NavigationBar from '../../../components/common/NavigationBar';
 import WorkItem from '../../../components/Work/Item/small';
 import { useWorks } from '../../../hooks/useWorks';
-import { EmptyWrapper, GridContainer, Title, Wrapper } from './style';
+import { EmptyWrapper, GridContainer, Wrapper } from './style';
 
 function WorkSmall() {
   const { worksData, isValidating } = useWorks({ hashTags: [] });
@@ -11,7 +11,6 @@ function WorkSmall() {
     <>
       <NavigationBar theme="blue" selected="WORKS" />
       <Wrapper>
-        <Title>CKMC 크리에이티브 페어 2022</Title>
         {isValidating ? (
           <Loader />
         ) : worksData && worksData.length ? (

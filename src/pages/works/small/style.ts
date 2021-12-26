@@ -7,15 +7,6 @@ export const GridContainer = styled.div`
   max-width: 900px;
 `;
 
-export const Title = styled.div`
-  font-size: 11px;
-  text-align: center;
-  position: absolute;
-  width: 100vw;
-  top: 80px;
-  left: 0;
-`;
-
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;

@@ -68,8 +68,8 @@ export const BlueButton = styled.div<IButton>`
   position: fixed;
   top: ${({ isSmall }) => (isSmall ? '50px' : '100px')};
   left: ${({ isSmall }) => (isSmall ? '30px' : '60px')};
-  width: ${({ isBig, isMiddle }) => (isBig ? '46px' : isMiddle ? '30px' : '26px')};
-  height: ${({ isBig, isMiddle }) => (isBig ? '46px' : isMiddle ? '30px' : '26px')};
+  width: ${({ isBig, isMiddle }) => (isBig ? '46px' : isMiddle ? '30px' : '22px')};
+  height: ${({ isBig, isMiddle }) => (isBig ? '46px' : isMiddle ? '30px' : '22px')};
   z-index: 9999;
   background-repeat: no-repeat;
   background-size: cover;
@@ -87,8 +87,8 @@ export const WhiteButton = styled.div<IButton>`
   position: fixed;
   top: ${({ isSmall }) => (isSmall ? '50px' : '100px')};
   left: ${({ isSmall }) => (isSmall ? '30px' : '60px')};
-  width: ${({ isBig, isMiddle }) => (isBig ? '46px' : isMiddle ? '30px' : '26px')};
-  height: ${({ isBig, isMiddle }) => (isBig ? '46px' : isMiddle ? '30px' : '26px')};
+  width: ${({ isBig, isMiddle }) => (isBig ? '46px' : isMiddle ? '30px' : '22px')};
+  height: ${({ isBig, isMiddle }) => (isBig ? '46px' : isMiddle ? '30px' : '22px')};
   z-index: 9999;
   background-repeat: no-repeat;
   background-size: cover;

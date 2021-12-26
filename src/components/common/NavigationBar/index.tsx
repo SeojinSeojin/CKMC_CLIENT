@@ -6,6 +6,7 @@ import { useUser } from '../../../hooks/useUser';
 import { postFetcher } from '../../../utils/fetchers';
 import { openReservation } from '../../../utils/openExternalSiteInOuterWindow';
 import { SIDE_NAV } from '../../../utils/SIDE_NAV';
+import MobileHeader from './MobileHeader';
 import { BlueButton, Item, WhiteButton, Wrapper, UserItem } from './style';
 
 interface INavigationBar {
@@ -79,7 +80,7 @@ export default function NavigationBar({
           isSmall={isSmall}
         />
       )}
-
+      {isSmall && <MobileHeader />}
       {isOpen && (
         <Wrapper theme={theme} animation={animation}>
           {Object.keys(SIDE_NAV).map((key) => (
