@@ -6,7 +6,7 @@ import {
   IcPaginatorNext,
   IcPaginatorPrevious,
 } from '../../common/Icons';
-import { Paginator, Wrapper, Letters } from './style';
+import { Paginator, Wrapper, Letters, FlexContainer } from './style';
 import useLetter from '../../../hooks/useLetters';
 import Loader from '../../common/Loader';
 import GuestItem from './Item';
@@ -18,8 +18,14 @@ function GuestList() {
   const [openItem, setOpenItem] = useState<Number | null>(null);
 
   const { data, error } = useLetter({ mode: mode, page: pageIndex });
-  const setSquareMode = () => setMode(5);
-  const setLinearMode = () => setMode(10);
+  const setSquareMode = () => {
+    setMode(5);
+    setPageIndex(0);
+  };
+  const setLinearMode = () => {
+    setMode(10);
+    setPageIndex(0);
+  };
   if (error) return <Wrapper>에러 발생</Wrapper>;
 
   if (!data)
@@ -34,29 +40,31 @@ function GuestList() {
   return (
     <Wrapper>
       <ModeSwitcher mode={mode} setLinearMode={setLinearMode} setSquareMode={setSquareMode} />
-      <Letters>
-        {letters.map((letter: LetterData, index: number) => (
-          <GuestItem
-            onClick={() => {
-              if (openItem === index) setOpenItem(null);
-              else setOpenItem(index);
-            }}
-            key={index}
-            index={
-              (Math.floor(lettersCount / mode) - pageIndex + 1) * mode -
-              index -
-              mode +
-              (lettersCount % mode)
-            }
-            mode={mode}
-            body={letter.body}
-            title={letter.title}
-            sender={letter.sender}
-            file={letter.file}
-            createdAt={letter.createdAt}
-            isOpened={openItem !== null ? index === openItem : false}
-          />
-        ))}
+      <Letters mode={mode}>
+        <FlexContainer mode={mode}>
+          {letters.map((letter: LetterData, index: number) => (
+            <GuestItem
+              onClick={() => {
+                if (openItem === index) setOpenItem(null);
+                else setOpenItem(index);
+              }}
+              key={index}
+              index={
+                (Math.floor(lettersCount / mode) - pageIndex + 1) * mode -
+                index -
+                mode +
+                (lettersCount % mode)
+              }
+              mode={mode}
+              body={letter.body}
+              title={letter.title}
+              sender={letter.sender}
+              file={letter.file}
+              createdAt={letter.createdAt}
+              isOpened={openItem !== null ? index === openItem : false}
+            />
+          ))}
+        </FlexContainer>
       </Letters>
       <Paginator>
         <IcPaginatorFirst
