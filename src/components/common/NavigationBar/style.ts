@@ -80,10 +80,7 @@ export const BlueButton = styled.div<IButton>`
       : css`
           ${rotate} 8s linear infinite
         `};
-
-  &:hover {
-    cursor: pointer;
-  }
+  cursor: pointer;
 `;
 
 export const WhiteButton = styled.div<IButton>`
@@ -102,9 +99,7 @@ export const WhiteButton = styled.div<IButton>`
       : css`
           ${rotate} 8s linear infinite
         `};
-  &:hover {
-    cursor: pointer;
-  }
+  cursor: pointer;
 `;
 
 interface IItem {
@@ -127,7 +122,7 @@ export const Item = styled.a<IItem>`
       : '#8EAEC9'};
 
   &:hover {
-    font-family: NEXON Lv1 Gothic OTF Bold;
+    font-family: 'NEXON Lv1 Gothic OTF Bold';
     color: ${(props) => (props.theme === 'white' ? 'white' : '#2454A6')};
     cursor: pointer;
   }
@@ -138,14 +133,21 @@ export const UserItem = styled(Item)`
   margin-top: auto;
   margin-bottom: 95px;
   padding-top: 20px;
-  width: 64px;
+  width: 80px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: left;
 
   &:hover {
+    font-family: 'NEXON Lv1 Gothic OTF';
     border-top: 1px solid #2454a6;
-    & > * {
-      color: ${(props) => (props.theme === 'white' ? 'white' : '#2454A6')};
-    }
+  }
+
+  & > div:hover {
+    color: ${(props) => (props.theme === 'white' ? 'white' : '#2454A6')};
+    font-family: 'NEXON Lv1 Gothic OTF Bold';
   }
   & > * {
     color: ${({ theme, selected, isSmall }) =>
