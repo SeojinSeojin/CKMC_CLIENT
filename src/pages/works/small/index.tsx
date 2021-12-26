@@ -1,6 +1,7 @@
 import React from 'react';
-import Loader from 'react-spinners/PuffLoader';
+import Loader from '../../../components/common/Loader';
 import NavigationBar from '../../../components/common/NavigationBar';
+import VerticalCenterLayout from '../../../components/layout/VerticalCenter';
 import WorkItem from '../../../components/Work/Item/small';
 import { useWorks } from '../../../hooks/useWorks';
 import { EmptyWrapper, GridContainer, Wrapper } from './style';
@@ -12,7 +13,9 @@ function WorkSmall() {
       <NavigationBar theme="blue" selected="WORKS" />
       <Wrapper>
         {isValidating ? (
-          <Loader />
+          <VerticalCenterLayout>
+            <Loader />
+          </VerticalCenterLayout>
         ) : worksData && worksData.length ? (
           <GridContainer>
             {worksData.map((work: WorkData) => (

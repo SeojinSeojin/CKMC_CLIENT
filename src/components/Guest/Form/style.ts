@@ -3,7 +3,7 @@ import BgLetter from '../../common/Icons/bg-letter.svg';
 
 export const Wrapper = styled.form`
   width: 480px;
-  height: 660px;
+  height: 640px;
   padding-top: 46px;
   padding-right: 28px;
   padding-left: 28px;

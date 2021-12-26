@@ -15,6 +15,7 @@ import {
   Title,
   EmptyWrapper,
 } from './style';
+import VerticalCenterLayout from '../../../components/layout/VerticalCenter';
 
 export default function WorkBig() {
   const [hashTags, setHashTags] = useState<string[]>([]);
@@ -48,7 +49,11 @@ export default function WorkBig() {
       <NavigationBar theme="blue" selected="WORKS" />
 
       {isValidating ? (
-        <Loader />
+        <Wrapper isNavOpened={isNavOpened} animation={animation}>
+          <VerticalCenterLayout>
+            <Loader />
+          </VerticalCenterLayout>
+        </Wrapper>
       ) : (
         <Wrapper isNavOpened={isNavOpened} animation={animation}>
           <Title>CKMC 크리에이티브 페어 2022</Title>

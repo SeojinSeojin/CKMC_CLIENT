@@ -26,6 +26,10 @@ import { ReactComponent as BgTitleHeaderSmall } from './bg-title-header-small.sv
 import { ReactComponent as BgFooterSmall } from './bg-footer-small.svg';
 import { ReactComponent as BgAboutTitleSmall } from './bg-about-title-small.svg';
 import { ReactComponent as BgMapFooterSmall } from './bg-map-footer-small.svg';
+import { ReactComponent as IcModeBoxSelected } from './ic-mode-box-selected.svg';
+import { ReactComponent as IcModeBox } from './ic-mode-box.svg';
+import { ReactComponent as IcModeListSelected } from './ic-mode-list-selected.svg';
+import { ReactComponent as IcModeList } from './ic-mode-list.svg';
 
 export {
   IcPaginatorFirst,
@@ -56,4 +60,8 @@ export {
   BgFooterSmall,
   BgAboutTitleSmall,
   BgMapFooterSmall,
+  IcModeBoxSelected,
+  IcModeBox,
+  IcModeListSelected,
+  IcModeList,
 };

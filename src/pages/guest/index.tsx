@@ -25,7 +25,7 @@ export default function GuestPage() {
 }
 
 const Title = styled.div`
-  font-size: 24px;
+  font-size: 20px;
   color: white;
   font-family: 'Noto Sans Regular';
 `;
@@ -36,5 +36,5 @@ const FlexWrapper = styled.div`
   width: 80%;
   max-width: 1360px;
   gap: 80px;
-  margin-top: 40px;
+  margin-top: 80px;
 `;

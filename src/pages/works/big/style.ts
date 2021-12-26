@@ -28,7 +28,7 @@ export const CenterContainer = styled.div`
 `;
 
 export const Wrapper = styled.div<IWorkContainer>`
-  min-height: 400px;
+  min-height: 100vh;
   ${({ animation }) =>
     animation === 'initial'
       ? ''

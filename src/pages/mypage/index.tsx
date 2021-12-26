@@ -14,6 +14,7 @@ import { useUser } from '../../hooks/useUser';
 import Loader from '../../components/common/Loader';
 import { toast } from 'react-toastify';
 import emptyBox from '../../components/common/Icons/ic-empty-box.svg';
+import VerticalCenterLayout from '../../components/layout/VerticalCenter';
 
 function MyPage() {
   const [fileURL, setFileURL] = useState<string>('');
@@ -85,7 +86,12 @@ function MyPage() {
         <Link to="/login">로그인 바로가기</Link>
       </div>
     );
-  if (isValidating || !author) return <Loader />;
+  if (isValidating || !author)
+    return (
+      <VerticalCenterLayout>
+        <Loader />
+      </VerticalCenterLayout>
+    );
   return (
     <>
       <NavigationBar theme="blue" selected={null} />

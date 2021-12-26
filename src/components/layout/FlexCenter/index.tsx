@@ -8,8 +8,7 @@ const FlexWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 88vh;
-  padding: 6vh 0;
+  height: 100%;
 `;
 
 export default FlexCenterLayout;

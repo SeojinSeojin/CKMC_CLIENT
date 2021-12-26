@@ -11,6 +11,7 @@ import { getFetcher } from '../../utils/fetchers';
 import { urlEncoder } from '../../utils/urlEncoder';
 import { AuthorDescription, FlexWrapper, EpisodeDescription, Header } from './style';
 import PageNavigator from '../../components/Episode/PageNavigator';
+import VerticalCenterLayout from '../../components/layout/VerticalCenter';
 
 function EpisodePage() {
   const { authorId, episodeIdx }: { authorId: string; episodeIdx: string } = useParams();
@@ -26,7 +27,12 @@ function EpisodePage() {
     getEpisode();
   }, [episodeIdx, authorId]);
 
-  if (!episode || !author) return <Loader />;
+  if (!episode || !author)
+    return (
+      <VerticalCenterLayout>
+        <Loader />
+      </VerticalCenterLayout>
+    );
   return (
     <>
       <CursorContainer theme="blue" />

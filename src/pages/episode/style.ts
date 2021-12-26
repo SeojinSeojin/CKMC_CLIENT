@@ -42,6 +42,9 @@ export const FlexWrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   width: 100%;
+  margin-top: 6vh;
+  margin-bottom: 6vh;
+  min-height: 88vh;
   max-width: 1060px;
   padding: 0 20px;
   > * {

@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 
-import GuestItem from './Item';
 import {
+  IcModeBox,
+  IcModeBoxSelected,
+  IcModeList,
   IcPaginatorFirst,
   IcPaginatorLast,
   IcPaginatorNext,
   IcPaginatorPrevious,
 } from '../../common/Icons';
-import { Paginator, Wrapper, Letters } from './style';
+import { Paginator, Wrapper, Letters, ModeSwitcher } from './style';
 import useLetter from '../../../hooks/useLetters';
 import Loader from '../../common/Loader';
+import GuestItem from './Item';
 
 function GuestList() {
   const [pageIndex, setPageIndex] = useState(0);
@@ -17,7 +20,10 @@ function GuestList() {
   const [openItem, setOpenItem] = useState<Number | null>(null);
 
   const { data, error } = useLetter({ mode: mode, page: pageIndex });
+  const setSquareMode = () => setMode(5);
+  const setLinearMode = () => setMode(10);
   if (error) return <Wrapper>에러 발생</Wrapper>;
+
   if (!data)
     return (
       <Wrapper>
@@ -26,8 +32,22 @@ function GuestList() {
     );
 
   const { letters, lettersCount } = data;
+
   return (
     <Wrapper>
+      <ModeSwitcher>
+        {mode === 5 ? (
+          <>
+            <IcModeList onClick={setLinearMode} />
+            <IcModeBoxSelected onClick={setSquareMode} />
+          </>
+        ) : (
+          <>
+            <IcModeList onClick={setLinearMode} />
+            <IcModeBox onClick={setSquareMode} />
+          </>
+        )}
+      </ModeSwitcher>
       <Letters>
         {letters.map((letter: LetterData, index: number) => (
           <GuestItem

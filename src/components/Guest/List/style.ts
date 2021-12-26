@@ -13,6 +13,7 @@ export const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
+  position: relative;
 `;
 
 export const Letters = styled.div`
@@ -21,4 +22,12 @@ export const Letters = styled.div`
   overflow-y: scroll;
   scroll-behavior: smooth;
   border-bottom: 1px solid white;
+`;
+
+export const ModeSwitcher = styled.div`
+  display: flex;
+  gap: 10px;
+  position: absolute;
+  left: 0;
+  margin-top: -40px;
 `;

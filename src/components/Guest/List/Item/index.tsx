@@ -1,7 +1,6 @@
 import React, { MouseEventHandler } from 'react';
-import { TableItem, Detail, Cover } from './style';
-import { parseDate } from '../../../../utils/parseDate';
-import { IcToggleDown, IcToggleUp } from '../../../common/Icons';
+import GuestItemLinear from './Linear';
+import GuestItemSquare from './Square';
 
 interface IGuestItem extends LetterData {
   index: number;
@@ -21,44 +20,28 @@ function GuestItem({
   isOpened,
   onClick,
 }: IGuestItem) {
-  const bodies = body
-    .replace('\\n', '\n')
-    .split('\n')
-    .map((line, idx) => <p key={idx}>{line}</p>);
-  const lines = bodies.length;
-  [...Array(8 - lines)].forEach((_, idx) => bodies.push(<p key={8 - lines + idx}></p>));
-  console.log(mode);
   if (mode === 10)
     return (
-      <TableItem onClick={onClick}>
-        <Cover>
-          <div>{index}번째 편지</div>
-          <div>{title}</div>
-          <div>{parseDate(createdAt)}</div>
-          <div>{sender}</div>
-          {isOpened ? <IcToggleUp /> : <IcToggleDown />}
-        </Cover>
-        {isOpened && (
-          <Detail>
-            {file && <img src={file} alt={title} />}
-            <div>{bodies}</div>
-          </Detail>
-        )}
-      </TableItem>
+      <GuestItemLinear
+        title={title}
+        body={body}
+        sender={sender}
+        file={file}
+        createdAt={createdAt}
+        index={index}
+        isOpened={isOpened}
+        onClick={onClick}
+      />
     );
   return (
-    <div>
-      <div>
-        <div>{index}번째 편지</div>
-        <div>{createdAt}</div>
-      </div>
-      <div>
-        <div>{title}</div>
-        {file && <img src={file} alt={title} />}
-        <div>{bodies}</div>
-        <div>{sender}</div>
-      </div>
-    </div>
+    <GuestItemSquare
+      title={title}
+      body={body}
+      sender={sender}
+      file={file}
+      createdAt={createdAt}
+      index={index}
+    />
   );
 }
 
