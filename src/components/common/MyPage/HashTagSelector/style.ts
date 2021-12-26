@@ -7,6 +7,7 @@ interface ITag {
 export const Tag = styled.div<ITag>`
   color: ${({ isSelected }) => (isSelected ? '#2454A6' : '#8EAEC9')};
   font-weight: ${({ isSelected }) => (isSelected ? '600' : '#400')};
+  cursor: pointer;
 `;
 
 export const Container = styled.div`
