@@ -41,7 +41,9 @@ export const FlexWrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  min-width: 1060px;
+  width: 100%;
+  max-width: 1060px;
+  padding: 0 20px;
   > * {
     font-family: 'Noto Sans Regular';
   }

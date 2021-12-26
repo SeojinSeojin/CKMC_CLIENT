@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useHistory, useParams } from 'react-router';
+import { toast } from 'react-toastify';
 import styled from 'styled-components';
 import ModeController from '../../../components/common/MyPage/ModeController';
 import NavigationBar from '../../../components/common/NavigationBar';
@@ -95,9 +96,18 @@ function Upload({ isUpload }: { isUpload: boolean }) {
   };
 
   const uploadEpisode = async (handler: Function) => {
-    if (mode === 'link') if (!isAllFilled(linkRef.current?.value)) return;
-    if (mode !== 'link')
-      if (!isAllFilled(titleRef.current?.value, descriptionRef.current?.value)) return;
+    if (mode === 'link') {
+      if (!isAllFilled(linkRef.current?.value)) {
+        toast.error('내용을 모두 채워 주세요');
+        return;
+      }
+    }
+    if (mode !== 'link') {
+      if (!isAllFilled(titleRef.current?.value, descriptionRef.current?.value)) {
+        toast.error('내용을 모두 채워 주세요');
+        return;
+      }
+    }
 
     const body: any = {
       viewMethod: mode,
@@ -109,14 +119,23 @@ function Upload({ isUpload }: { isUpload: boolean }) {
       pages: pages,
     };
     if (!isUpload) body['index'] = +episodeIdx;
-    console.log(body);
-    const response = await handler('/api/episode', body);
-    if (response.ok) {
-      const author: AuthorData = await response.json();
-      if (mode !== 'link')
-        history.push(`/author/${author.nickName}/${author.work.episodes.length - 1}`);
-      else history.goBack();
-    }
+    const responsePromise = new Promise((resolve, reject) => {
+      handler('/api/episode', body).then((response: any) => {
+        if (response.ok) {
+          response.json().then((author: AuthorData) => {
+            history.goBack();
+            resolve('업로드 성공');
+          });
+        } else {
+          reject('업로드 실패');
+        }
+      });
+    });
+    toast.promise(responsePromise, {
+      pending: '변경 사항을 저장하고 있습니다.',
+      error: '변경 사항이 반영되지 않았습니다. \n다시 시도해주세요',
+      success: '성공적으로 저장되었습니다.',
+    });
   };
 
   const submitEpisode = () => {
