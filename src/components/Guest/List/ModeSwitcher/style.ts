@@ -9,4 +9,8 @@ export const Wrapper = styled.div`
   & > svg {
     cursor: pointer;
   }
+
+  @media (max-width: 1200px) {
+    padding: 0 20px;
+  }
 `;

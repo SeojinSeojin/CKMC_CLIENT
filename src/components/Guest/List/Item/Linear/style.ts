@@ -14,6 +14,10 @@ export const Cover = styled.div`
 
   & > div {
     color: white;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 100%;
+    white-space: nowrap;
   }
   & > div:nth-child(1) {
     font-size: 14px;
@@ -28,6 +32,22 @@ export const Cover = styled.div`
   }
   & > div:nth-child(4) {
     font-size: 14px;
+  }
+  @media (max-width: 1200px) {
+    grid-template-columns: 2fr 4fr 2fr 1fr;
+    & > div:nth-child(1) {
+      font-size: 8px;
+    }
+    & > div:nth-child(2) {
+      font-size: 11px;
+    }
+    & > div:nth-child(3) {
+      font-size: 9px;
+    }
+    & > div:nth-child(4) {
+      font-size: 9px;
+      text-align: right;
+    }
   }
 `;
 
@@ -67,5 +87,7 @@ export const Detail = styled.div`
     & :last-child {
       border-bottom: 1px solid #8eaec9;
     }
+  }
+  @media (max-width: 1200px) {
   }
 `;

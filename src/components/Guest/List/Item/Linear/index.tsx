@@ -2,6 +2,7 @@ import React, { MouseEventHandler } from 'react';
 import { TableItem, Detail, Cover } from './style';
 import { parseDate } from '../../../../../utils/parseDate';
 import { IcToggleDown, IcToggleUp } from '../../../../common/Icons';
+import useResponsive from '../../../../../hooks/useResponsive';
 
 interface IGuestItem extends LetterData {
   index: number;
@@ -25,6 +26,7 @@ function GuestItemLinear({
     .map((line, idx) => <p key={idx}>{line}</p>);
   const lines = bodies.length;
   [...Array(8 - lines)].forEach((_, idx) => bodies.push(<p key={8 - lines + idx}></p>));
+  const { isSmall, isSmallMiddle } = useResponsive();
   return (
     <TableItem onClick={onClick}>
       <Cover>
@@ -32,7 +34,7 @@ function GuestItemLinear({
         <div>{title}</div>
         <div>{parseDate(createdAt)}</div>
         <div>{sender}</div>
-        {isOpened ? <IcToggleUp /> : <IcToggleDown />}
+        {!(isSmall || isSmallMiddle) && (isOpened ? <IcToggleUp /> : <IcToggleDown />)}
       </Cover>
       {isOpened && (
         <Detail>

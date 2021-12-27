@@ -23,6 +23,8 @@ export const Wrapper = styled.form`
     padding-bottom: 12px;
     margin: 8px 0;
     position: relative;
+    margin-top: 30px;
+    margin-bottom: 120px;
   }
 `;
 
