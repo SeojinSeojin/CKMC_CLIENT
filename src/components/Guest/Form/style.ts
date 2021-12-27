@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import BgLetter from '../../common/Icons/bg-letter.svg';
+import BgLetterSmall from '../../common/Icons/bg-letter-small.svg';
 
 export const Wrapper = styled.form`
   width: 480px;
@@ -11,6 +12,18 @@ export const Wrapper = styled.form`
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+
+  @media (max-width: 1200px) {
+    max-width: 325px;
+    width: calc(100% - 16px);
+    height: 265px;
+    padding-top: 23px;
+    padding-right: 12px;
+    padding-left: 12px;
+    padding-bottom: 12px;
+    margin: 8px 0;
+    position: relative;
+  }
 `;
 
 export const Title = styled.input`
@@ -27,6 +40,9 @@ export const Title = styled.input`
   }
   &:focus {
     outline: none;
+  }
+  @media (max-width: 1200px) {
+    font-size: 11px;
   }
 `;
 
@@ -49,6 +65,13 @@ export const Body = styled.textarea`
   &:focus {
     outline: none;
   }
+
+  @media (max-width: 1200px) {
+    background-image: url(${BgLetterSmall});
+    height: 165px;
+    line-height: 22px;
+    font-size: 11px;
+  }
 `;
 
 export const Sender = styled.input`
@@ -69,11 +92,24 @@ export const Sender = styled.input`
   &:focus {
     outline: none;
   }
+
+  @media (max-width: 1200px) {
+    position: absolute;
+    bottom: 16px;
+    width: 55px;
+    left: calc(50% - 27.5px);
+    font-size: 11px;
+    padding-bottom: 6px;
+  }
 `;
 
 export const File = styled.label`
   color: white;
   font-size: 18px;
+  @media (max-width: 1200px) {
+    font-size: 10px;
+    line-height: 23px;
+  }
 `;
 
 export const Submit = styled.input`
@@ -82,6 +118,9 @@ export const Submit = styled.input`
   border: none;
   color: white;
   cursor: pointer;
+  @media (max-width: 1200px) {
+    font-size: 10px;
+  }
 `;
 
 export const Bottom = styled.div`
@@ -92,6 +131,9 @@ export const Bottom = styled.div`
   margin-top: auto;
   margin-bottom: 20px;
   position: relative;
+  @media (max-width: 1200px) {
+    margin-bottom: 0;
+  }
 `;
 
 export const UploadedImage = styled.div`

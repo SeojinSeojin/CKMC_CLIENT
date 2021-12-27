@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled, { StyledComponent } from 'styled-components';
+import useResponsive from '../../../hooks/useResponsive';
 
 interface IInput {
   maxLength: number;
@@ -26,6 +27,7 @@ const Input = React.forwardRef<HTMLInputElement, IInput>(
       if (newValue.length > maxLength) return;
       setValue(newValue);
     };
+    const { isSmall, isSmallMiddle } = useResponsive();
     return (
       <StyledWrapper>
         <StyledInput
@@ -41,7 +43,8 @@ const Input = React.forwardRef<HTMLInputElement, IInput>(
             bottom: 0,
             right: 0,
             color: '#8EAEC9',
-            paddingBottom: counterBottom,
+            paddingBottom: isSmallMiddle || isSmall ? 22 : counterBottom,
+            fontSize: isSmallMiddle || isSmall ? '10px' : '13px',
           }}
         >
           {value.length} / {maxLength}
