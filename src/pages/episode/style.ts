@@ -1,43 +1,55 @@
 import styled from 'styled-components';
 
-export const Header = styled.div`
+interface IIsSmall {
+  isSmall: boolean;
+}
+export const Header = styled.div<IIsSmall>`
   color: #2454a6;
-  padding-bottom: 40px;
-  margin-bottom: 50px;
-  border-bottom: 1px solid #8eaec9;
+  padding-bottom: ${({ isSmall }) => (isSmall ? '12px' : '40px')};
+  margin-bottom: ${({ isSmall }) => (isSmall ? '8px' : '50px')};
   display: flex;
-  gap: 40px;
+  ${({ isSmall }) =>
+    isSmall
+      ? 'flex-direction: column; justify-content: center; margin-top:20px;'
+      : 'border-bottom: 1px solid #8eaec9;'}
+  gap: ${({ isSmall }) => (isSmall ? '11px' : '40px')};
   & > div {
     &:nth-child(1) {
-      font-size: 32px;
+      font-size: ${({ isSmall }) => (isSmall ? '14px' : '32px')};
       font-weight: 600;
+      ${({ isSmall }) => (isSmall ? 'text-align:center;' : '')}
     }
     &:nth-child(2) {
-      font-size: 22px;
-      align-self: flex-end;
+      font-size: ${({ isSmall }) => (isSmall ? '11px' : '22px')};
+      ${({ isSmall }) => (isSmall ? 'text-align:center;' : 'align-self: flex-end;')};
     }
   }
 `;
 
-export const AuthorDescription = styled.div`
+export const AuthorDescription = styled.div<IIsSmall>`
   display: grid;
   gap: 24px;
   align-items: center;
   color: #2454a6;
-  font-size: 20px;
-  padding-top: 120px;
-  grid-template-columns: 120px auto 100px;
+  font-family: 'Noto Sans Regular';
+  font-size: ${({ isSmall }) => (isSmall ? '11px' : '20px')};
+  padding-top: ${({ isSmall }) => (isSmall ? '12px' : '120px')};
+  padding-left: ${({ isSmall }) => (isSmall ? '30px' : '0px')};
+  padding-right: ${({ isSmall }) => (isSmall ? '30px' : '0px')};
+  grid-template-columns: ${({ isSmall }) => (isSmall ? '50px auto' : '120px auto 100px')};
 `;
 
-export const EpisodeDescription = styled.div`
-  font-size: 18px;
-  line-height: 26px;
+export const EpisodeDescription = styled.div<IIsSmall>`
+  font-size: ${({ isSmall }) => (isSmall ? '11px' : '18px')};
+  line-height: ${({ isSmall }) => (isSmall ? '20px' : '26px')};
   color: #2454a6;
-  padding-top: 50px;
+  padding-top: ${({ isSmall }) => (isSmall ? '25px' : '50px')};
+  padding-left: ${({ isSmall }) => (isSmall ? '30px' : '0px')};
+  padding-right: ${({ isSmall }) => (isSmall ? '30px' : '0px')};
   letter-spacing: -0.02em;
 `;
 
-export const FlexWrapper = styled.div`
+export const FlexWrapper = styled.div<IIsSmall>`
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -46,7 +58,7 @@ export const FlexWrapper = styled.div`
   margin-bottom: 6vh;
   min-height: 88vh;
   max-width: 1060px;
-  padding: 0 20px;
+  padding: ${({ isSmall }) => (isSmall ? '0' : '0 20px')};
   > * {
     font-family: 'Noto Sans Regular';
   }

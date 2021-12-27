@@ -12,11 +12,13 @@ import { urlEncoder } from '../../utils/urlEncoder';
 import { AuthorDescription, FlexWrapper, EpisodeDescription, Header } from './style';
 import PageNavigator from '../../components/Episode/PageNavigator';
 import VerticalCenterLayout from '../../components/layout/VerticalCenter';
+import useResponsive from '../../hooks/useResponsive';
 
 function EpisodePage() {
   const { authorId, episodeIdx }: { authorId: string; episodeIdx: string } = useParams();
   const [episode, setEpisode] = useState<EpisodeData | null>(null);
   const [author, setAuthor] = useState<AuthorData | null>(null);
+  const { isSmall, isSmallMiddle } = useResponsive();
 
   useEffect(() => {
     const getEpisode = async () => {
@@ -35,11 +37,11 @@ function EpisodePage() {
     );
   return (
     <>
-      <CursorContainer theme="blue" />
+      {!(isSmall || isSmallMiddle) && <CursorContainer theme="blue" />}
       <NavigationBar theme="blue" selected="WORKS" />
       <FlexCenterLayout>
-        <FlexWrapper>
-          <Header>
+        <FlexWrapper isSmall={isSmall || isSmallMiddle}>
+          <Header isSmall={isSmall || isSmallMiddle}>
             <div>{author.work.title}</div>
             <div>{episode.title}</div>
           </Header>
@@ -58,17 +60,21 @@ function EpisodePage() {
               />
             )
           )}
-          <EpisodeDescription>{episode.description}</EpisodeDescription>
-          <AuthorDescription>
+          <EpisodeDescription isSmall={isSmall || isSmallMiddle}>
+            {episode.description}
+          </EpisodeDescription>
+          <AuthorDescription isSmall={isSmall || isSmallMiddle}>
             <div>{author.nickName}</div>
             <div>
               {author.work.hashTags && <SelectedHashTags hashTags={author.work.hashTags} />}
             </div>
-            <PageNavigator
-              totalPage={author.work.episodes.length}
-              currentPage={episode.index}
-              authorName={author.nickName}
-            />
+            {!(isSmall || isSmallMiddle) && (
+              <PageNavigator
+                totalPage={author.work.episodes.length}
+                currentPage={episode.index}
+                authorName={author.nickName}
+              />
+            )}
           </AuthorDescription>
         </FlexWrapper>
       </FlexCenterLayout>
