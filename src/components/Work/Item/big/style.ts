@@ -19,10 +19,12 @@ export const Wrapper = styled.div<IWrapper>`
     visibility: hidden;
     color: white;
     font-weight: 900;
-    font-size: 24px;
+    font-size: 22px;
     z-index: 900;
     text-align: center;
     padding: 30px;
+    line-height: 32px;
+    word-break: keep-all;
     &:nth-child(2) {
       position: absolute;
       bottom: 0px;
