@@ -9,11 +9,12 @@ const Text = styled.div`
 
 interface IIsSmall {
   isSmall: boolean;
+  isSmallMiddle: boolean;
 }
 
 export const Title = styled(Text)<IIsSmall>`
   font-weight: 900;
-  font-size: ${({ isSmall }) => (isSmall ? 13 : 30)}px;
+  font-size: ${({ isSmall, isSmallMiddle }) => (isSmall ? 13 : isSmallMiddle ? 24 : 30)}px;
   margin-top: 20px;
   font-family: 'NEXON Lv1 Gothic OTF Bold';
 `;
@@ -46,8 +47,9 @@ export const Footer = styled.div<IIsSmall>`
 `;
 
 export const Image = styled.img<IIsSmall>`
-  width: ${({ isSmall }) => (isSmall ? 180 : 500)}px;
-  height: ${({ isSmall }) => (isSmall ? 180 : 500)}px;
-  margin-left: ${({ isSmall }) => (isSmall ? 'calc(50% - 90px)' : 0)};
+  width: ${({ isSmall, isSmallMiddle }) => (isSmall ? 180 : isSmallMiddle ? 300 : 500)}px;
+  height: ${({ isSmall, isSmallMiddle }) => (isSmall ? 180 : isSmallMiddle ? 300 : 500)}px;
+  margin-left: ${({ isSmall, isSmallMiddle }) =>
+    isSmall ? 'calc(50% - 90px)' : isSmallMiddle ? 'calc(50% - 150px)' : 0};
   object-fit: cover;
 `;

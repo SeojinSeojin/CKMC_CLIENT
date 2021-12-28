@@ -53,10 +53,12 @@ function EpisodeItem({
     });
   };
   return (
-    <Wrapper onClick={moveToDetail} isSmall={isSmall || isSmallMiddle}>
-      <ThumbnailImage src={thumbnail} alt={title} isSmall={isSmall || isSmallMiddle} />
-      <TitleWrapper isSmall={isSmall || isSmallMiddle}>
-        <Title isSmall={isSmall || isSmallMiddle}>{title}</Title>
+    <Wrapper onClick={moveToDetail} isSmall={isSmall} isSmallMiddle={isSmallMiddle}>
+      <ThumbnailImage src={thumbnail} alt={title} isSmall={isSmall} isSmallMiddle={isSmallMiddle} />
+      <TitleWrapper isSmall={isSmall} isSmallMiddle={isSmallMiddle}>
+        <Title isSmall={isSmall} isSmallMiddle={isSmallMiddle}>
+          {title}
+        </Title>
         {isEditable && (
           <Editors>
             <button onClick={(e) => moveToEdit(e, index)}>수정</button>

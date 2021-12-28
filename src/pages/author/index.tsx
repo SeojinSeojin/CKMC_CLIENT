@@ -42,13 +42,18 @@ export default function AuthorPage() {
                   ? emptyBox
                   : author.work.thumbnail
               }
-              isSmall={isSmall || isSmallMiddle}
+              isSmall={isSmall}
+              isSmallMiddle={isSmallMiddle}
               alt="thumbnail"
             />
-            <Title isSmall={isSmall || isSmallMiddle}>{author.work.title}</Title>
-            <Description isSmall={isSmall || isSmallMiddle}>{author.work.description}</Description>
+            <Title isSmall={isSmall} isSmallMiddle={isSmallMiddle}>
+              {author.work.title}
+            </Title>
+            <Description isSmall={isSmall} isSmallMiddle={isSmallMiddle}>
+              {author.work.description}
+            </Description>
             {author.work.hashTags && <SelectedHashTags hashTags={author.work.hashTags} />}
-            <Footer isSmall={isSmall || isSmallMiddle}>
+            <Footer isSmall={isSmall} isSmallMiddle={isSmallMiddle}>
               <div>{author.nickName}</div>
               <div>{author.contact}</div>
             </Footer>

@@ -2,10 +2,12 @@ import styled from 'styled-components';
 
 interface IIsSmall {
   isSmall: boolean;
+  isSmallMiddle: boolean;
 }
 export const Wrapper = styled.a<IIsSmall>`
   display: grid;
-  grid-template-columns: ${({ isSmall }) => (isSmall ? '120px auto' : '320px auto')};
+  grid-template-columns: ${({ isSmall, isSmallMiddle }) =>
+    isSmall ? '120px auto' : isSmallMiddle ? '200px auto' : '320px auto'};
   gap: 12px;
   margin-bottom: 8px;
 
@@ -20,21 +22,22 @@ export const Wrapper = styled.a<IIsSmall>`
 `;
 
 export const ThumbnailImage = styled.img<IIsSmall>`
-  width: ${({ isSmall }) => (isSmall ? '120px' : '320px')};
-  height: ${({ isSmall }) => (isSmall ? '90px' : '240px')};
+  width: ${({ isSmall, isSmallMiddle }) => (isSmall ? '120px' : isSmallMiddle ? '200px' : '320px')};
+  height: ${({ isSmall, isSmallMiddle }) => (isSmall ? '90px' : isSmallMiddle ? '150px' : '240px')};
   object-fit: cover;
 `;
 
 export const Title = styled.div<IIsSmall>`
   color: #2454a6;
   font-weight: 800;
-  font-size: ${({ isSmall }) => (isSmall ? '11px' : '24px')};
+  font-size: ${({ isSmall, isSmallMiddle }) =>
+    isSmall ? '11px' : isSmallMiddle ? '18px' : '24px'};
   margin-top: ${({ isSmall }) => (isSmall ? '11px' : '20px')};
 `;
 
 export const TitleWrapper = styled.div<IIsSmall>`
   position: relative;
-  height: ${({ isSmall }) => (isSmall ? '90px' : '240px')};
+  height: ${({ isSmall, isSmallMiddle }) => (isSmall ? '90px' : isSmallMiddle ? '150px' : '240px')};
   border-bottom: 1px solid #2454a6;
 `;
 

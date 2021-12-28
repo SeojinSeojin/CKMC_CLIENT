@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 interface IIsSmall {
   isSmall: boolean;
+  isSmallMiddle: boolean;
 }
 export const Tag = styled.div<IIsSmall>`
   padding: ${({ isSmall }) => (isSmall ? '4px 6px' : '8px 12px')};
