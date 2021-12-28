@@ -13,7 +13,7 @@ import EpisodeContainer from '../../components/Episode/Container';
 import { useUser } from '../../hooks/useUser';
 import Loader from '../../components/common/Loader';
 import { toast } from 'react-toastify';
-import emptyBox from '../../components/common/Icons/ic-empty-box.svg';
+import emptyBox500 from '../../components/common/Icons/ic-empty-box-500.svg';
 import VerticalCenterLayout from '../../components/layout/VerticalCenter';
 
 function MyPage() {
@@ -106,10 +106,10 @@ function MyPage() {
           />
           <img
             src={
-              fileURL !== ''
+              fileURL !== 'https://via.placeholder.com/250'
                 ? fileURL
                 : author.work.thumbnail === 'https://via.placeholder.com/250'
-                ? emptyBox
+                ? emptyBox500
                 : author.work.thumbnail
             }
             alt=""
