@@ -16,11 +16,11 @@ export const Wrapper = styled.form`
   @media (max-width: 1200px) {
     max-width: 325px;
     width: calc(100% - 16px);
-    height: 265px;
+    height: 275px;
     padding-top: 23px;
     padding-right: 12px;
     padding-left: 12px;
-    padding-bottom: 12px;
+    padding-bottom: 10px;
     margin: 8px 0;
     position: relative;
     margin-top: 30px;
@@ -97,7 +97,7 @@ export const Sender = styled.input`
 
   @media (max-width: 1200px) {
     position: absolute;
-    bottom: 16px;
+    bottom: 12px;
     width: 55px;
     left: calc(50% - 27.5px);
     font-size: 11px;
@@ -135,6 +135,7 @@ export const Bottom = styled.div`
   position: relative;
   @media (max-width: 1200px) {
     margin-bottom: 0;
+    padding-top: 16px;
   }
 `;
 
@@ -164,6 +165,20 @@ export const UploadedImage = styled.div`
     }
     & > div {
       visibility: visible;
+    }
+  }
+  @media (max-width: 1200px) {
+    width: 40px;
+    height: 40px;
+    & img {
+      width: 40px;
+      height: 40px;
+    }
+    & div {
+      font-size: 8px;
+      visibility: visible;
+      top: 4px;
+      right: 4px;
     }
   }
 `;

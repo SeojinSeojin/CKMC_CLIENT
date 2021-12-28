@@ -89,5 +89,26 @@ export const Detail = styled.div`
     }
   }
   @media (max-width: 1200px) {
+    align-items: center;
+    width: 100%;
+    & > div {
+      width: calc(100% - 200px);
+    }
+    & p {
+      width: 100%;
+      font-size: 12px;
+    }
+    & img {
+      height: 200px;
+      width: 200px;
+    }
+  }
+  @media (max-width: 700px) {
+    flex-wrap: wrap;
+    display: flex;
+    & > div {
+      width: 100%;
+      min-width: 300px;
+    }
   }
 `;
