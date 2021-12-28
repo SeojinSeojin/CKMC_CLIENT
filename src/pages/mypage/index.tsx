@@ -28,11 +28,15 @@ function MyPage() {
 
   useEffect(() => {
     if (author) {
-      setContact(author.contact);
+      setContact(author.contact === '미입력 상태' ? '' : author.contact);
       setFileURL(author.work.thumbnail);
       setHashTags(author.work.hashTags);
     }
   }, [author, error]);
+
+  useEffect(() => {
+    console.log(fileURL === 'https://via.placeholder.com/250');
+  }, [fileURL]);
 
   const uploadImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
     try {
@@ -104,7 +108,7 @@ function MyPage() {
             ref={fileInputRef}
           />
           <img
-            src={fileURL !== 'https://via.placeholder.com/250' ? fileURL : emptyBox500}
+            src={fileURL === 'https://via.placeholder.com/250' ? emptyBox500 : fileURL}
             alt=""
             style={{
               width: 500,
