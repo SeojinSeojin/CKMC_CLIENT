@@ -19,7 +19,10 @@ const GridWrapper = styled.div<IGridWrapper>`
   grid-template-columns: ${({ isSmall }) => (isSmall ? '1fr' : '500px auto')};
   width: 80%;
   gap: ${({ isSmall }) => (isSmall ? '20px' : '80px')};
-  ${({ isSmall }) => (isSmall ? 'margin-top: 85px;' : '')}
+  ${({ isSmall }) =>
+    isSmall
+      ? 'margin-top: 85px;'
+      : '& > div:nth-child(2) { max-height: 88vh; overflow-y: scroll; }'}
 `;
 
 const FlexWrapper = styled.div`
