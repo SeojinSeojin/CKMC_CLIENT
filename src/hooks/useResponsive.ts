@@ -5,6 +5,7 @@ export default function useResponsive() {
   const isBigMiddle = useMediaQuery({ minWidth: 1200, maxWidth: 1920 });
   const isSmallMiddle = useMediaQuery({ minWidth: 500, maxWidth: 1200 });
   const isSmall = useMediaQuery({ maxWidth: 500 });
+  const isGuestSmall = useMediaQuery({ maxWidth: 1400 });
 
-  return { isBig, isBigMiddle, isSmallMiddle, isSmall };
+  return { isBig, isBigMiddle, isSmallMiddle, isSmall, isGuestSmall };
 }

@@ -4,6 +4,10 @@ export const TableItem = styled.div`
   width: 100%;
   border-top: 1px solid white;
   padding: 14px 0;
+
+  @media (max-width: 1400px) {
+    max-width: 800px;
+  }
 `;
 
 export const Cover = styled.div`
@@ -33,7 +37,7 @@ export const Cover = styled.div`
   & > div:nth-child(4) {
     font-size: 14px;
   }
-  @media (max-width: 1200px) {
+  @media (max-width: 1400px) {
     grid-template-columns: 2fr 4fr 2fr 1fr;
     & > div:nth-child(1) {
       font-size: 8px;
@@ -88,7 +92,7 @@ export const Detail = styled.div`
       border-bottom: 1px solid #8eaec9;
     }
   }
-  @media (max-width: 1200px) {
+  @media (max-width: 1400px) {
     align-items: center;
     width: 100%;
     & > div {

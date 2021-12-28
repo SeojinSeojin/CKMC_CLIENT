@@ -13,7 +13,7 @@ export const Wrapper = styled.form`
   flex-direction: column;
   box-sizing: border-box;
 
-  @media (max-width: 1200px) {
+  @media (max-width: 1400px) {
     max-width: 325px;
     width: calc(100% - 16px);
     height: 275px;
@@ -43,7 +43,7 @@ export const Title = styled.input`
   &:focus {
     outline: none;
   }
-  @media (max-width: 1200px) {
+  @media (max-width: 1400px) {
     font-size: 11px;
   }
 `;
@@ -68,7 +68,7 @@ export const Body = styled.textarea`
     outline: none;
   }
 
-  @media (max-width: 1200px) {
+  @media (max-width: 1400px) {
     background-image: url(${BgLetterSmall});
     height: 165px;
     line-height: 22px;
@@ -95,7 +95,7 @@ export const Sender = styled.input`
     outline: none;
   }
 
-  @media (max-width: 1200px) {
+  @media (max-width: 1400px) {
     position: absolute;
     bottom: 12px;
     width: 55px;
@@ -108,7 +108,7 @@ export const Sender = styled.input`
 export const File = styled.label`
   color: white;
   font-size: 18px;
-  @media (max-width: 1200px) {
+  @media (max-width: 1400px) {
     font-size: 10px;
     line-height: 23px;
   }
@@ -120,7 +120,7 @@ export const Submit = styled.input`
   border: none;
   color: white;
   cursor: pointer;
-  @media (max-width: 1200px) {
+  @media (max-width: 1400px) {
     font-size: 10px;
   }
 `;
@@ -133,7 +133,7 @@ export const Bottom = styled.div`
   margin-top: auto;
   margin-bottom: 20px;
   position: relative;
-  @media (max-width: 1200px) {
+  @media (max-width: 1400px) {
     margin-bottom: 0;
     padding-top: 16px;
   }
@@ -167,7 +167,7 @@ export const UploadedImage = styled.div`
       visibility: visible;
     }
   }
-  @media (max-width: 1200px) {
+  @media (max-width: 1400px) {
     width: 40px;
     height: 40px;
     & img {

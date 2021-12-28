@@ -84,8 +84,9 @@ function GuestList() {
               setPageIndex(index);
             }}
             style={{
-              color: 'white',
-              fontWeight: index === pageIndex ? 'bold' : 'inherit',
+              color: index === pageIndex ? 'white' : '#8eaec9',
+              fontFamily:
+                index === pageIndex ? 'NEXON Lv1 Gothic OTF Bold' : 'NEXON Lv1 Gothic OTF',
             }}
           >
             {Math.ceil(lettersCount / mode) - index}

@@ -25,8 +25,8 @@ function GuestItemLinear({
     .split('\n')
     .map((line, idx) => <p key={idx}>{line}</p>);
   const lines = bodies.length;
-  [...Array(8 - lines)].forEach((_, idx) => bodies.push(<p key={8 - lines + idx}></p>));
-  const { isSmall, isSmallMiddle } = useResponsive();
+  [...Array(8 - lines)].forEach((_, idx) => bodies.push(<p key={8 + idx - lines}></p>));
+  const { isGuestSmall } = useResponsive();
   return (
     <TableItem onClick={onClick}>
       <Cover>
@@ -34,7 +34,7 @@ function GuestItemLinear({
         <div>{title}</div>
         <div>{parseDate(createdAt)}</div>
         <div>{sender}</div>
-        {!(isSmall || isSmallMiddle) && (isOpened ? <IcToggleUp /> : <IcToggleDown />)}
+        {!isGuestSmall && (isOpened ? <IcToggleUp /> : <IcToggleDown />)}
       </Cover>
       {isOpened && (
         <Detail>

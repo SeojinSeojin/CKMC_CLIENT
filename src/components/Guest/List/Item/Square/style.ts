@@ -16,7 +16,7 @@ export const SquareItem = styled.div`
   p {
     color: white;
   }
-  @media (max-width: 1200px) {
+  @media (max-width: 1400px) {
     width: 325px;
     & img {
       width: 145px;

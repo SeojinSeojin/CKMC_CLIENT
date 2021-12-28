@@ -10,7 +10,7 @@ export const Paginator = styled.div`
     cursor: pointer;
   }
 
-  @media (max-width: 1200px) {
+  @media (max-width: 1400px) {
     padding: 0 20px;
     padding-bottom: 16px;
 
@@ -30,7 +30,7 @@ export const Wrapper = styled.div`
   align-items: center;
   flex-direction: column;
   position: relative;
-  @media (max-width: 1200px) {
+  @media (max-width: 1400px) {
     width: 100%;
   }
 `;
@@ -43,8 +43,9 @@ export const Letters = styled.div<IMode>`
   ${({ mode }) =>
     mode === 10 ? 'overflow-y: scroll; border-bottom: 1px solid white;' : 'overflow-x: scroll;'}
   scroll-behavior: smooth;
-  @media (max-width: 1200px) {
+  @media (max-width: 1400px) {
     width: 100%;
+    max-width: 800px;
   }
 `;
 
@@ -54,10 +55,13 @@ export const FlexContainer = styled.div<IMode>`
   flex-direction: column;
 
   ${({ mode }) => (mode === 10 ? '' : 'display:flex; flex-wrap:wrap; gap:10px; width:0;')};
-  @media (max-width: 1200px) {
+  @media (max-width: 1400px) {
     height: auto;
-    padding: 0 20px;
     width: 100%;
-    ${({ mode }) => (mode === 10 ? '' : 'align-items:center;')};
+    align-items: center;
+  }
+
+  @media (max-width: 840px) {
+    padding: 0 20px;
   }
 `;

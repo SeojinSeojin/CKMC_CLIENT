@@ -7,14 +7,14 @@ import GuestSmall from './small';
 import Background from '../../components/common/Background';
 
 export default function GuestPage() {
-  const { isBig, isBigMiddle, isSmall, isSmallMiddle } = useResponsive();
+  const { isGuestSmall } = useResponsive();
   return (
     <>
-      {(isBig || isBigMiddle) && <CursorContainer theme="white" />}
-      <NavigationBar theme={!isSmall ? 'white' : 'blue'} selected="GUEST" />
+      {!isGuestSmall && <CursorContainer theme="white" />}
+      <NavigationBar theme={!isGuestSmall ? 'white' : 'blue'} selected="GUEST" />
       <Background>
-        {(isBig || isBigMiddle) && <GuestBig />}
-        {(isSmall || isSmallMiddle) && <GuestSmall />}
+        {!isGuestSmall && <GuestBig />}
+        {isGuestSmall && <GuestSmall />}
       </Background>
     </>
   );

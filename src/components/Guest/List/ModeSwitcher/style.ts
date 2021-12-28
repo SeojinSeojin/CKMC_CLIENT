@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
     cursor: pointer;
   }
 
-  @media (max-width: 1200px) {
-    padding: 0 20px;
+  @media (max-width: 1400px) {
+    left: calc(50% - 25px);
   }
 `;
