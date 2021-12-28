@@ -69,4 +69,8 @@ export const FlexContainer = styled.div<IMode>`
 export const Empty = styled.div`
   color: white;
   line-height: 25px;
+  @media (max-width: 1200px) {
+    font-size: 11px;
+    line-height: 16px;
+  }
 `;
