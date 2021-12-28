@@ -43,6 +43,15 @@ function Upload({ isUpload }: { isUpload: boolean }) {
     }
   }, [author]);
 
+  useEffect(() => {
+    if (mode === 'link') {
+      setPages([]);
+      if (descriptionRef.current) descriptionRef.current.value = '';
+    } else {
+      if (linkRef.current) linkRef.current.value = '';
+    }
+  }, [mode]);
+
   const triggerFileRefClick = (ref: React.RefObject<HTMLInputElement>) => {
     if (!ref.current) return;
     ref.current.click();
