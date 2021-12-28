@@ -65,3 +65,8 @@ export const FlexContainer = styled.div<IMode>`
     padding: 0 20px;
   }
 `;
+
+export const Empty = styled.div`
+  color: white;
+  line-height: 25px;
+`;

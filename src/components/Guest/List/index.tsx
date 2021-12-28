@@ -6,7 +6,7 @@ import {
   IcPaginatorNext,
   IcPaginatorPrevious,
 } from '../../common/Icons';
-import { Paginator, Wrapper, Letters, FlexContainer } from './style';
+import { Paginator, Wrapper, Letters, FlexContainer, Empty } from './style';
 import useLetter from '../../../hooks/useLetters';
 import Loader from '../../common/Loader';
 import GuestItem from './Item';
@@ -40,32 +40,38 @@ function GuestList() {
   return (
     <Wrapper>
       <ModeSwitcher mode={mode} setLinearMode={setLinearMode} setSquareMode={setSquareMode} />
-      <Letters mode={mode}>
-        <FlexContainer mode={mode}>
-          {letters.map((letter: LetterData, index: number) => (
-            <GuestItem
-              onClick={() => {
-                if (openItem === index) setOpenItem(null);
-                else setOpenItem(index);
-              }}
-              key={index}
-              index={
-                (Math.floor(lettersCount / mode) - pageIndex + 1) * mode -
-                index -
-                mode +
-                (lettersCount % mode)
-              }
-              mode={mode}
-              body={letter.body}
-              title={letter.title}
-              sender={letter.sender}
-              file={letter.file}
-              createdAt={letter.createdAt}
-              isOpened={openItem !== null ? index === openItem : false}
-            />
-          ))}
-        </FlexContainer>
-      </Letters>
+      {letters.length ? (
+        <Letters mode={mode}>
+          <FlexContainer mode={mode}>
+            {letters.map((letter: LetterData, index: number) => (
+              <GuestItem
+                onClick={() => {
+                  if (openItem === index) setOpenItem(null);
+                  else setOpenItem(index);
+                }}
+                key={index}
+                index={
+                  (Math.floor(lettersCount / mode) - pageIndex + 1) * mode -
+                  index -
+                  mode +
+                  (lettersCount % mode)
+                }
+                mode={mode}
+                body={letter.body}
+                title={letter.title}
+                sender={letter.sender}
+                file={letter.file}
+                createdAt={letter.createdAt}
+                isOpened={openItem !== null ? index === openItem : false}
+              />
+            ))}
+          </FlexContainer>
+        </Letters>
+      ) : (
+        <Empty>
+          앗, 도착한 편지가 없나 봐요. <br />첫 번째 편지를 남겨 주세요.
+        </Empty>
+      )}
       <Paginator>
         <IcPaginatorFirst
           onClick={() => {
