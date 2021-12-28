@@ -23,13 +23,17 @@ function PageNavigator({
     history.push(`/author/${authorName}/${currentPage + 1}`);
     window.scrollTo(0, 0);
   };
+  const moveBack = () => {
+    history.push(`/author/${authorName}`);
+    window.scrollTo(0, 0);
+  };
 
   return (
     <Wrapper>
       <Button disabled={currentPage === 0} onClick={movePrevious}>
         <IcArrowPrevious />
       </Button>
-      <Button disabled={false}>
+      <Button disabled={false} onClick={moveBack}>
         <IcAllEpisodes />
       </Button>
       <Button disabled={currentPage === totalPage - 1} onClick={moveNext}>
