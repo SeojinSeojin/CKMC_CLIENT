@@ -8,6 +8,8 @@ export const GridWrapper = styled.div`
   font-size: 18px;
   gap: 15px 0;
   margin-top: 30px;
+  @media (max-width: 1200px) {
+  }
 `;
 
 export const Bottom = styled.div`

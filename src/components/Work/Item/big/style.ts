@@ -21,6 +21,8 @@ export const Wrapper = styled.div<IWrapper>`
     font-weight: 900;
     font-size: 24px;
     z-index: 900;
+    text-align: center;
+    padding: 30px;
     &:nth-child(2) {
       position: absolute;
       bottom: 0px;

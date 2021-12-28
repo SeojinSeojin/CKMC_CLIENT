@@ -9,6 +9,7 @@ export const Wrapper = styled(Link)`
 
   & > img {
     width: 100%;
+    height: min(299px, calc(100vw / 3));
     border-right: #2454a6 1px solid;
   }
   &:nth-child(3n) {
