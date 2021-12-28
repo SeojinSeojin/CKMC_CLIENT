@@ -27,7 +27,6 @@ function MyPage() {
   const { author, isValidating, error } = useUser();
 
   useEffect(() => {
-    console.log('author', author);
     if (author) {
       setContact(author.contact);
       setFileURL(author.work.thumbnail);

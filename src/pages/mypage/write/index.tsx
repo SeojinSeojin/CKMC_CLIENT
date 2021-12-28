@@ -49,8 +49,7 @@ function Upload({ isUpload }: { isUpload: boolean }) {
   };
 
   const uploadThumbnail = (image: PageImageData) => setThumbnail(image);
-  const addFile = (image: PageData) =>
-    setPages((prev) => [...prev, { ...image, index: prev.length }]);
+  const addFile = (image: PageData) => setPages((prev) => [...prev, image]);
   const deleteFile = (idx: number) =>
     setPages((prev) =>
       prev
@@ -85,14 +84,19 @@ function Upload({ isUpload }: { isUpload: boolean }) {
     callback: (image: any) => void,
   ) => {
     try {
+      const prevLength = pages.length;
       const target = e.target as HTMLInputElement;
       if (!target.files) return;
       const files = target.files as FileList;
-      [...files].forEach(async (file) => {
+      [...files].forEach(async (file, index) => {
         const uploadPromise = new Promise((resolve, reject) => {
           try {
             uploadImageRemote(file).then((uploadedFileURL) => {
-              callback({ localPath: file.name, remotePath: uploadedFileURL });
+              callback({
+                localPath: file.name,
+                remotePath: uploadedFileURL,
+                index: prevLength + index,
+              });
               resolve('이미지 업로드 성공');
             });
           } catch (error) {
