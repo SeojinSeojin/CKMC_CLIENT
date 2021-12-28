@@ -9,44 +9,9 @@ export const GridWrapper = styled.div`
   gap: 15px 0;
   margin-top: 30px;
   @media (max-width: 1200px) {
-  }
-`;
-
-export const Bottom = styled.div`
-  margin-top: auto;
-  font-family: 'NEXON Lv1 Gothic OTF';
-  & > div:first-child {
-    margin-bottom: 32px;
-  }
-`;
-
-export const LinkButton = styled.div`
-  border-radius: 40px;
-  padding: 6px 10px;
-  border: 1px solid #2454a6;
-  width: 230px;
-  min-width: 100px;
-  margin-top: 10px;
-  font-size: 18px;
-  display: flex;
-  justify-content: space-between;
-
-  & svg {
-    & path {
-      stroke: #2454a6;
-    }
-  }
-  &:hover {
-    background-color: #2454a6;
-    cursor: pointer;
-    & div {
-      color: white;
-    }
-    & svg {
-      & path {
-        stroke: white;
-      }
-    }
+    font-size: 11px;
+    margin-top: 16px;
+    width: 164px;
   }
 `;
 
@@ -56,9 +21,20 @@ export const BottomLeftWrapper = styled.div`
   flex-direction: column;
   margin-top: 300px;
   position: relative;
+  @media (max-width: 1200px) {
+    height: auto;
+    margin-top: 40px;
+    & > div:nth-child(2) {
+      font-size: 12px;
+    }
+  }
 `;
 
 export const AbsolutePart = styled.div`
   top: -120px;
   position: absolute;
+
+  @media (max-width: 1200px) {
+    display: none;
+  }
 `;

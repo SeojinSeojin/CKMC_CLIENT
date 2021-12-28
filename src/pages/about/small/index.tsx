@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import AboutBottomLeft from '../../../components/About/BottomLeft';
 import BottomMent from '../../../components/About/BottomMent';
+import AboutFooter from '../../../components/About/Footer';
 import StudentsByClass from '../../../components/About/Graduates';
 import TopMent from '../../../components/About/TopMent';
 import { BgAboutTitleSmall } from '../../../components/common/Icons';
@@ -26,23 +27,57 @@ const TitleWrapper = styled.div`
   padding: 0 20px;
   padding-bottom: 30px;
   border-bottom: 1px solid #2454a6;
+  & svg {
+    max-width: 360px;
+  }
+`;
+
+const GridWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 50px auto 50px;
+  & > div {
+    height: 100vh;
+    overflow-y: scroll;
+    & > img {
+      width: 50px;
+    }
+    &:nth-child(1) {
+      & > img {
+        margin-top: calc(100vh - 270px);
+      }
+    }
+    &:nth-child(3) {
+      & > img {
+        margin-top: 43px;
+      }
+    }
+  }
 `;
 
 function AboutSmall() {
   return (
-    <Wrapper>
-      <TitleWrapper>
-        <BgAboutTitleSmall />
-      </TitleWrapper>
-      <MentWrapper>
-        <TopMent />
-      </MentWrapper>
-      <MentWrapper>
-        <BottomMent />
-      </MentWrapper>
-      <StudentsByClass />
-      <AboutBottomLeft />
-    </Wrapper>
+    <GridWrapper>
+      <div>
+        <img src="/statics/about-left.webp" alt="left" />
+      </div>
+      <Wrapper>
+        <TitleWrapper>
+          <BgAboutTitleSmall />
+        </TitleWrapper>
+        <MentWrapper>
+          <TopMent />
+        </MentWrapper>
+        <MentWrapper>
+          <BottomMent />
+        </MentWrapper>
+        <StudentsByClass />
+        <AboutBottomLeft />
+        <AboutFooter />
+      </Wrapper>
+      <div>
+        <img src="/statics/about-right.webp" alt="right" />
+      </div>
+    </GridWrapper>
   );
 }
 

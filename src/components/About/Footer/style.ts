@@ -14,6 +14,9 @@ export const GridWrapper = styled.div`
       }
     }
   }
+  @media (max-width: 1200px) {
+    display: none;
+  }
 `;
 
 export const FlexWrapper = styled.div`
@@ -27,6 +30,14 @@ export const FlexWrapper = styled.div`
   & div:last-child {
     text-align: right;
   }
+  @media (max-width: 1200px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    & div:last-child {
+      text-align: left;
+    }
+  }
 `;
 
 export const FooterWrapper = styled.div`
@@ -37,4 +48,9 @@ export const FooterWrapper = styled.div`
   font-size: 12px;
   line-height: 14px;
   word-break: keep-all;
+  @media (max-width: 1200px) {
+    width: 100%;
+    margin-left: 0;
+    padding: 12px;
+  }
 `;

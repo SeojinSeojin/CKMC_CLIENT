@@ -33,8 +33,8 @@ function StudentsByClass() {
       {students &&
         ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'].map((className) => (
           <ClassWrapper key={className}>
-            <div>만화콘텐츠프로젝트 {className}</div>
             <Header onClick={() => toggleSelectedClass(className)}>
+              <div>만화콘텐츠프로젝트 {className}</div>
               <div>지도교수 {students[className].professor}</div>
               {className === selectedClass ? <IcToggleUpBlue /> : <IcToggleDownBlue />}
             </Header>

@@ -32,6 +32,12 @@ export const ClassContainer = styled.div<IClassContainer>`
       color: #2454a6;
     }
   }
+
+  @media (max-width: 1200px) {
+    & a {
+      color: #2454a6;
+    }
+  }
 `;
 
 export const Header = styled.div`
@@ -40,8 +46,22 @@ export const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   padding-bottom: 20px;
-  &:hover {
-    cursor: pointer;
+  cursor: pointer;
+  flex-wrap: wrap;
+  & > div:not(:nth-child(1)) {
+    flex: 1;
+  }
+  & > div:nth-child(1) {
+    width: 100%;
+  }
+  @media (max-width: 1200px) {
+    padding-bottom: 12px;
+    & > div {
+      flex: 1;
+    }
+    & > svg {
+      width: 18px;
+    }
   }
 `;
 
@@ -54,5 +74,10 @@ export const AboutWrapper = styled.div`
   margin-top: 300px;
   & > div:nth-child(1) {
     margin-bottom: 30px;
+  }
+  @media (max-width: 1200px) {
+    height: auto;
+    margin-top: 12px;
+    font-size: 11px;
   }
 `;
