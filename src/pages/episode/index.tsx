@@ -40,8 +40,8 @@ function EpisodePage() {
       {!(isSmall || isSmallMiddle) && <CursorContainer theme="blue" />}
       <NavigationBar theme="blue" selected="WORKS" />
       <FlexCenterLayout>
-        <FlexWrapper isSmall={isSmall || isSmallMiddle}>
-          <Header isSmall={isSmall || isSmallMiddle}>
+        <FlexWrapper isSmall={isSmall} isSmallMiddle={isSmallMiddle}>
+          <Header isSmall={isSmall} isSmallMiddle={isSmallMiddle}>
             <div>{author.work.title}</div>
             <div>{episode.title}</div>
           </Header>
@@ -60,10 +60,10 @@ function EpisodePage() {
               />
             )
           )}
-          <EpisodeDescription isSmall={isSmall || isSmallMiddle}>
+          <EpisodeDescription isSmall={isSmall} isSmallMiddle={isSmallMiddle}>
             {episode.description}
           </EpisodeDescription>
-          <AuthorDescription isSmall={isSmall || isSmallMiddle}>
+          <AuthorDescription isSmall={isSmall} isSmallMiddle={isSmallMiddle}>
             <div>{author.nickName}</div>
             <div>
               {author.work.hashTags && <SelectedHashTags hashTags={author.work.hashTags} />}

@@ -2,26 +2,30 @@ import styled from 'styled-components';
 
 interface IIsSmall {
   isSmall: boolean;
+  isSmallMiddle: boolean;
 }
 export const Header = styled.div<IIsSmall>`
   color: #2454a6;
   padding-bottom: ${({ isSmall }) => (isSmall ? '12px' : '40px')};
   margin-bottom: ${({ isSmall }) => (isSmall ? '8px' : '50px')};
   display: flex;
-  ${({ isSmall }) =>
-    isSmall
+  ${({ isSmall, isSmallMiddle }) =>
+    isSmall || isSmallMiddle
       ? 'flex-direction: column; justify-content: center; margin-top:20px;'
       : 'border-bottom: 1px solid #8eaec9;'}
   gap: ${({ isSmall }) => (isSmall ? '11px' : '40px')};
   & > div {
     &:nth-child(1) {
-      font-size: ${({ isSmall }) => (isSmall ? '14px' : '32px')};
+      font-size: ${({ isSmall, isSmallMiddle }) =>
+        isSmall ? '14px' : isSmallMiddle ? '22px' : '32px'};
       font-weight: 600;
-      ${({ isSmall }) => (isSmall ? 'text-align:center;' : '')}
+      ${({ isSmall, isSmallMiddle }) => (isSmall || isSmallMiddle ? 'text-align:center;' : '')}
     }
     &:nth-child(2) {
-      font-size: ${({ isSmall }) => (isSmall ? '11px' : '22px')};
-      ${({ isSmall }) => (isSmall ? 'text-align:center;' : 'align-self: flex-end;')};
+      font-size: ${({ isSmall, isSmallMiddle }) =>
+        isSmall ? '11px' : isSmallMiddle ? '18px' : '22px'};
+      ${({ isSmall, isSmallMiddle }) =>
+        isSmall || isSmallMiddle ? 'text-align:center;' : 'align-self: flex-end;'};
     }
   }
 `;
