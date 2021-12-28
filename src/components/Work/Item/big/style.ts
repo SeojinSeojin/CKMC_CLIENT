@@ -7,8 +7,8 @@ interface IWrapper {
 export const Wrapper = styled.div<IWrapper>`
   background-image: ${({ src }) => `url(${src})`};
   background-size: contain;
-  width: 250px;
-  height: 250px;
+  width: 180px;
+  height: 180px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -19,22 +19,20 @@ export const Wrapper = styled.div<IWrapper>`
     visibility: hidden;
     color: white;
     font-weight: 900;
-    font-size: 22px;
+    font-size: 16px;
     z-index: 900;
     text-align: center;
-    padding: 30px;
-    line-height: 32px;
+    padding: 20px;
+    line-height: 28px;
     word-break: keep-all;
     &:nth-child(2) {
       position: absolute;
       bottom: 0px;
       font-weight: 200;
-      font-size: 18px;
-      margin-bottom: 12px;
+      font-size: 12px;
     }
   }
 
-  height: 250px;
   transition: all 0.3s;
 
   & svg {

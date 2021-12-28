@@ -7,7 +7,7 @@ interface IWorkContainer {
 export const WorkContainer = styled.div<IWorkContainer>`
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 15px;
   margin-top: 320px;
   margin-bottom: 80px;
 `;
@@ -16,14 +16,11 @@ export const CenterContainer = styled.div`
   display: flex;
   justify-content: center;
 
-  @media (min-width: 1174px) {
-    width: 774px;
+  @media (min-width: 1165px) {
+    width: 765px;
   }
-  @media (min-width: 1436px) {
-    width: 1036px;
-  }
-  @media (min-width: 1698px) {
-    width: 1298px;
+  @media (min-width: 1360px) {
+    width: 960px;
   }
 `;
 
