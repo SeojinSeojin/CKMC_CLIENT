@@ -13,7 +13,7 @@ function SelectedHashTags({ hashTags }: { hashTags: Array<string> }) {
           </Tag>
         ))
       ) : (
-        <div>해쉬태그를 선택해주세요</div>
+        <div>해시태그를 선택해주세요</div>
       )}
     </Wrapper>
   );

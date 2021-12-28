@@ -104,13 +104,7 @@ function MyPage() {
             ref={fileInputRef}
           />
           <img
-            src={
-              fileURL !== 'https://via.placeholder.com/250'
-                ? fileURL
-                : author.work.thumbnail === 'https://via.placeholder.com/250'
-                ? emptyBox500
-                : author.work.thumbnail
-            }
+            src={fileURL !== 'https://via.placeholder.com/250' ? fileURL : emptyBox500}
             alt=""
             style={{
               width: 500,
