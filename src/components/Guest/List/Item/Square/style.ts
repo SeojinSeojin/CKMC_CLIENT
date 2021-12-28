@@ -16,6 +16,14 @@ export const SquareItem = styled.div`
   p {
     color: white;
   }
+  @media (max-width: 1200px) {
+    width: 325px;
+    & img {
+      width: 145px;
+      height: 145px;
+      margin: 0 90px;
+    }
+  }
 `;
 
 export const Header = styled.div`

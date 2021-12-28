@@ -55,7 +55,9 @@ export const FlexContainer = styled.div<IMode>`
 
   ${({ mode }) => (mode === 10 ? '' : 'display:flex; flex-wrap:wrap; gap:10px; width:0;')};
   @media (max-width: 1200px) {
-    height: ${({ mode }) => (mode === 10 ? 'auto' : '540px')};
+    height: auto;
     padding: 0 20px;
+    width: 100%;
+    ${({ mode }) => (mode === 10 ? '' : 'align-items:center;')};
   }
 `;
