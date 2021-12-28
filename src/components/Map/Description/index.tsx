@@ -16,11 +16,11 @@ function MapDescription() {
         </div>
         <div>
           <div>전시기간</div>
-          <div>2022.01.10. ~2022.01.24</div>
+          <div>2022.01.14. ~2022.01.16</div>
         </div>
         <div>
           <div>운영시간</div>
-          <div>09:00~16:00</div>
+          <div>11:00~17:00</div>
         </div>
         <div>
           <div>연락처</div>
@@ -52,11 +52,11 @@ function MapDescription() {
       </div>
       <div>
         <div>전시기간</div>
-        <div>2022.01.10. ~2022.01.24</div>
+        <div>2022.01.14. ~2022.01.16</div>
       </div>
       <div>
         <div>운영시간</div>
-        <div>09:00~16:00</div>
+        <div>11:00~17:00</div>
       </div>
     </div>
   );
