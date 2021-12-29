@@ -6,7 +6,8 @@ interface IWrapper {
 
 export const Wrapper = styled.div<IWrapper>`
   background-image: ${({ src }) => `url(${src})`};
-  background-size: contain;
+  background-size: cover;
+  background-repeat: no-repeat;
   width: 180px;
   height: 180px;
   position: relative;
@@ -23,7 +24,7 @@ export const Wrapper = styled.div<IWrapper>`
     z-index: 900;
     text-align: center;
     padding: 20px;
-    line-height: 28px;
+    line-height: 21px;
     word-break: keep-all;
     &:nth-child(2) {
       position: absolute;
