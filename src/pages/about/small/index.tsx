@@ -63,6 +63,15 @@ const GridWrapper = styled.div`
       }
     }
   }
+  @media (min-width: 500px) {
+    & > div {
+      &:nth-child(3) {
+        & > img {
+          margin-top: 0;
+        }
+      }
+    }
+  }
 `;
 
 function AboutSmall() {
