@@ -3,21 +3,24 @@ import styled from 'styled-components';
 import useResponsive from '../../../hooks/useResponsive';
 
 function AuthorLayout({ children }: { children: React.ReactNode }) {
-  const { isSmall, isSmallMiddle } = useResponsive();
+  const { isSmall, isSmallMiddle, isBigMiddle } = useResponsive();
   return (
     <FlexWrapper>
-      <GridWrapper isSmall={isSmall || isSmallMiddle}>{children}</GridWrapper>
+      <GridWrapper isSmall={isSmall || isSmallMiddle} isBigMiddle={isBigMiddle}>
+        {children}
+      </GridWrapper>
     </FlexWrapper>
   );
 }
 
 interface IGridWrapper {
   isSmall: boolean;
+  isBigMiddle: boolean;
 }
 const GridWrapper = styled.div<IGridWrapper>`
   display: grid;
   grid-template-columns: ${({ isSmall }) => (isSmall ? '1fr' : '500px auto')};
-  width: 80%;
+  width: ${({ isBigMiddle }) => (isBigMiddle ? '94%' : '80%')};
   gap: ${({ isSmall }) => (isSmall ? '20px' : '80px')};
   ${({ isSmall }) =>
     isSmall
