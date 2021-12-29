@@ -5,7 +5,7 @@ import BottomMent from '../../../components/About/BottomMent';
 import AboutFooter from '../../../components/About/Footer';
 import StudentsByClass from '../../../components/About/Graduates';
 import TopMent from '../../../components/About/TopMent';
-import { BgAboutTitleSmall } from '../../../components/common/Icons';
+import { BgAboutTitleSmall, LogoCKMC } from '../../../components/common/Icons';
 
 const Wrapper = styled.div`
   flex-direction: column;
@@ -13,18 +13,26 @@ const Wrapper = styled.div`
 `;
 
 const MentWrapper = styled.div`
-  font-family: Noto Sans Regular;
+  font-family: 'Noto Sans Regular';
   font-size: 10px;
   line-height: 16px;
   letter-spacing: -0.05em;
   & p {
     margin-bottom: 8px;
   }
+  & svg {
+    width: 45px;
+    height: 30px;
+    margin-bottom: 30px;
+  }
+  & > div:nth-child(1) {
+    margin-bottom: 160px;
+  }
 `;
 const TitleWrapper = styled.div`
   margin-top: 200px;
   margin-bottom: 40px;
-  padding: 0 20px;
+  padding: 0 4px;
   padding-bottom: 30px;
   border-bottom: 1px solid #2454a6;
   & svg {
@@ -45,6 +53,9 @@ const GridWrapper = styled.div`
       & > img {
         margin-top: calc(100vh - 270px);
       }
+    }
+    &:nth-child(2) {
+      padding: 0 12px;
     }
     &:nth-child(3) {
       & > img {
@@ -68,6 +79,7 @@ function AboutSmall() {
           <TopMent />
         </MentWrapper>
         <MentWrapper>
+          <LogoCKMC />
           <BottomMent />
         </MentWrapper>
         <StudentsByClass />

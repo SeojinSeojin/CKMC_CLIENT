@@ -10,8 +10,10 @@ export const GridWrapper = styled.div`
   margin-top: 30px;
   @media (max-width: 1200px) {
     font-size: 11px;
-    margin-top: 16px;
+    line-height: 22px;
+    margin-top: 24px;
     width: 164px;
+    gap: 7px 0;
   }
 `;
 

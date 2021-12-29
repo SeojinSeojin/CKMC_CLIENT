@@ -31,9 +31,11 @@ export const FlexWrapper = styled.div`
     text-align: right;
   }
   @media (max-width: 1200px) {
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: flex-start;
     gap: 8px;
+    font-size: 7px;
+    margin-bottom: 40px;
     & div:last-child {
       text-align: left;
     }
@@ -51,6 +53,7 @@ export const FooterWrapper = styled.div`
   @media (max-width: 1200px) {
     width: 100%;
     margin-left: 0;
-    padding: 12px;
+    padding: 0;
+    margin-top: 40px;
   }
 `;
