@@ -7,6 +7,6 @@ export const Wrapper = styled.div`
   align-items: center;
 
   & img {
-    width: min(100%, 720px);
+    width: 100%;
   }
 `;

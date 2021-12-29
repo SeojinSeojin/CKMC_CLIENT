@@ -62,7 +62,7 @@ export const FlexWrapper = styled.div<IIsSmall>`
   margin-bottom: 6vh;
   min-height: 88vh;
   max-width: 1060px;
-  padding: ${({ isSmall }) => (isSmall ? '0' : '0 20px')};
+  padding: ${({ isSmall, isSmallMiddle }) => (isSmall || isSmallMiddle ? '0' : '0 20px')};
   > * {
     font-family: 'Noto Sans Regular';
   }

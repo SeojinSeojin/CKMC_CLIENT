@@ -6,10 +6,6 @@ import icArrowPrevious from '../../../components/common/Icons/ic-arrow-previous.
 export const Item = styled.div`
   display: flex;
   justify-content: center;
-
-  & img {
-    width: min(100%, 720px) !important;
-  }
 `;
 
 export const CustomCarousel = styled(Carousel)`
