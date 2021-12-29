@@ -30,6 +30,10 @@ import { ReactComponent as IcModeBoxSelected } from './ic-mode-box-selected.svg'
 import { ReactComponent as IcModeBox } from './ic-mode-box.svg';
 import { ReactComponent as IcModeListSelected } from './ic-mode-list-selected.svg';
 import { ReactComponent as IcModeList } from './ic-mode-list.svg';
+import { ReactComponent as IcPageViewer1Selected } from './ic-pageviewer-1-selected.svg';
+import { ReactComponent as IcPageViewer1 } from './ic-pageviewer-1.svg';
+import { ReactComponent as IcPageViewer2Selected } from './ic-pageviewer-2-selected.svg';
+import { ReactComponent as IcPageViewer2 } from './ic-pageviewer-2.svg';
 
 export {
   IcPaginatorFirst,
@@ -64,4 +68,8 @@ export {
   IcModeBox,
   IcModeListSelected,
   IcModeList,
+  IcPageViewer1Selected,
+  IcPageViewer1,
+  IcPageViewer2Selected,
+  IcPageViewer2,
 };

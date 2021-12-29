@@ -6,9 +6,37 @@ import icArrowPrevious from '../../../components/common/Icons/ic-arrow-previous.
 export const Item = styled.div`
   display: flex;
   justify-content: center;
+  & img {
+    width: 100%;
+    max-width: 820px;
+  }
 `;
 
-export const CustomCarousel = styled(Carousel)`
+export const ItemDouble = styled.div`
+  display: flex;
+  justify-content: center;
+  & img {
+    width: 50% !important;
+    max-width: 500px;
+  }
+`;
+
+export const ViewModeSwitcher = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-bottom: 32px;
+  & > svg {
+    width: 20px;
+    height: 24px;
+  }
+`;
+
+interface ICustomCarousel {
+  viewMode: 1 | 2;
+}
+export const CustomCarousel = styled(Carousel)<ICustomCarousel>`
+  max-width: ${({ viewMode }) => (viewMode === 1 ? 820 : 1000)}px;
   & p.carousel-status {
     font-size: 10px;
     color: #8eaec9;
