@@ -17,6 +17,7 @@ export const Title = styled(Text)<IIsSmall>`
   font-size: ${({ isSmall, isSmallMiddle }) => (isSmall ? 13 : isSmallMiddle ? 24 : 30)}px;
   margin-top: 20px;
   font-family: 'NEXON Lv1 Gothic OTF Bold';
+  line-height: ${({ isSmall, isSmallMiddle }) => (isSmall ? 18 : isSmallMiddle ? 34 : 40)}px;
 `;
 
 export const Description = styled(Text)<IIsSmall>`
