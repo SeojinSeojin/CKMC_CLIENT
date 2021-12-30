@@ -6,13 +6,14 @@ import MapPage from './pages/map';
 import AuthorPage from './pages/author';
 import EpisodePage from './pages/episode';
 import GuestPage from './pages/guest';
-import Home from './pages/home';
+//import Home from './pages/home';
 import LoginPage from './pages/login';
 import MyPage from './pages/mypage';
 import Upload from './pages/mypage/write';
 import WorksPage from './pages/works';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import HomePrePage from './pages/home-pre';
 
 function App() {
   const { isValidating, author } = useUser();
@@ -21,7 +22,7 @@ function App() {
     <div className="App">
       <ToastContainer />
       <Switch>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={HomePrePage} />
         <Route exact path="/about" component={AboutPage} />
         <Route exact path="/about/map" component={MapPage} />
         <Route exact path="/author/:authorId" component={AuthorPage} />
