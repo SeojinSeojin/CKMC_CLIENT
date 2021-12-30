@@ -38,9 +38,10 @@ export const AuthorDescription = styled.div<IIsSmall>`
   font-family: 'Noto Sans Regular';
   font-size: ${({ isSmall }) => (isSmall ? '11px' : '20px')};
   padding-top: ${({ isSmall }) => (isSmall ? '12px' : '120px')};
-  padding-left: ${({ isSmall }) => (isSmall ? '30px' : '0px')};
-  padding-right: ${({ isSmall }) => (isSmall ? '30px' : '0px')};
-  grid-template-columns: ${({ isSmall }) => (isSmall ? '50px auto' : '120px auto 100px')};
+  padding-left: ${({ isSmall }) => (isSmall ? '30px' : '8px')};
+  padding-right: ${({ isSmall }) => (isSmall ? '30px' : '8px')};
+  grid-template-columns: ${({ isSmall, isSmallMiddle }) =>
+    isSmall || isSmallMiddle ? '50px auto' : '120px auto 100px'};
 `;
 
 export const EpisodeDescription = styled.div<IIsSmall>`
@@ -48,8 +49,8 @@ export const EpisodeDescription = styled.div<IIsSmall>`
   line-height: ${({ isSmall }) => (isSmall ? '20px' : '26px')};
   color: #2454a6;
   padding-top: ${({ isSmall }) => (isSmall ? '25px' : '50px')};
-  padding-left: ${({ isSmall }) => (isSmall ? '30px' : '0px')};
-  padding-right: ${({ isSmall }) => (isSmall ? '30px' : '0px')};
+  padding-left: ${({ isSmall }) => (isSmall ? '30px' : '8px')};
+  padding-right: ${({ isSmall }) => (isSmall ? '30px' : '8px')};
   letter-spacing: -0.02em;
 `;
 

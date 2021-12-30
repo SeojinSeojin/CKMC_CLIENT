@@ -30,6 +30,17 @@ export const ViewModeSwitcher = styled.div`
     width: 20px;
     height: 24px;
   }
+  @media (max-width: 1200px) {
+    margin-right: 20px;
+    margin-top: -100px;
+    & > svg {
+      width: 15px;
+      height: 18px;
+    }
+  }
+  @media (max-width: 500px) {
+    margin-top: -32px;
+  }
 `;
 
 interface ICustomCarousel {

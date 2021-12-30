@@ -6,7 +6,7 @@ interface IIsSmall {
 }
 export const Tag = styled.div<IIsSmall>`
   padding: ${({ isSmall }) => (isSmall ? '4px 6px' : '8px 12px')};
-  font-size: ${({ isSmall }) => (isSmall ? '9px' : '16px')};
+  font-size: ${({ isSmall, isSmallMiddle }) => (isSmall ? '9px' : isSmallMiddle ? '12px' : '16px')};
   border-radius: 20px;
   border: 1px solid #2454a6;
   color: #2454a6;
@@ -22,4 +22,5 @@ export const Tag = styled.div<IIsSmall>`
 export const Wrapper = styled.div<IIsSmall>`
   display: flex;
   gap: ${({ isSmall }) => (isSmall ? '5px' : '8px')};
+  flex-wrap: wrap;
 `;
