@@ -14,8 +14,9 @@ const s3 = new ReactS3Client(AWSConfig);
 export const uploadImage = async (file: File) => {
   if (!file) throw '이미지가 선택되지 않았습니다.';
   const timestamp = new Date().toLocaleString();
-  const uploadName = `${timestamp}-${file.name}`.replaceAll(' ', '');
+  const uploadName = encodeURI(
+    `${timestamp}-${file.name}`.replaceAll(' ', '').replaceAll(':', '-'),
+  );
   const res = await s3.uploadFile(file, uploadName);
-
   return res.location;
 };
