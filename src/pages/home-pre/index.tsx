@@ -9,8 +9,11 @@ function HomePrePage() {
   const [clock, setClock] = useState(0);
   useEffect(() => {
     const openDate = new Date(2022, 1, 10);
-    setClock(getDateDifference(openDate));
-  }, []);
+    const setClockInterval = setInterval(() => {
+      setClock(getDateDifference(openDate));
+    }, 1000 * 60 * 5);
+    return () => clearInterval(setClockInterval);
+  });
 
   useEffect(() => {
     const setClockInterval = setInterval(() => {
