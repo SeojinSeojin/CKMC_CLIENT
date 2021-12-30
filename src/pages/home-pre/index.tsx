@@ -2,29 +2,26 @@ import React, { useEffect, useState } from 'react';
 import Background from '../../components/common/Background';
 import CursorContainer from '../../components/common/Cursor';
 import { LogoCK } from '../../components/common/Icons';
+import useResponsive from '../../hooks/useResponsive';
 import { dateDifferenceTemplate, getDateDifference } from '../../utils/dateDifference';
 import { Title, Ment, Clock, Wrapper } from './style';
 
 function HomePrePage() {
+  const { isSmall, isSmallMiddle } = useResponsive();
   const [clock, setClock] = useState(0);
-  useEffect(() => {
-    const openDate = new Date(2022, 1, 10);
-    const setClockInterval = setInterval(() => {
-      setClock(getDateDifference(openDate));
-    }, 1000 * 60 * 5);
-    return () => clearInterval(setClockInterval);
-  });
 
   useEffect(() => {
+    const openDate = new Date(2022, 1, 10);
+    setClock(getDateDifference(openDate));
     const setClockInterval = setInterval(() => {
-      setClock((c) => c - 1000);
+      setClock(getDateDifference(openDate));
     }, 1000);
     return () => clearInterval(setClockInterval);
-  });
+  }, []);
 
   return (
     <>
-      <CursorContainer theme="white" />
+      {!(isSmall || isSmallMiddle) && <CursorContainer theme="white" />}
       <Background blurColor="white" positionY={50}>
         <Wrapper>
           <Title>CKMC 크리에이티브 페어 2022 파도의 편지</Title>
