@@ -1,5 +1,6 @@
-import React from 'react';
-import { Redirect, Route, Switch } from 'react-router';
+import React, { useEffect } from 'react';
+import { Redirect, Route, Switch, useLocation } from 'react-router';
+import ReactGA from 'react-ga';
 import { useUser } from './hooks/useUser';
 import AboutPage from './pages/about';
 import MapPage from './pages/map';
@@ -14,9 +15,18 @@ import WorksPage from './pages/works';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import HomePrePage from './pages/home-pre';
+import { useAnalytics } from './hooks/useAnalytics';
 
 function App() {
   const { isValidating, author } = useUser();
+  const { initialized } = useAnalytics();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (initialized) {
+      ReactGA.pageview(location.pathname + location.search);
+    }
+  }, [initialized, location]);
 
   return (
     <div className="App">
