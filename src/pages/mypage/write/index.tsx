@@ -24,6 +24,10 @@ function Upload({ isUpload }: { isUpload: boolean }) {
   const { author } = useUser();
 
   useEffect(() => {
+    document.title = 'CKMC 2022 - MyPage';
+  }, []);
+
+  useEffect(() => {
     if (!author) return;
     if (!isUpload) {
       const getPreviousData = async () => {

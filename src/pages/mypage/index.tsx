@@ -35,8 +35,8 @@ function MyPage() {
   }, [author, error]);
 
   useEffect(() => {
-    console.log(fileURL === 'https://via.placeholder.com/250');
-  }, [fileURL]);
+    document.title = 'CKMC 2022 - MyPage';
+  }, []);
 
   const uploadImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
     try {

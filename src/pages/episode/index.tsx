@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useParams, useHistory } from 'react-router';
 import Loader from '../../components/common/Loader';
 import CursorContainer from '../../components/common/Cursor';
 import SelectedHashTags from '../../components/common/MyPage/SelectedHashTags';
@@ -19,12 +19,18 @@ function EpisodePage() {
   const [episode, setEpisode] = useState<EpisodeData | null>(null);
   const [author, setAuthor] = useState<AuthorData | null>(null);
   const { isSmall, isSmallMiddle } = useResponsive();
+  const history = useHistory();
 
   useEffect(() => {
     const getEpisode = async () => {
-      const response = await getFetcher(`/api/episode/${authorId}/${episodeIdx}`);
-      setEpisode(response.episode);
-      setAuthor(response.author);
+      try {
+        const response = await getFetcher(`/api/episode/${authorId}/${episodeIdx}`);
+        setEpisode(response.episode);
+        setAuthor(response.author);
+        document.title = `CKMC 2022 - ${response.author.nickName}`;
+      } catch (e) {
+        history.replace('/');
+      }
     };
     getEpisode();
   }, [episodeIdx, authorId]);

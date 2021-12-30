@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import CursorContainer from '../../components/common/Cursor';
 import NavigationBar from '../../components/common/NavigationBar';
 import useResponsive from '../../hooks/useResponsive';
@@ -7,6 +7,9 @@ import AboutSmall from './small';
 
 function AboutPage() {
   const { isBig, isBigMiddle, isSmall, isSmallMiddle } = useResponsive();
+  useEffect(() => {
+    document.title = 'CKMC 2022 - About';
+  }, []);
   return (
     <>
       {!(isSmall || isSmallMiddle) && <CursorContainer theme="blue" />}

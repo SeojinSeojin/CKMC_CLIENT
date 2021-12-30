@@ -21,6 +21,7 @@ export default function AuthorPage() {
       try {
         const authorData = await getFetcher(`/api/author/${authorId}`);
         setAuthor(authorData);
+        document.title = `CKMC 2022 - ${authorData.nickName}`;
       } catch (e) {
         history.replace('/');
       }
