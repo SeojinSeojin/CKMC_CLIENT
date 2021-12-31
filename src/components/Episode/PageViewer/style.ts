@@ -17,7 +17,7 @@ export const ItemDouble = styled.div`
   justify-content: center;
   & img {
     width: 50% !important;
-    max-width: 500px;
+    max-width: 510px;
   }
 `;
 
@@ -47,7 +47,7 @@ interface ICustomCarousel {
   viewMode: 1 | 2;
 }
 export const CustomCarousel = styled(Carousel)<ICustomCarousel>`
-  max-width: ${({ viewMode }) => (viewMode === 1 ? 820 : 1000)}px;
+  max-width: ${({ viewMode }) => (viewMode === 1 ? 820 : 1020)}px;
   & p.carousel-status {
     font-size: 10px;
     color: #8eaec9;
