@@ -55,7 +55,7 @@ interface IButton {
 const Button = styled.div<IButton>`
   ${({ disabled }) =>
     disabled
-      ? ''
+      ? 'display:none;'
       : `  & svg {
     &:hover {
       cursor: pointer;
