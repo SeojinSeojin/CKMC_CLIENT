@@ -13,7 +13,7 @@ const Wrapper = styled.div`
 `;
 
 const MentWrapper = styled.div`
-  font-family: 'Noto Sans Regular';
+  font-family: 'Noto Sans KR';
   font-size: 10px;
   line-height: 16px;
   letter-spacing: -0.05em;

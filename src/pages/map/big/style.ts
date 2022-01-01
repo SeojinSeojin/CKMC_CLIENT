@@ -36,7 +36,7 @@ export const Wrapper = styled.div`
     font-size: 16px;
     line-height: 24px;
     margin-top: 40px;
-    font-family: 'Noto Sans Bold';
+    font-family: 'Noto Sans KR';
     font-weight: 600;
     word-break: keep-all;
   }

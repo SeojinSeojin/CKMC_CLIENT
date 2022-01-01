@@ -50,7 +50,7 @@ export const Body = styled.div`
   & p {
     border-bottom: 1px solid #8eaec9;
     line-height: 30px;
-    font-family: 'Noto Sans Regular';
+    font-family: 'Noto Sans KR';
     font-size: 14px;
   }
 `;

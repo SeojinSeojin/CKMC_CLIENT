@@ -61,7 +61,7 @@ export const Body = styled.div`
   & p {
     font-size: 18px;
     margin-bottom: 36px;
-    font-family: 'Noto Sans Regular';
+    font-family: 'Noto Sans KR';
     &:last-child {
       margin-bottom: 0;
     }

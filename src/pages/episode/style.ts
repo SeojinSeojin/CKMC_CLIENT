@@ -35,7 +35,7 @@ export const AuthorDescription = styled.div<IIsSmall>`
   gap: 24px;
   align-items: center;
   color: #2454a6;
-  font-family: 'Noto Sans Regular';
+  font-family: 'Noto Sans KR';
   font-size: ${({ isSmall }) => (isSmall ? '11px' : '20px')};
   padding-top: ${({ isSmall }) => (isSmall ? '12px' : '120px')};
   padding-left: ${({ isSmall }) => (isSmall ? '30px' : '8px')};
@@ -65,6 +65,6 @@ export const FlexWrapper = styled.div<IIsSmall>`
   max-width: 1060px;
   padding: ${({ isSmall, isSmallMiddle }) => (isSmall || isSmallMiddle ? '0' : '0 20px')};
   > * {
-    font-family: 'Noto Sans Regular';
+    font-family: 'Noto Sans KR';
   }
 `;

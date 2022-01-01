@@ -65,19 +65,19 @@ export const WrapperBottom = styled.div`
     font-size: 10px;
     grid-template-columns: repeat(2, 1fr);
     gap: 34px 36px;
-    font-family: 'Noto Sans Bold';
+    font-family: 'Noto Sans KR';
     font-weight: 900;
     line-height: 20px;
 
     & > div {
       & > div:nth-child(2) {
-        font-family: 'Noto Sans Regular';
+        font-family: 'Noto Sans KR';
         font-weight: 400;
         line-height: 16px;
         letter-spacing: -0.02em;
       }
       &:last-child > div {
-        font-family: 'Noto Sans Regular';
+        font-family: 'Noto Sans KR';
         font-weight: 400;
         letter-spacing: -0.02em;
       }

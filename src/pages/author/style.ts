@@ -21,7 +21,7 @@ export const Title = styled(Text)<IIsSmall>`
 `;
 
 export const Description = styled(Text)<IIsSmall>`
-  font-family: 'Noto Sans Regular';
+  font-family: 'Noto Sans KR';
   font-size: ${({ isSmall }) => (isSmall ? 9 : 16)}px;
   margin-top: 24px;
   margin-bottom: 56px;
@@ -42,7 +42,7 @@ export const Footer = styled.div<IIsSmall>`
   line-height: 25px;
 
   & > div:nth-child(1) {
-    font-family: 'Noto Sans Regular';
+    font-family: 'Noto Sans KR';
     font-size: ${({ isSmall }) => (isSmall ? 9 : 20)}px;
   }
 `;

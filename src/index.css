@@ -39,18 +39,84 @@
   font-style: normal;
 }
 
+/* noto-sans-kr-100 - latin */
 @font-face {
-  font-family: 'Noto Sans Regular';
-  src: url('./assets/font/NotoSansKR-Regular.otf') format('otf');
-  font-weight: normal;
+  font-family: 'Noto Sans KR';
   font-style: normal;
+  font-weight: 100;
+  src: url('./assets/font/noto-sans-kr-v21-latin-100.eot'); /* IE9 Compat Modes */
+  src: local(''),
+    url('./assets/font/noto-sans-kr-v21-latin-100.eot?#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */ url('./assets/font/noto-sans-kr-v21-latin-100.woff2') format('woff2'),
+    /* Super Modern Browsers */ url('./assets/font/noto-sans-kr-v21-latin-100.woff') format('woff'),
+    /* Safari, Android, iOS */ url('./assets/font/noto-sans-kr-v21-latin-100.svg#NotoSansKR')
+      format('svg'); /* Legacy iOS */
 }
-
+/* noto-sans-kr-300 - latin */
 @font-face {
-  font-family: 'Noto Sans Bold';
-  src: url('./assets/font/NotoSansKR-Bold.otf') format('otf');
-  font-weight: normal;
+  font-family: 'Noto Sans KR';
   font-style: normal;
+  font-weight: 300;
+  src: url('./assets/font/noto-sans-kr-v21-latin-300.eot'); /* IE9 Compat Modes */
+  src: local(''),
+    url('./assets/font/noto-sans-kr-v21-latin-300.eot?#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */ url('./assets/font/noto-sans-kr-v21-latin-300.woff2') format('woff2'),
+    /* Super Modern Browsers */ url('./assets/font/noto-sans-kr-v21-latin-300.woff') format('woff'),
+    /* Safari, Android, iOS */ url('./assets/font/noto-sans-kr-v21-latin-300.svg#NotoSansKR')
+      format('svg'); /* Legacy iOS */
+}
+/* noto-sans-kr-regular - latin */
+@font-face {
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./assets/font/noto-sans-kr-v21-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local(''),
+    url('./assets/font/noto-sans-kr-v21-latin-regular.eot?#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */ url('./assets/font/noto-sans-kr-v21-latin-regular.woff2') format('woff2'),
+    /* Super Modern Browsers */ url('./assets/font/noto-sans-kr-v21-latin-regular.woff')
+      format('woff'),
+    /* Safari, Android, iOS */ url('./assets/font/noto-sans-kr-v21-latin-regular.svg#NotoSansKR')
+      format('svg'); /* Legacy iOS */
+}
+/* noto-sans-kr-500 - latin */
+@font-face {
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 500;
+  src: url('./assets/font/noto-sans-kr-v21-latin-500.eot'); /* IE9 Compat Modes */
+  src: local(''),
+    url('./assets/font/noto-sans-kr-v21-latin-500.eot?#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */ url('./assets/font/noto-sans-kr-v21-latin-500.woff2') format('woff2'),
+    /* Super Modern Browsers */ url('./assets/font/noto-sans-kr-v21-latin-500.woff') format('woff'),
+    /* Safari, Android, iOS */ url('./assets/font/noto-sans-kr-v21-latin-500.svg#NotoSansKR')
+      format('svg'); /* Legacy iOS */
+}
+/* noto-sans-kr-700 - latin */
+@font-face {
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 700;
+  src: url('./assets/font/noto-sans-kr-v21-latin-700.eot'); /* IE9 Compat Modes */
+  src: local(''),
+    url('./assets/font/noto-sans-kr-v21-latin-700.eot?#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */ url('./assets/font/noto-sans-kr-v21-latin-700.woff2') format('woff2'),
+    /* Super Modern Browsers */ url('./assets/font/noto-sans-kr-v21-latin-700.woff') format('woff'),
+    /* Safari, Android, iOS */ url('./assets/font/noto-sans-kr-v21-latin-700.svg#NotoSansKR')
+      format('svg'); /* Legacy iOS */
+}
+/* noto-sans-kr-900 - latin */
+@font-face {
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 900;
+  src: url('./assets/font/noto-sans-kr-v21-latin-900.eot'); /* IE9 Compat Modes */
+  src: local(''),
+    url('./assets/font/noto-sans-kr-v21-latin-900.eot?#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */ url('./assets/font/noto-sans-kr-v21-latin-900.woff2') format('woff2'),
+    /* Super Modern Browsers */ url('./assets/font/noto-sans-kr-v21-latin-900.woff') format('woff'),
+    /* Safari, Android, iOS */ url('./assets/font/noto-sans-kr-v21-latin-900.svg#NotoSansKR')
+      format('svg'); /* Legacy iOS */
 }
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -193,7 +259,8 @@ body {
 }
 
 div {
-  white-space: pre-line;
+  white-space: pre;
+  word-wrap: normal;
 }
 
 a {
@@ -217,7 +284,7 @@ div::-webkit-scrollbar {
 
 input,
 textarea {
-  font-family: 'Noto Sans Regular';
+  font-family: 'Noto Sans KR';
 }
 
 :root {

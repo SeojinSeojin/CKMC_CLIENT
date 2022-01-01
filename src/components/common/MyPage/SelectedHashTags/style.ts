@@ -10,7 +10,7 @@ export const Tag = styled.div<IIsSmall>`
   border-radius: 20px;
   border: 1px solid #2454a6;
   color: #2454a6;
-  font-family: 'Noto Sans Regular';
+  font-family: 'Noto Sans KR';
 
   &:hover {
     color: white;

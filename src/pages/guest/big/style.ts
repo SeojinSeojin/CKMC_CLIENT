@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Title = styled.div`
   font-size: 20px;
   color: white;
-  font-family: 'Noto Sans Regular';
+  font-family: 'Noto Sans KR';
 `;
 
 export const FlexWrapper = styled.div`

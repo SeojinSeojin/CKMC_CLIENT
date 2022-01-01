@@ -59,7 +59,7 @@ function GuestForm() {
       <Title placeholder="제목" ref={titleRef} />
       <Input
         maxLength={300}
-        placeholder="방명록 작성 후 수정 혹은 삭제가 불가능하며,&#10;문제가 되는 내용의 경우 관리자의 권한으로&#10;무통보 삭제될 수 있습니다"
+        placeholder="방명록 작성 후 수정 혹은 삭제가 불가능하며, &#10;문제가 되는 내용의 경우 관리자의 권한으로 &#10;무통보 삭제될 수 있습니다"
         preValue=""
         styledInput={Body}
         counterBottom={8}
