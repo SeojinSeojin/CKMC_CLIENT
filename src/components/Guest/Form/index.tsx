@@ -5,6 +5,7 @@ import { uploadImage as uploadImageRemote } from '../../../utils/imageUploader';
 import { Body, Sender, Title, Wrapper, File, Submit, Bottom, UploadedImage } from './style';
 import { toast } from 'react-toastify';
 import { isAllFilled } from '../../../utils/nullOrEmptyChecker';
+import { IcClose } from '../../common/Icons';
 
 function GuestForm() {
   const titleRef = useRef<HTMLInputElement>(null);
@@ -70,7 +71,9 @@ function GuestForm() {
         {selectedFile && (
           <UploadedImage>
             <img src={selectedFile} alt="업로드된 이미지" />
-            <div onClick={() => setSelectedFile(null)}>X</div>
+            <div onClick={() => setSelectedFile(null)}>
+              <IcClose />
+            </div>
           </UploadedImage>
         )}
         <input

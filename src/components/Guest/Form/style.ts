@@ -168,14 +168,13 @@ export const UploadedImage = styled.div`
     }
   }
   @media (max-width: 1400px) {
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     & img {
-      width: 40px;
-      height: 40px;
+      width: 60px;
+      height: 60px;
     }
     & div {
-      font-size: 8px;
       visibility: visible;
       top: 4px;
       right: 4px;

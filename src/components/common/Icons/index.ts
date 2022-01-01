@@ -34,6 +34,7 @@ import { ReactComponent as IcPageViewer1Selected } from './ic-pageviewer-1-selec
 import { ReactComponent as IcPageViewer1 } from './ic-pageviewer-1.svg';
 import { ReactComponent as IcPageViewer2Selected } from './ic-pageviewer-2-selected.svg';
 import { ReactComponent as IcPageViewer2 } from './ic-pageviewer-2.svg';
+import { ReactComponent as IcClose } from './ic-close.svg';
 
 export {
   IcPaginatorFirst,
@@ -72,4 +73,5 @@ export {
   IcPageViewer1,
   IcPageViewer2Selected,
   IcPageViewer2,
+  IcClose,
 };
