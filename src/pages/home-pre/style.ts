@@ -7,8 +7,11 @@ export const Title = styled.div`
   @media (max-width: 700px) {
     font-size: 24px;
   }
-  @media (max-width: 400px) {
+  @media (max-width: 450px) {
     font-size: 16px;
+  }
+  @media (max-width: 300px) {
+    font-size: 12px;
   }
 `;
 
@@ -20,8 +23,11 @@ export const Ment = styled.div`
   @media (max-width: 700px) {
     font-size: 24px;
   }
-  @media (max-width: 400px) {
+  @media (max-width: 450px) {
     font-size: 16px;
+  }
+  @media (max-width: 300px) {
+    font-size: 12px;
   }
 `;
 
@@ -35,8 +41,11 @@ export const Clock = styled.div`
   @media (max-width: 700px) {
     font-size: 40px;
   }
-  @media (max-width: 400px) {
+  @media (max-width: 450px) {
     font-size: 24px;
+  }
+  @media (max-width: 300px) {
+    font-size: 20px;
   }
 `;
 
@@ -51,7 +60,7 @@ export const Wrapper = styled.div`
     width: 175px;
     height: 25px;
   }
-  @media (max-width: 400px) {
+  @media (max-width: 450px) {
     & > svg {
       width: 98px;
       height: 14px;
