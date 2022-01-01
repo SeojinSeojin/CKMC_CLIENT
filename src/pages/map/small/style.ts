@@ -20,15 +20,21 @@ export const Wrapper = styled.div`
   flex-direction: column;
   width: 100%;
   max-width: 600px;
+  @media (max-width: 800px) {
+    min-height: calc(100vh - 63px);
+  }
 `;
 
 export const ReservationButtonWrapper = styled.div`
-  margin-top: 200px;
   display: flex;
   justify-content: center;
   position: relative;
+  margin-top: 200px;
   & > div:nth-child(2) {
     height: 45px;
+  }
+  @media (max-width: 800px) {
+    margin-top: auto;
   }
 `;
 
@@ -96,5 +102,5 @@ export const TotalWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 25px;
+  margin-top: 43px;
 `;
