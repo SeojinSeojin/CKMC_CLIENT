@@ -4,6 +4,7 @@ import NavigationBar from '../../../components/common/NavigationBar';
 import VerticalCenterLayout from '../../../components/layout/VerticalCenter';
 import WorkItem from '../../../components/Work/Item/small';
 import { useWorks } from '../../../hooks/useWorks';
+import { shuffle } from '../../../utils/array';
 import { EmptyWrapper, GridContainer, Wrapper } from './style';
 
 function WorkSmall() {
@@ -18,7 +19,7 @@ function WorkSmall() {
           </VerticalCenterLayout>
         ) : worksData && worksData.length ? (
           <GridContainer>
-            {worksData.map((work: WorkData) => (
+            {shuffle(worksData).map((work: WorkData) => (
               <WorkItem
                 key={work.authorName}
                 title={work.title}
