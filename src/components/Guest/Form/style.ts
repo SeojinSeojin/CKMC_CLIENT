@@ -87,6 +87,9 @@ export const Sender = styled.input`
   font-size: 18px;
   border-bottom: 1px solid white;
   align-self: flex-end;
+  border-radius: 0;
+  -webkit-border-radius: 0px;
+  -webkit-appearance: none;
 
   &::placeholder {
     color: rgba(256, 256, 256, 0.5);
