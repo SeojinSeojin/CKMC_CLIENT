@@ -259,8 +259,7 @@ body {
 }
 
 div {
-  white-space: pre;
-  word-wrap: normal;
+  white-space: pre-line;
 }
 
 a {
