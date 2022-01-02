@@ -13,9 +13,9 @@ export const useWorks = ({
   authorName?: string;
 }) => {
   const { data: worksData, ...rest } = useSWR(
-    `/api/work/filter?${hashTags?.length !== 0 ? `hashTags=${hashTags?.join(',')}` : ''}${
-      authorFirstName ? `authorFirstName=${authorFirstName}` : ''
-    }${authorName ? `authorName=${authorName}` : ''}${workTitle ? `workTitle=${workTitle}` : ''}`,
+    `/api/work/filter?${hashTags?.length !== 0 ? `hashTags=${hashTags?.join(',')}&` : ''}${
+      authorFirstName ? `authorFirstName=${authorFirstName}&` : ''
+    }${authorName ? `authorName=${authorName}&` : ''}${workTitle ? `workTitle=${workTitle}` : ''}`,
     getFetcher,
     {
       revalidateOnFocus: false,

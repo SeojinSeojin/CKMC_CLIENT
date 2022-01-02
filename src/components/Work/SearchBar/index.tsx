@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { AUTHOR_FIRST_NAME, HASHTAGS } from '../../../utils/HASHTAGS';
 import { BtnLeftArrowBig, BtnRightArrowBig, IcSearch } from '../../common/Icons';
 import {
@@ -39,9 +39,23 @@ function WorkSearchBar({
   isNavOpened: boolean;
   animation: '' | 'close' | 'initial';
 }) {
+  const [searchMode, setSearchMode] = useState<'title' | 'author'>('title');
+  const [searchInput, setSearchInput] = useState<string>('');
   const toggleHashTag = (tag: string) => {
     hashTags.includes(tag) ? removeHashTag(tag) : setHashTags(tag);
   };
+
+  const onSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchInput(e.target.value);
+  };
+
+  const finishSearchInput = () => {
+    searchMode === 'title' ? setWorkTitle(searchInput) : setAuthorName(searchInput);
+  };
+
+  useEffect(() => {
+    setSearchInput('');
+  }, [searchMode]);
 
   return isNavOpened ? (
     <Wrapper animation={animation}>
@@ -82,12 +96,28 @@ function WorkSearchBar({
       </SelectorWrapper>
       <SelectorWrapper>
         <SearchTypeWrapper>
-          <SearchType selected={true}>제목검색</SearchType>
-          <SearchType selected={false}>작가명검색</SearchType>
+          <SearchType onClick={() => setSearchMode('title')} selected={searchMode === 'title'}>
+            제목검색
+          </SearchType>
+          <SearchType onClick={() => setSearchMode('author')} selected={searchMode === 'author'}>
+            작가명검색
+          </SearchType>
         </SearchTypeWrapper>
         <SearchInputContainer>
-          <SearchInput type="text" placeholder="검색어를 입력해주세요" />
-          <IcSearch />
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              finishSearchInput();
+            }}
+          >
+            <SearchInput
+              type="text"
+              placeholder="검색어를 입력해주세요"
+              onChange={onSearchInput}
+              value={searchInput}
+            />
+          </form>
+          <IcSearch onClick={finishSearchInput} />
         </SearchInputContainer>
       </SelectorWrapper>
     </Wrapper>
