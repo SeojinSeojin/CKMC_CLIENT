@@ -103,4 +103,7 @@ export const TotalWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 43px;
+  @media (min-width: 500px) {
+    margin-top: 59px;
+  }
 `;

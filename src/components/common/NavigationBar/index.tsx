@@ -67,7 +67,8 @@ export default function NavigationBar({
           isOpen={isOpen}
           onClick={toggleOpen}
           isBig={isBig}
-          isMiddle={isBigMiddle || isSmallMiddle}
+          isBigMiddle={isBigMiddle}
+          isSmallMiddle={isSmallMiddle}
           isSmall={isSmall}
         />
       ) : (
@@ -76,11 +77,12 @@ export default function NavigationBar({
           isOpen={isOpen}
           onClick={toggleOpen}
           isBig={isBig}
-          isMiddle={isBigMiddle || isSmallMiddle}
+          isBigMiddle={isBigMiddle}
+          isSmallMiddle={isSmallMiddle}
           isSmall={isSmall}
         />
       )}
-      {isSmall && <MobileHeader />}
+      {(isSmall || isSmallMiddle) && <MobileHeader />}
       {isOpen && (
         <Wrapper theme={theme} animation={animation}>
           {Object.keys(SIDE_NAV).map((key) => (

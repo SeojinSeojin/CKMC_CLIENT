@@ -11,4 +11,9 @@ export const Wrapper = styled.div`
   text-align: center;
   z-index: 100;
   font-size: 11px;
+  @media (min-width: 500px) {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 16px;
+  }
 `;

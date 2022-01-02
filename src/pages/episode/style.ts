@@ -41,7 +41,7 @@ export const AuthorDescription = styled.div<IIsSmall>`
   padding-left: ${({ isSmall }) => (isSmall ? '30px' : '8px')};
   padding-right: ${({ isSmall }) => (isSmall ? '30px' : '8px')};
   grid-template-columns: ${({ isSmall, isSmallMiddle }) =>
-    isSmall || isSmallMiddle ? '50px auto' : '120px auto 100px'};
+    isSmall ? '50px auto' : isSmallMiddle ? '110px auto' : '120px auto 100px'};
 `;
 
 export const EpisodeDescription = styled.div<IIsSmall>`

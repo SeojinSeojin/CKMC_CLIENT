@@ -69,15 +69,18 @@ const rotate = keyframes`
 interface IButton {
   isOpen: boolean;
   isBig: boolean;
-  isMiddle: boolean;
+  isBigMiddle: boolean;
+  isSmallMiddle: boolean;
   isSmall: boolean;
 }
 export const BlueButton = styled.div<IButton>`
   position: fixed;
-  top: ${({ isSmall }) => (isSmall ? '10px' : '100px')};
-  left: ${({ isSmall }) => (isSmall ? '30px' : '60px')};
-  width: ${({ isBig, isMiddle }) => (isBig ? '46px' : isMiddle ? '30px' : '22px')};
-  height: ${({ isBig, isMiddle }) => (isBig ? '46px' : isMiddle ? '30px' : '22px')};
+  top: ${({ isSmall, isSmallMiddle }) => (isSmall ? '10px' : isSmallMiddle ? '16px' : '100px')};
+  left: ${({ isSmall, isSmallMiddle }) => (isSmall || isSmallMiddle ? '30px' : '60px')};
+  width: ${({ isBig, isSmallMiddle, isBigMiddle }) =>
+    isBig ? '46px' : isSmallMiddle || isBigMiddle ? '30px' : '22px'};
+  height: ${({ isBig, isSmallMiddle, isBigMiddle }) =>
+    isBig ? '46px' : isSmallMiddle || isBigMiddle ? '30px' : '22px'};
   z-index: 9999;
   background-repeat: no-repeat;
   background-size: cover;
@@ -93,10 +96,12 @@ export const BlueButton = styled.div<IButton>`
 
 export const WhiteButton = styled.div<IButton>`
   position: fixed;
-  top: ${({ isSmall }) => (isSmall ? '10px' : '100px')};
-  left: ${({ isSmall }) => (isSmall ? '30px' : '60px')};
-  width: ${({ isBig, isMiddle }) => (isBig ? '46px' : isMiddle ? '30px' : '22px')};
-  height: ${({ isBig, isMiddle }) => (isBig ? '46px' : isMiddle ? '30px' : '22px')};
+  top: ${({ isSmall, isSmallMiddle }) => (isSmall ? '10px' : isSmallMiddle ? '16px' : '100px')};
+  left: ${({ isSmall, isSmallMiddle }) => (isSmall || isSmallMiddle ? '30px' : '60px')};
+  width: ${({ isBig, isSmallMiddle, isBigMiddle }) =>
+    isBig ? '46px' : isSmallMiddle || isBigMiddle ? '30px' : '22px'};
+  height: ${({ isBig, isSmallMiddle, isBigMiddle }) =>
+    isBig ? '46px' : isSmallMiddle || isBigMiddle ? '30px' : '22px'};
   z-index: 9999;
   background-repeat: no-repeat;
   background-size: cover;
