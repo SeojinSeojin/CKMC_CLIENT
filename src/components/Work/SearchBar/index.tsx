@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import useResponsive from '../../../hooks/useResponsive';
 import { AUTHOR_FIRST_NAME, HASHTAGS } from '../../../utils/HASHTAGS';
-import { BtnLeftArrowBig, BtnRightArrowBig, IcSearch } from '../../common/Icons';
+import {
+  BtnLeftArrowBig,
+  BtnLeftArrowSmall,
+  BtnRightArrowBig,
+  BtnRightArrowSmall,
+  IcSearch,
+} from '../../common/Icons';
 import {
   HashTag,
   Wrapper,
@@ -53,13 +60,45 @@ function WorkSearchBar({
     searchMode === 'title' ? setWorkTitle(searchInput) : setAuthorName(searchInput);
   };
 
+  const { isSmall, isSmallMiddle } = useResponsive();
+
   useEffect(() => {
     setSearchInput('');
   }, [searchMode]);
 
   return isNavOpened ? (
     <Wrapper animation={animation}>
-      <BtnLeftArrowBig onClick={toggleIsNavOpened} />
+      {isSmall || isSmallMiddle ? (
+        <BtnLeftArrowSmall onClick={toggleIsNavOpened} />
+      ) : (
+        <BtnLeftArrowBig onClick={toggleIsNavOpened} />
+      )}
+      <SelectorWrapper>
+        <SearchTypeWrapper>
+          <SearchType onClick={() => setSearchMode('title')} selected={searchMode === 'title'}>
+            제목검색
+          </SearchType>
+          <SearchType onClick={() => setSearchMode('author')} selected={searchMode === 'author'}>
+            작가명검색
+          </SearchType>
+        </SearchTypeWrapper>
+        <SearchInputContainer>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              finishSearchInput();
+            }}
+          >
+            <SearchInput
+              type="text"
+              placeholder="검색어를 입력해주세요"
+              onChange={onSearchInput}
+              value={searchInput}
+            />
+          </form>
+          <IcSearch onClick={finishSearchInput} />
+        </SearchInputContainer>
+      </SelectorWrapper>
       <SelectorWrapper>
         <SelectorTitle>소재/장르별 해시태그</SelectorTitle>
         <HashTagContainer>
@@ -94,36 +133,14 @@ function WorkSearchBar({
           ))}
         </FirstNameContainer>
       </SelectorWrapper>
-      <SelectorWrapper>
-        <SearchTypeWrapper>
-          <SearchType onClick={() => setSearchMode('title')} selected={searchMode === 'title'}>
-            제목검색
-          </SearchType>
-          <SearchType onClick={() => setSearchMode('author')} selected={searchMode === 'author'}>
-            작가명검색
-          </SearchType>
-        </SearchTypeWrapper>
-        <SearchInputContainer>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              finishSearchInput();
-            }}
-          >
-            <SearchInput
-              type="text"
-              placeholder="검색어를 입력해주세요"
-              onChange={onSearchInput}
-              value={searchInput}
-            />
-          </form>
-          <IcSearch onClick={finishSearchInput} />
-        </SearchInputContainer>
-      </SelectorWrapper>
     </Wrapper>
   ) : (
     <SingleWrapper>
-      <BtnRightArrowBig onClick={toggleIsNavOpened} />
+      {isSmall || isSmallMiddle ? (
+        <BtnRightArrowSmall onClick={toggleIsNavOpened} />
+      ) : (
+        <BtnRightArrowBig onClick={toggleIsNavOpened} />
+      )}
     </SingleWrapper>
   );
 }

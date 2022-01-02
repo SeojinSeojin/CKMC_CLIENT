@@ -14,4 +14,15 @@ export const Wrapper = styled.div`
   min-height: 100vh;
 `;
 
-export const EmptyWrapper = styled.div``;
+export const EmptyWrapper = styled.div`
+  @media (max-width: 1200px) {
+    margin-top: 90px;
+    font-size: 16px;
+    line-height: 20px;
+  }
+  @media (max-width: 500px) {
+    margin-top: 60px;
+    font-size: 11px;
+    line-height: 14px;
+  }
+`;

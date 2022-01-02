@@ -6,7 +6,6 @@ import NavigationBar from '../../../components/common/NavigationBar';
 import WorkItem from '../../../components/Work/Item/big';
 import WorkSearchBar from '../../../components/Work/SearchBar';
 import { useWorks } from '../../../hooks/useWorks';
-import { shuffle } from '../../../utils/array';
 import {
   WorkContainer,
   CenterContainer,
@@ -61,7 +60,7 @@ export default function WorkBig() {
             <FlexContainer>
               <CenterContainer>
                 <WorkContainer animation={animation}>
-                  {shuffle(worksData).map((work: WorkData) => (
+                  {worksData.map((work: WorkData) => (
                     <Link to={`/author/${work.authorName}`} key={work.authorName}>
                       <WorkItem
                         title={work.title}

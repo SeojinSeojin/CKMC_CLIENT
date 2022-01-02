@@ -33,6 +33,7 @@ export const Wrapper = styled.div<IWrapper>`
   flex-direction: column;
   justify-content: flex-end;
   height: 100vh;
+  z-index: 101;
   ${({ animation }) =>
     animation === 'initial'
       ? ''
@@ -41,6 +42,7 @@ export const Wrapper = styled.div<IWrapper>`
   & > svg {
     margin-bottom: 20px;
     margin-left: 28px;
+    z-index: 101;
     &:hover {
       cursor: pointer;
     }
@@ -75,6 +77,31 @@ export const Wrapper = styled.div<IWrapper>`
       transform: rotateZ(180deg);
     }
   }
+
+  @media (max-width: 1200px) {
+    width: 300px;
+    justify-content: flex-start;
+    padding-top: 20px;
+    background: #2454a6;
+    & > svg {
+      width: 20px;
+      height: 18px;
+      &:hover {
+        cursor: pointer;
+      }
+      ${({ animation }) =>
+        animation === '' || animation === 'initial'
+          ? ''
+          : 'animation: 0.2s linear rotateOut; transform: rotateZ(180deg); & path{ stroke: #2454a6; }'}
+    }
+  }
+  @media (max-width: 400px) {
+    & > svg {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+    }
+  }
 `;
 
 export const HashTag = styled(Base)`
@@ -100,6 +127,11 @@ export const HashTag = styled(Base)`
     cursor: pointer;
     font-weight: 900;`
       : ''}
+
+  @media(max-width:1200px) {
+    font-size: 11px;
+    padding: 5px 7px;
+  }
 `;
 
 export const HashTagContainer = styled.div`
@@ -113,11 +145,16 @@ export const SelectorTitle = styled.div`
   color: white;
   font-size: 17px;
   padding-bottom: 24px;
+
+  @media (max-width: 1200px) {
+    font-size: 11px;
+  }
 `;
 
 export const SelectorWrapper = styled.div`
   padding: 28px;
   border-bottom: 1px solid #8eaec9;
+  z-index: 102;
 
   &:last-child {
     border-bottom: none;
@@ -127,6 +164,9 @@ export const SelectorWrapper = styled.div`
 
 export const FirstName = styled(Base)`
   z-index: 90;
+  @media (max-width: 1200px) {
+    font-size: 13px;
+  }
 `;
 
 export const FirstNameContainer = styled.div`
@@ -142,6 +182,9 @@ export const SearchTypeWrapper = styled.div`
 
 export const SearchType = styled(Base)`
   font-size: 14px;
+  @media (max-width: 1200px) {
+    font-size: 11px;
+  }
 `;
 
 export const SearchInput = styled.input`
@@ -157,6 +200,10 @@ export const SearchInput = styled.input`
   &::placeholder {
     color: #8eaec9;
   }
+  @media (max-width: 1200px) {
+    font-size: 11px;
+    padding: 4px 10px;
+  }
 `;
 
 export const SearchInputContainer = styled.div`
@@ -167,8 +214,14 @@ export const SearchInputContainer = styled.div`
     position: absolute;
     right: 12px;
     bottom: 12px;
-    &:hover {
-      cursor: pointer;
+    cursor: pointer;
+  }
+
+  @media (max-width: 1200px) {
+    & svg {
+      width: 12px;
+      height: 12px;
+      bottom: 8px;
     }
   }
 `;
@@ -180,6 +233,7 @@ export const SingleWrapper = styled.div`
   padding-top: calc(100vh - 842px);
   height: 100vh;
   animation: 0.2s linear searchNavIn;
+  z-index: 101;
 
   & svg {
     margin-left: 28px;
@@ -198,6 +252,22 @@ export const SingleWrapper = styled.div`
     }
     100% {
       transform: translateX(0);
+    }
+  }
+  @media (max-width: 1200px) {
+    padding-top: 20px;
+    right: 20px;
+    & > svg {
+      width: 20px;
+      height: 18px;
+    }
+  }
+  @media (max-width: 500px) {
+    padding-top: 10px;
+    right: 20px;
+    & > svg {
+      width: 20px;
+      height: 18px;
     }
   }
 `;

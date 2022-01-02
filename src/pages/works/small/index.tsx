@@ -1,14 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Loader from '../../../components/common/Loader';
 import NavigationBar from '../../../components/common/NavigationBar';
 import VerticalCenterLayout from '../../../components/layout/VerticalCenter';
 import WorkItem from '../../../components/Work/Item/small';
+import WorkSearchBar from '../../../components/Work/SearchBar';
 import { useWorks } from '../../../hooks/useWorks';
-import { shuffle } from '../../../utils/array';
 import { EmptyWrapper, GridContainer, Wrapper } from './style';
 
 function WorkSmall() {
-  const { worksData, isValidating } = useWorks({ hashTags: [] });
+  const [hashTags, setHashTags] = useState<string[]>([]);
+  const [authorFirstName, setAuthorFirstName] = useState('');
+  const [authorName, setAuthorName] = useState('');
+  const [workTitle, setWorkTitle] = useState('');
+  const [isNavOpened, setIsNavOpened] = useState(false);
+  const [animation, setAnimation] = useState<'' | 'close' | 'initial'>('initial');
+  const { worksData, isValidating } = useWorks({
+    hashTags,
+    authorFirstName,
+    authorName,
+    workTitle,
+  });
+  const toggleIsNavOpened = () => {
+    if (isNavOpened) {
+      setAnimation('close');
+      setTimeout(() => {
+        setIsNavOpened((prev) => !prev);
+      }, 400);
+    } else {
+      setAnimation('');
+      setIsNavOpened((prev) => !prev);
+    }
+  };
   return (
     <>
       <NavigationBar theme="blue" selected="WORKS" />
@@ -19,7 +41,7 @@ function WorkSmall() {
           </VerticalCenterLayout>
         ) : worksData && worksData.length ? (
           <GridContainer>
-            {shuffle(worksData).map((work: WorkData) => (
+            {worksData.map((work: WorkData) => (
               <WorkItem
                 key={work.authorName}
                 title={work.title}
@@ -38,6 +60,22 @@ function WorkSmall() {
           </EmptyWrapper>
         )}
       </Wrapper>
+      <WorkSearchBar
+        animation={animation}
+        toggleIsNavOpened={toggleIsNavOpened}
+        hashTags={hashTags}
+        authorFirstName={authorFirstName}
+        setHashTags={(tag: string) => {
+          setHashTags((prev) => [...prev, tag]);
+        }}
+        setAuthorFirstName={(name: string) => setAuthorFirstName(name)}
+        setAuthorName={(name: string) => setAuthorName(name)}
+        setWorkTitle={(title: string) => setWorkTitle(title)}
+        removeHashTag={(tag: string) => {
+          setHashTags((prev) => prev.filter((prevTag) => prevTag !== tag));
+        }}
+        isNavOpened={isNavOpened}
+      />
     </>
   );
 }

@@ -17,6 +17,8 @@ import { ReactComponent as IcNineteen } from './ic-nineteen.svg';
 import { ReactComponent as IcSearch } from './ic-search.svg';
 import { ReactComponent as BtnLeftArrowBig } from './btn-left-arrow-big.svg';
 import { ReactComponent as BtnRightArrowBig } from './btn-right-arrow-big.svg';
+import { ReactComponent as BtnLeftArrowSmall } from './btn-left-arrow-small.svg';
+import { ReactComponent as BtnRightArrowSmall } from './btn-right-arrow-small.svg';
 import { ReactComponent as IcRadioSelected } from './ic-radio-selected.svg';
 import { ReactComponent as IcRadioUnselected } from './ic-radio-unselected.svg';
 import { ReactComponent as IcAllEpisodes } from './ic-all-episodes.svg';
@@ -74,4 +76,6 @@ export {
   IcPageViewer2Selected,
   IcPageViewer2,
   IcClose,
+  BtnLeftArrowSmall,
+  BtnRightArrowSmall,
 };
