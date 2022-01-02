@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Loader from '../../../components/common/Loader';
 import CursorContainer from '../../../components/common/Cursor';
@@ -15,6 +15,7 @@ import {
   EmptyWrapper,
 } from './style';
 import VerticalCenterLayout from '../../../components/layout/VerticalCenter';
+import { shuffle } from '../../../utils/array';
 
 export default function WorkBig() {
   const [hashTags, setHashTags] = useState<string[]>([]);
@@ -42,6 +43,11 @@ export default function WorkBig() {
   };
   const [animation, setAnimation] = useState<'' | 'close' | 'initial'>('initial');
 
+  const [displayWorksData, setDisplayWorksData] = useState<Array<WorkData>>([]);
+  useEffect(() => {
+    if (worksData) setDisplayWorksData(shuffle(worksData));
+  }, [worksData]);
+
   return (
     <>
       <CursorContainer theme="blue" />
@@ -60,7 +66,7 @@ export default function WorkBig() {
             <FlexContainer>
               <CenterContainer>
                 <WorkContainer animation={animation}>
-                  {worksData.map((work: WorkData) => (
+                  {displayWorksData.map((work: WorkData) => (
                     <Link to={`/author/${work.authorName}`} key={work.authorName}>
                       <WorkItem
                         title={work.title}

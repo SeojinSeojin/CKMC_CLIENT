@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Loader from '../../../components/common/Loader';
 import NavigationBar from '../../../components/common/NavigationBar';
 import VerticalCenterLayout from '../../../components/layout/VerticalCenter';
 import WorkItem from '../../../components/Work/Item/small';
 import WorkSearchBar from '../../../components/Work/SearchBar';
 import { useWorks } from '../../../hooks/useWorks';
+import { shuffle } from '../../../utils/array';
 import { EmptyWrapper, GridContainer, Wrapper } from './style';
 
 function WorkSmall() {
@@ -31,6 +32,11 @@ function WorkSmall() {
       setIsNavOpened((prev) => !prev);
     }
   };
+  const [displayWorksData, setDisplayWorksData] = useState<Array<WorkData>>([]);
+  useEffect(() => {
+    if (worksData) setDisplayWorksData(shuffle(worksData));
+  }, [worksData]);
+
   return (
     <>
       <NavigationBar theme="blue" selected="WORKS" />
@@ -41,7 +47,7 @@ function WorkSmall() {
           </VerticalCenterLayout>
         ) : worksData && worksData.length ? (
           <GridContainer>
-            {worksData.map((work: WorkData) => (
+            {displayWorksData.map((work: WorkData) => (
               <WorkItem
                 key={work.authorName}
                 title={work.title}

@@ -37,6 +37,7 @@ import { ReactComponent as IcPageViewer1 } from './ic-pageviewer-1.svg';
 import { ReactComponent as IcPageViewer2Selected } from './ic-pageviewer-2-selected.svg';
 import { ReactComponent as IcPageViewer2 } from './ic-pageviewer-2.svg';
 import { ReactComponent as IcClose } from './ic-close.svg';
+import { ReactComponent as BtnRefresh } from './btn-refresh.svg';
 
 export {
   IcPaginatorFirst,
@@ -78,4 +79,5 @@ export {
   IcClose,
   BtnLeftArrowSmall,
   BtnRightArrowSmall,
+  BtnRefresh,
 };
