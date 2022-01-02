@@ -25,6 +25,7 @@ export const Wrapper = styled.div<IWrapper>`
   backdrop-filter: blur(5px);
   display: inline-flex;
   flex-direction: column;
+  font-size: 18px;
 
   @keyframes slideIn {
     0% {
@@ -46,6 +47,13 @@ export const Wrapper = styled.div<IWrapper>`
       opacity: 0;
       transform: translateX(-180px);
     }
+  }
+
+  @media (max-width: 1200px) {
+    padding-top: 160px;
+    padding-left: 30px;
+    width: 300px;
+    font-size: 14px;
   }
 `;
 
@@ -125,6 +133,10 @@ export const Item = styled.a<IItem>`
     font-family: 'NEXON Lv1 Gothic OTF Bold';
     color: ${(props) => (props.theme === 'white' ? 'white' : '#2454A6')};
     cursor: pointer;
+  }
+
+  @media (max-width: 1200px) {
+    margin-bottom: 32px;
   }
 `;
 
