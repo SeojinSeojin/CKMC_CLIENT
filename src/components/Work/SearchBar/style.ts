@@ -101,6 +101,13 @@ export const Wrapper = styled.div<IWrapper>`
       right: 20px;
     }
   }
+  @media (max-height: 700px) {
+    & > svg {
+      width: 20px;
+      height: 18px;
+      z-index: 130;
+    }
+  }
 `;
 
 export const HashTag = styled(Base)`
@@ -261,6 +268,12 @@ export const SingleWrapper = styled.div`
   @media (max-width: 500px) {
     padding-top: 10px;
     right: 20px;
+    & > svg {
+      width: 20px;
+      height: 18px;
+    }
+  }
+  @media (max-height: 700px) {
     & > svg {
       width: 20px;
       height: 18px;
