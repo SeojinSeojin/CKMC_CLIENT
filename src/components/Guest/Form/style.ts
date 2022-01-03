@@ -123,6 +123,7 @@ export const Submit = styled.input`
   border: none;
   color: white;
   cursor: pointer;
+  font-family: 'NEXON Lv1 Gothic OTF';
   @media (max-width: 1400px) {
     font-size: 10px;
   }

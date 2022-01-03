@@ -17,6 +17,7 @@ const MentWrapper = styled.div`
   font-size: 10px;
   line-height: 16px;
   letter-spacing: -0.05em;
+  margin-bottom: 160px;
   & p {
     margin-bottom: 8px;
   }
@@ -24,9 +25,6 @@ const MentWrapper = styled.div`
     width: 45px;
     height: 30px;
     margin-bottom: 30px;
-  }
-  & > div:nth-child(1) {
-    margin-bottom: 160px;
   }
 `;
 const TitleWrapper = styled.div`

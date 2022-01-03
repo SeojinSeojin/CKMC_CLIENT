@@ -6,17 +6,15 @@ interface ISelected {
 
 const Base = styled.div<ISelected>`
   color: ${({ selected }) => (selected ? 'white' : '#8eaec9')};
+  cursor: pointer;
   &:hover {
-    cursor: pointer;
     color: white;
     font-weight: 900;
   }
   ${({ selected }) =>
-    selected
-      ? `cursor: pointer;
-    color: white;
-    font-weight: 900;`
-      : ''}
+    selected &&
+    `color: white;
+    font-weight: 900;`}
 `;
 
 interface IWrapper {
@@ -165,7 +163,7 @@ export const SelectorWrapper = styled.div`
 export const FirstName = styled(Base)`
   z-index: 90;
   @media (max-width: 1200px) {
-    font-size: 13px;
+    font-size: ${({ selected }) => (selected ? '13px' : '12px')};
   }
 `;
 
