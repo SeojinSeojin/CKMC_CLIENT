@@ -30,20 +30,21 @@ export const Wrapper = styled.div<IWrapper>`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  height: 100vh;
   z-index: 101;
+  flex-wrap: nowrap;
+  overflow-y: scroll;
   ${({ animation }) =>
     animation === 'initial'
       ? ''
       : `animation: 0.4s linear ${animation === '' ? 'searchNavIn' : 'searchNavOut'};`}
 
   & > svg {
-    margin-bottom: 20px;
-    margin-left: 28px;
+    position: absolute;
     z-index: 101;
-    &:hover {
-      cursor: pointer;
-    }
+    margin-left: 20px;
+    top: 100px;
+    left: 0;
+    cursor: pointer;
     ${({ animation }) =>
       animation === '' || animation === 'initial'
         ? ''
@@ -82,11 +83,11 @@ export const Wrapper = styled.div<IWrapper>`
     padding-top: 20px;
     background: #2454a6;
     & > svg {
+      position: static;
       width: 20px;
       height: 18px;
-      &:hover {
-        cursor: pointer;
-      }
+      margin-left: 20px;
+      cursor: pointer;
       ${({ animation }) =>
         animation === '' || animation === 'initial'
           ? ''
@@ -103,12 +104,12 @@ export const Wrapper = styled.div<IWrapper>`
 `;
 
 export const HashTag = styled(Base)`
-  border-radius: 50px;
+  border-radius: 70px;
   border: 1px solid #8eaec9;
-  padding: 8px 14px;
+  padding: 8px 11px;
   flex-grow: 2;
   text-align: center;
-  font-size: 14px;
+  font-size: 13px;
 
   &:hover {
     border: 1px solid white;
@@ -141,8 +142,8 @@ export const HashTagContainer = styled.div`
 
 export const SelectorTitle = styled.div`
   color: white;
-  font-size: 17px;
-  padding-bottom: 24px;
+  font-size: 16px;
+  padding-bottom: 16px;
 
   @media (max-width: 1200px) {
     font-size: 11px;
@@ -150,18 +151,19 @@ export const SelectorTitle = styled.div`
 `;
 
 export const SelectorWrapper = styled.div`
-  padding: 28px;
+  padding: 26px;
   border-bottom: 1px solid #8eaec9;
   z-index: 102;
 
   &:last-child {
     border-bottom: none;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
   }
 `;
 
 export const FirstName = styled(Base)`
   z-index: 90;
+  font-size: 15px;
   @media (max-width: 1200px) {
     font-size: ${({ selected }) => (selected ? '13px' : '12px')};
   }
@@ -228,17 +230,13 @@ export const SingleWrapper = styled.div`
   position: fixed;
   right: 40px;
   top: 0;
-  padding-top: calc(100vh - 842px);
+  padding-top: 100px;
   height: 100vh;
   animation: 0.2s linear searchNavIn;
   z-index: 101;
 
   & svg {
-    margin-left: 28px;
-    margin-bottom: 20px;
-    &:hover {
-      cursor: pointer;
-    }
+    cursor: pointer;
   }
 
   @keyframes searchNavIn {
