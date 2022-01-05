@@ -208,6 +208,50 @@ const FormWrapper = styled.form`
     align-items: end;
     grid-template-columns: auto 74px;
   }
+
+  @media (max-width: 680px) {
+    border-left: none;
+    border-right: none;
+
+    & input[type='text'],
+    input[type='password'] {
+      width: 100px;
+      margin-right: 12px;
+      font-size: 12px;
+      &:focus {
+        outline: none;
+      }
+      &::placeholder {
+        color: #8eaec9;
+      }
+    }
+    & textarea {
+      font-size: 12px;
+    }
+    & > div:nth-child(1) {
+      align-items: center;
+      & > div {
+        font-size: 12px;
+        margin-left: auto;
+        cursor: pointer;
+      }
+    }
+    & > div:nth-child(2) {
+      & > input[type='submit'] {
+        font-size: 12px;
+        padding: 0;
+      }
+      margin-top: 16px;
+      display: grid;
+      align-items: end;
+      grid-template-columns: auto 56px;
+    }
+  }
+  @media (max-height: 500) {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  } ;
 `;
 
 export default CommentInput;

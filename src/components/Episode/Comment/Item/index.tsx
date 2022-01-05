@@ -33,8 +33,38 @@ const Wrapper = styled.div`
       font-size: 18px;
     }
   }
+  & > div:nth-child(2) {
+    line-height: 24px;
+  }
   padding-left: 20px;
   padding-right: 20px;
+
+  @media (max-width: 680px) {
+    padding-left: 12px;
+    padding-right: 12px;
+    & > div:nth-child(1) {
+      margin-bottom: 14px;
+      & > div {
+        gap: 12px;
+      }
+      & > div:nth-child(1) {
+        & > div:nth-child(1) {
+          font-size: 12px;
+        }
+        & > div:nth-child(2) {
+          font-size: 10px;
+          color: #8eaec9;
+        }
+      }
+      & > div:nth-child(2) {
+        font-size: 12px;
+      }
+    }
+    & > div:nth-child(2) {
+      font-size: 14px;
+      line-height: 18px;
+    }
+  }
 `;
 
 function CommentItem({

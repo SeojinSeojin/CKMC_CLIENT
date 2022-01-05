@@ -81,7 +81,7 @@ export const BlueButton = styled.div<IButton>`
     isBig ? '46px' : isSmallMiddle || isBigMiddle ? '30px' : '22px'};
   height: ${({ isBig, isSmallMiddle, isBigMiddle }) =>
     isBig ? '46px' : isSmallMiddle || isBigMiddle ? '30px' : '22px'};
-  z-index: 9999;
+  z-index: 9998;
   background-repeat: no-repeat;
   background-size: cover;
   background-image: ${(props) => (props.isOpen ? `url(${BlueStarFull})` : `url(${BlueStar})`)};
@@ -102,7 +102,7 @@ export const WhiteButton = styled.div<IButton>`
     isBig ? '46px' : isSmallMiddle || isBigMiddle ? '30px' : '22px'};
   height: ${({ isBig, isSmallMiddle, isBigMiddle }) =>
     isBig ? '46px' : isSmallMiddle || isBigMiddle ? '30px' : '22px'};
-  z-index: 9999;
+  z-index: 9998;
   background-repeat: no-repeat;
   background-size: cover;
   background-image: ${(props) => (props.isOpen ? `url(${WhiteStarFull})` : `url(${WhiteStar})`)};

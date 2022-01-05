@@ -75,7 +75,7 @@ function EpisodePage() {
             <div>
               {author.work.hashTags && <SelectedHashTags hashTags={author.work.hashTags} />}
             </div>
-            {!(isSmall || isSmallMiddle) && (
+            {!isSmall && (
               <PageNavigator
                 totalPage={author.work.episodes.length}
                 currentPage={episode.index}
