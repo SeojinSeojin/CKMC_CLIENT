@@ -3,4 +3,5 @@ interface CommentData {
   password: string;
   content: string;
   createdAt: string;
+  _id: string;
 }

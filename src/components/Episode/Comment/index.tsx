@@ -34,7 +34,7 @@ function EpisodeComment({
   return (
     <>
       {isVisitor ? (
-        <CommentInput />
+        <CommentInput authorName={authorName} episodeIndex={episodeIndex} />
       ) : (
         <div style={{ marginTop: 72 }}>
           {comments.length ? (

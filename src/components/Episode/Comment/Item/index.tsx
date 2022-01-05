@@ -42,11 +42,15 @@ function CommentItem({
   content,
   createdAt,
   isEditable,
+  handleEdit,
+  handleDelete,
 }: {
   userName: string;
   content: string;
   createdAt: string;
   isEditable: boolean;
+  handleEdit?: () => void;
+  handleDelete?: () => void;
 }) {
   return (
     <Wrapper>
@@ -57,8 +61,8 @@ function CommentItem({
         </div>
         {isEditable && (
           <div>
-            <div>수정</div>
-            <div>삭제</div>
+            <div onClick={handleEdit && handleEdit}>수정</div>
+            <div onClick={handleDelete && handleDelete}>삭제</div>
           </div>
         )}
       </div>
