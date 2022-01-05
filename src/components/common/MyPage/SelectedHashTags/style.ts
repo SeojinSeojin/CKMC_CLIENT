@@ -23,4 +23,7 @@ export const Wrapper = styled.div<IIsSmall>`
   display: flex;
   gap: ${({ isSmall }) => (isSmall ? '5px' : '8px')};
   flex-wrap: wrap;
+  & > div {
+    font-size: ${({ isSmall }) => isSmall && '12px'};
+  }
 `;
