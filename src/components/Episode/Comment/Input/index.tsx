@@ -1,5 +1,5 @@
-import { resolve } from 'path';
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import styled from 'styled-components';
 import { deleteFetcher, patchFetcher, postFetcher } from '../../../../utils/fetchers';
@@ -15,13 +15,17 @@ function CommentInput({ authorName, episodeIndex }: { authorName: string; episod
   const [mode, setMode] = useState<'modify' | 'create'>('create');
   const [targetID, setTargetID] = useState<string | null>(null);
 
+  useEffect(() => {
+    setContent('');
+    setMyComments([]);
+  }, [authorName, episodeIndex]);
   const findMyComments = async () => {
     const response = await fetch(
       `/api/comment?username=${name}&password=${password}&authorName=${authorName}&episodeIndex=${episodeIndex}`,
     );
-    console.log(response);
     if (response.status === 204) {
       setMyComments([]);
+      toast.success('아직 작가님께 보낸 편지가 없어요');
     } else {
       const data = await response.json();
       setMyComments(data);
