@@ -13,6 +13,7 @@ import { AuthorDescription, FlexWrapper, EpisodeDescription, Header } from './st
 import PageNavigator from '../../components/Episode/PageNavigator';
 import VerticalCenterLayout from '../../components/layout/VerticalCenter';
 import useResponsive from '../../hooks/useResponsive';
+import EpisodeComment from '../../components/Episode/Comment';
 
 function EpisodePage() {
   const { authorId, episodeIdx }: { authorId: string; episodeIdx: string } = useParams();
@@ -82,6 +83,7 @@ function EpisodePage() {
               />
             )}
           </AuthorDescription>
+          <EpisodeComment authorName={author.nickName} episodeIndex={+episodeIdx} />
         </FlexWrapper>
       </FlexCenterLayout>
     </>

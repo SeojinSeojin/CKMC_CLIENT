@@ -156,6 +156,7 @@ export const UserItem = styled(Item)`
   flex-direction: column;
   gap: 20px;
   text-align: left;
+  font-size: 16px;
 
   &:hover {
     font-family: 'NEXON Lv1 Gothic OTF';
