@@ -9,7 +9,7 @@ interface IWrapper {
 }
 export const Wrapper = styled.div<IWrapper>`
   position: fixed;
-  z-index: 9998;
+  z-index: 9997;
   top: 0;
   left: 0;
   height: 100vh;
