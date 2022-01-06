@@ -161,6 +161,9 @@ const FormWrapper = styled.form`
   padding: 20px;
   border: 1px solid #2454a6;
   margin-top: 60px;
+  & input {
+    border-radius: 0;
+  }
 
   & input[type='text'],
   input[type='password'],

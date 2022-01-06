@@ -1,8 +1,8 @@
 import { useMediaQuery } from 'react-responsive';
 
 export default function useResponsive() {
-  const isBig = useMediaQuery({ minWidth: 1700 });
-  const isBigMiddle = useMediaQuery({ minWidth: 1200, maxWidth: 1700 });
+  const isBig = useMediaQuery({ minWidth: 1400 });
+  const isBigMiddle = useMediaQuery({ minWidth: 1200, maxWidth: 1400 });
   const isSmallMiddle = useMediaQuery({ minWidth: 500, maxWidth: 1200 });
   const isSmall = useMediaQuery({ maxWidth: 500 });
   const isGuestSmall = useMediaQuery({ maxWidth: 1400 });
