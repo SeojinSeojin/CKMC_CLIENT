@@ -25,7 +25,7 @@ function EpisodeItem({
 }) {
   const history = useHistory();
   const { mutate } = useUser();
-  const { isSmall, isSmallMiddle } = useResponsive();
+  const { isSmall, isSmallMiddle, isBigMiddle, isBig } = useResponsive();
   const moveToDetail = () => {
     const path = viewMethod === 'link' && link ? link : `/author/${authorName}/${index}`;
     window.location.href = path;
@@ -53,9 +53,21 @@ function EpisodeItem({
     });
   };
   return (
-    <Wrapper onClick={moveToDetail} isSmall={isSmall} isSmallMiddle={isSmallMiddle}>
-      <ThumbnailImage src={thumbnail} alt={title} isSmall={isSmall} isSmallMiddle={isSmallMiddle} />
-      <TitleWrapper isSmall={isSmall} isSmallMiddle={isSmallMiddle}>
+    <Wrapper
+      onClick={moveToDetail}
+      isSmall={isSmall}
+      isSmallMiddle={isSmallMiddle}
+      isBig={isBig}
+      isBigMiddle={isBigMiddle}
+    >
+      <ThumbnailImage
+        src={thumbnail}
+        alt={title}
+        isSmall={isSmall}
+        isSmallMiddle={isSmallMiddle}
+        isBigMiddle={isBigMiddle}
+      />
+      <TitleWrapper isSmall={isSmall} isSmallMiddle={isSmallMiddle} isBigMiddle={isBigMiddle}>
         <Title isSmall={isSmall} isSmallMiddle={isSmallMiddle}>
           {title}
         </Title>

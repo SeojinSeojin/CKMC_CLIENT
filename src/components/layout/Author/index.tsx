@@ -3,10 +3,20 @@ import styled from 'styled-components';
 import useResponsive from '../../../hooks/useResponsive';
 
 function AuthorLayout({ children }: { children: React.ReactNode }) {
-  const { isSmall, isSmallMiddle, isBigMiddle } = useResponsive();
+  const { isSmall, isSmallMiddle, isBigMiddle, isBig } = useResponsive();
   return (
-    <FlexWrapper isSmall={isSmall} isSmallMiddle={isSmallMiddle} isBigMiddle={isBigMiddle}>
-      <GridWrapper isSmall={isSmall} isSmallMiddle={isSmallMiddle} isBigMiddle={isBigMiddle}>
+    <FlexWrapper
+      isSmall={isSmall}
+      isSmallMiddle={isSmallMiddle}
+      isBigMiddle={isBigMiddle}
+      isBig={isBig}
+    >
+      <GridWrapper
+        isSmall={isSmall}
+        isSmallMiddle={isSmallMiddle}
+        isBigMiddle={isBigMiddle}
+        isBig={isBig}
+      >
         {children}
       </GridWrapper>
     </FlexWrapper>
@@ -17,12 +27,13 @@ interface IIsSmall {
   isSmall: boolean;
   isSmallMiddle: boolean;
   isBigMiddle: boolean;
+  isBig: boolean;
 }
 const GridWrapper = styled.div<IIsSmall>`
   display: grid;
   grid-template-columns: ${({ isSmall, isSmallMiddle }) =>
     isSmall || isSmallMiddle ? '1fr' : '500px auto'};
-  width: ${({ isBigMiddle }) => (isBigMiddle ? '94%' : '80%')};
+  width: ${({ isBigMiddle, isBig }) => (isBigMiddle || isBig ? '80%' : '94%')};
   gap: ${({ isSmall, isSmallMiddle }) => (isSmall || isSmallMiddle ? '20px' : '80px')};
   ${({ isSmall, isSmallMiddle }) =>
     isSmall || isSmallMiddle
