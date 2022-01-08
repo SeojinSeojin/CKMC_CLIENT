@@ -75,13 +75,11 @@ function EpisodePage() {
             <div>
               {author.work.hashTags && <SelectedHashTags hashTags={author.work.hashTags} />}
             </div>
-            {!isSmall && (
-              <PageNavigator
-                totalPage={author.work.episodes.length}
-                currentPage={episode.index}
-                authorName={author.nickName}
-              />
-            )}
+            <PageNavigator
+              totalPage={author.work.episodes.length}
+              currentPage={episode.index}
+              authorName={author.nickName}
+            />
           </AuthorDescription>
           <EpisodeComment authorName={author.nickName} episodeIndex={+episodeIdx} />
         </FlexWrapper>

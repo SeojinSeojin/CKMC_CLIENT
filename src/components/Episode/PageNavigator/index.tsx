@@ -47,6 +47,10 @@ const Wrapper = styled.div`
   display: flex;
   gap: 16px;
   align-items: center;
+
+  @media (max-width: 500px) {
+    gap: 8px;
+  }
 `;
 
 interface IButton {
@@ -60,11 +64,17 @@ const Button = styled.div<IButton>`
     &:hover {
       cursor: pointer;
       & path {
-        stroke: #2454a6;
+        stroke: #c8daf8;
         stroke-width: 2.5;
       }
     }
   }`}
+
+  @media(max-width: 500px) {
+    & svg {
+      height: 16px;
+    }
+  }
 `;
 
 export default PageNavigator;
