@@ -10,5 +10,7 @@ export const dateDifferenceTemplate = (differenceTime: number) => {
   const hourDifference = `${difference.getUTCHours()}`.padStart(2, '0');
   const minuteDifference = `${difference.getUTCMinutes()}`.padStart(2, '0');
   const secondDifference = `${difference.getUTCSeconds()}`.padStart(2, '0');
-  return `${dateDifference}일 ${hourDifference}시간 ${minuteDifference}분 ${secondDifference}초`;
+  return `${
+    +dateDifference - 1
+  }일 ${hourDifference}시간 ${minuteDifference}분 ${secondDifference}초`;
 };

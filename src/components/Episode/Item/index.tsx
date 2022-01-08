@@ -6,15 +6,7 @@ import { useUser } from '../../../hooks/useUser';
 import { deleteFetcher } from '../../../utils/fetchers';
 import { ThumbnailImage, Wrapper, Title, TitleWrapper, Editors } from './style';
 
-function EpisodeItem({
-  thumbnail,
-  title,
-  isEditable,
-  index,
-  authorName,
-  viewMethod,
-  link,
-}: {
+interface EpisodeItemProps {
   thumbnail: string;
   title: string;
   isEditable: boolean;
@@ -22,7 +14,10 @@ function EpisodeItem({
   authorName: string;
   viewMethod: string;
   link: undefined | string;
-}) {
+}
+
+function EpisodeItem(props: EpisodeItemProps) {
+  const { thumbnail, title, isEditable, index, authorName, viewMethod, link } = props;
   const history = useHistory();
   const { mutate } = useUser();
   const { isSmall, isSmallMiddle, isBigMiddle, isBig } = useResponsive();
