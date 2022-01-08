@@ -16,6 +16,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import HomePrePage from './pages/home-pre';
 import { useAnalytics } from './hooks/useAnalytics';
+import Home from './pages/home';
 
 function App() {
   const { isValidating, author } = useUser();
@@ -32,7 +33,7 @@ function App() {
     <div className="App">
       <ToastContainer />
       <Switch>
-        <Route exact path="/" component={HomePrePage} />
+        <Route exact path="/" component={Home} />
         <Route exact path="/about" component={AboutPage} />
         <Route exact path="/about/map" component={MapPage} />
         <Route exact path="/author/:authorId" component={AuthorPage} />

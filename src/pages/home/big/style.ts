@@ -24,3 +24,22 @@ export const Image = styled.img`
   overflow-y: hidden;
   object-fit: cover;
 `;
+
+export const ExhibitButtonWrapper = styled.div`
+  position: absolute;
+  right: calc(
+    (100% - 100vh * 451 * 117 / 111 / 566 + 48px * 451 * 117 / 111 / 566 - 180px) / 2 - 143px
+  );
+  bottom: 20vh;
+  animation: upDown 1.6s infinite;
+
+  @keyframes upDown {
+    0%,
+    100% {
+      bottom: 20vh;
+    }
+    50% {
+      bottom: 15vh;
+    }
+  }
+`;

@@ -32,6 +32,11 @@ export const SvgFooterSmall = styled(BgFooterSmall)`
   padding: 0 20px;
   padding-bottom: 20px;
   width: 100vw;
+
+  @media (min-width: 620px) {
+    width: 600px;
+    left: calc(50vw - 300px);
+  }
 `;
 
 export const SvgTitleSmall = styled(BgTitleHeaderSmall)`
@@ -40,4 +45,10 @@ export const SvgTitleSmall = styled(BgTitleHeaderSmall)`
   left: 0;
   padding: 0 20px;
   width: 100vw;
+
+  @media (min-width: 620px) {
+    top: calc(100vh - 600px * 241 / 324);
+    width: 600px;
+    left: calc(50vw - 300px);
+  }
 `;

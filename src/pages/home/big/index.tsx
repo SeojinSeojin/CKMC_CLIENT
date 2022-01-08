@@ -1,7 +1,8 @@
 import React from 'react';
 import Background from '../../../components/common/Background';
 import Title from '../../../components/Home';
-import { Image, TitleWrapper } from './style';
+import ReservationButton from '../../../components/Map/ReservationButton';
+import { Image, TitleWrapper, ExhibitButtonWrapper } from './style';
 
 function HomeBig() {
   return (
@@ -10,6 +11,9 @@ function HomeBig() {
         <Title theme="blue" />
       </TitleWrapper>
       <Image src="/statics/bg-main.webp" alt="201512119_김미연" />
+      <ExhibitButtonWrapper>
+        <ReservationButton />
+      </ExhibitButtonWrapper>
     </Background>
   );
 }
