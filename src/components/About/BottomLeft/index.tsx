@@ -4,7 +4,7 @@ import { AbsolutePart, BottomLeftWrapper, GridWrapper } from './style';
 function AboutBottomLeft() {
   return (
     <BottomLeftWrapper>
-      <AbsolutePart>2022 청강대학교 만화콘텐츠스쿨 졸업전시</AbsolutePart>
+      <AbsolutePart>2022 청강문화산업대학교 만화콘텐츠스쿨 졸업전시</AbsolutePart>
       <div>졸업전시준비위원회</div>
       <GridWrapper>
         <div>위원장</div>

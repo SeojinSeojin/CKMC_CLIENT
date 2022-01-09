@@ -136,7 +136,7 @@ export const HashTag = styled(Base)`
 
   @media(max-width:1200px) {
     font-size: 11px;
-    padding: 5px 7px;
+    padding: 5px 6px;
   }
 `;
 
