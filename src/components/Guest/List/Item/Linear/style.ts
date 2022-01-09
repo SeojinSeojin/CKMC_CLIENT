@@ -88,6 +88,7 @@ export const Detail = styled.div`
     box-sizing: border-box;
     width: 440px;
     color: white;
+    line-height: 26px;
     & :last-child {
       border-bottom: 1px solid #8eaec9;
     }
