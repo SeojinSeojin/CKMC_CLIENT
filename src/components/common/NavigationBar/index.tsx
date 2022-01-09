@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router';
-import { toast } from 'react-toastify';
 import useResponsive from '../../../hooks/useResponsive';
-import { useUser } from '../../../hooks/useUser';
-import { postFetcher } from '../../../utils/fetchers';
 import { openReservation } from '../../../utils/openExternalSiteInOuterWindow';
 import { SIDE_NAV } from '../../../utils/SIDE_NAV';
 import MobileHeader from './MobileHeader';
@@ -38,26 +34,6 @@ export default function NavigationBar({
     }
   };
   const { isBig, isBigMiddle, isSmall, isSmallMiddle } = useResponsive();
-  const { author, mutate } = useUser();
-  const history = useHistory();
-  const logOut = () => {
-    const logoutPromise = new Promise((resolve, reject) => {
-      postFetcher('/api/user/logout', {}).then((res) => {
-        if (res.status === 200) {
-          resolve('로그아웃 성공');
-          mutate();
-        } else reject('로그아웃 실패');
-      });
-    });
-    toast.promise(logoutPromise, {
-      pending: '로그아웃 중입니다',
-      success: '로그아웃에 성공했습니다',
-      error: '로그아웃에 실패했습니다. 다시 시도해주세요',
-    });
-  };
-  const navigateMyPage = () => {
-    history.push('/mypage');
-  };
 
   return (
     <>
