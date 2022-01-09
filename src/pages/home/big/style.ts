@@ -30,16 +30,28 @@ export const ExhibitButtonWrapper = styled.div`
   right: calc(
     (100% - 100vh * 451 * 117 / 111 / 566 + 48px * 451 * 117 / 111 / 566 - 180px) / 2 - 143px
   );
-  bottom: 20vh;
-  animation: upDown 1.6s infinite;
+  bottom: 20px;
+  animation: upDown 3s infinite;
+
+  & > div {
+    background-color: white;
+    & > div {
+      color: #2454a6;
+    }
+    & > svg {
+      & > path {
+        stroke: #2454a6;
+      }
+    }
+  }
 
   @keyframes upDown {
     0%,
     100% {
-      bottom: 20vh;
+      bottom: 20px;
     }
-    50% {
-      bottom: 15vh;
+    30% {
+      bottom: 40px;
     }
   }
 `;
