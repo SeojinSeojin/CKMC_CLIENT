@@ -5,4 +5,5 @@ export const SIDE_NAV = {
   GUEST: { title: '당신의편지', route: '/guest' },
   BOOK: { title: '관람예약', route: null },
   MAP: { title: '오시는길', route: '/about/map' },
+  EVENT: { title: '이벤트', route: '/event' },
 };

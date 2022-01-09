@@ -3,6 +3,13 @@ const openExternalSiteInOuterWindow = (link: string) => {
 };
 
 export const openReservation = () => {
-  console.log('open reservation');
   openExternalSiteInOuterWindow('https://m.booking.naver.com/booking/12/bizes/631160');
+};
+
+export const openInstagram = () => {
+  openExternalSiteInOuterWindow('https://instagram.com/ckmc2022?utm_medium=copy_link');
+};
+
+export const openTwitter = () => {
+  openExternalSiteInOuterWindow('https://twitter.com/CKMC2022?s=20');
 };
