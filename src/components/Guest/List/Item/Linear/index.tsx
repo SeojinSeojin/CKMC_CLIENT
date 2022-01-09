@@ -20,16 +20,10 @@ function GuestItemLinear({
   isOpened,
   onClick,
 }: IGuestItem) {
-  const bodies = body
-    .replace('\\n', '\n')
-    .split('\n')
-    .map((line, idx) => <p key={idx}>{line}</p>);
-  const lines = bodies.length;
-  [...Array(8 - lines)].forEach((_, idx) => bodies.push(<p key={8 + idx - lines}></p>));
   const { isGuestSmall } = useResponsive();
   return (
-    <TableItem onClick={onClick}>
-      <Cover>
+    <TableItem>
+      <Cover onClick={onClick}>
         <div>{index}번째 편지</div>
         <div>{title}</div>
         <div>{parseDate(createdAt)}</div>
@@ -39,7 +33,7 @@ function GuestItemLinear({
       {isOpened && (
         <Detail>
           {file && <img src={file} alt={title} />}
-          <div>{bodies}</div>
+          <div>{body}</div>
         </Detail>
       )}
     </TableItem>

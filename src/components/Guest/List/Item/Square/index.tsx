@@ -7,10 +7,6 @@ interface IGuestItem extends LetterData {
 }
 
 function GuestItemSquare({ title, body, sender, file, createdAt, index }: IGuestItem) {
-  const bodies = body
-    .replace('\\n', '\n')
-    .split('\n')
-    .map((line, idx) => <p key={idx}>{line}</p>);
   return (
     <SquareItem>
       <Header>
@@ -19,7 +15,7 @@ function GuestItemSquare({ title, body, sender, file, createdAt, index }: IGuest
       </Header>
       <Title>{title}</Title>
       {file && <img src={file} alt={title} />}
-      <Body>{bodies}</Body>
+      <Body>{body}</Body>
       <Sender>{sender}</Sender>
     </SquareItem>
   );

@@ -81,27 +81,24 @@ export const Detail = styled.div`
     width: 240px;
     object-fit: cover;
   }
-  & p {
+  & div {
     border-top: 1px solid #8eaec9;
-    padding: 8px 0;
-    height: 30px;
+    border-bottom: 1px solid #8eaec9;
+    padding: 4px 0;
     box-sizing: border-box;
     width: 440px;
+    word-break: keep-all;
     color: white;
-    line-height: 26px;
-    & :last-child {
-      border-bottom: 1px solid #8eaec9;
-    }
+    line-height: 32px;
   }
   @media (max-width: 1400px) {
     align-items: center;
     width: 100%;
+    margin-bottom: 20px;
     & > div {
       width: calc(100% - 200px);
-    }
-    & p {
-      width: 100%;
       font-size: 12px;
+      line-height: 24px;
     }
     & img {
       height: 200px;

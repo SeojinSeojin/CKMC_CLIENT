@@ -12,8 +12,7 @@ export const SquareItem = styled.div`
     margin: 0 44px;
     box-sizing: border-box;
   }
-  & div,
-  p {
+  & div {
     color: white;
   }
   @media (max-width: 1400px) {
@@ -47,10 +46,8 @@ export const Sender = styled.div`
 `;
 
 export const Body = styled.div`
-  & p {
-    border-bottom: 1px solid #8eaec9;
-    line-height: 30px;
-    font-family: 'Noto Sans KR';
-    font-size: 14px;
-  }
+  line-height: 30px;
+  font-family: 'Noto Sans KR';
+  font-size: 14px;
+  word-break: keep-all;
 `;
