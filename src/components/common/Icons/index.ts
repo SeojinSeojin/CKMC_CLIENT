@@ -39,10 +39,7 @@ import { ReactComponent as IcPageViewer2 } from './ic-pageviewer-2.svg';
 import { ReactComponent as IcClose } from './ic-close.svg';
 import { ReactComponent as BtnRefresh } from './btn-refresh.svg';
 import { ReactComponent as ImgEventOffline } from './img-event-offline.svg';
-import { ReactComponent as ImgEventTop } from './img-event-top.svg';
-import { ReactComponent as ImgEventBottom } from './img-event-bottom.svg';
 import { ReactComponent as ImgEventOnline } from './img-event-online.svg';
-import { ReactComponent as BgEvent } from './bg-event.svg';
 
 export {
   IcPaginatorFirst,
@@ -87,7 +84,4 @@ export {
   BtnRefresh,
   ImgEventOffline,
   ImgEventOnline,
-  BgEvent,
-  ImgEventTop,
-  ImgEventBottom,
 };
