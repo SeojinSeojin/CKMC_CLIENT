@@ -1,7 +1,6 @@
 import React, { useEffect, Suspense } from 'react';
-import { Redirect, Route, Switch, useLocation } from 'react-router';
+import { Route, Switch, useLocation } from 'react-router';
 import ReactGA from 'react-ga';
-import { useUser } from './hooks/useUser';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useAnalytics } from './hooks/useAnalytics';
@@ -19,7 +18,6 @@ const Upload = React.lazy(() => import('./pages/mypage/write'));
 const WorksPage = React.lazy(() => import('./pages/works'));
 
 function App() {
-  const { isValidating, author } = useUser();
   const { initialized } = useAnalytics();
   const location = useLocation();
 
@@ -42,14 +40,12 @@ function App() {
           <Route exact path="/guest" component={GuestPage} />
           <Route exact path="/event" component={EventPage} />
           <Route exact path="/login" component={LoginPage} />
-          <Route exact path="/mypage">
-            {!isValidating && !author ? <Redirect to="/" /> : <MyPage />}
+          <Route exact path="/mypage" component={MyPage} />
+          <Route exact path="/mypage/write">
+            <Upload isUpload={true} />
           </Route>
-          <Route exact path="/mypage/write" component={Upload}>
-            {!isValidating && !author ? <Redirect to="/" /> : <Upload isUpload={true} />}
-          </Route>
-          <Route exact path="/mypage/edit/:episodeIdx" component={Upload}>
-            {!isValidating && !author ? <Redirect to="/" /> : <Upload isUpload={false} />}
+          <Route exact path="/mypage/edit/:episodeIdx">
+            <Upload isUpload={false} />
           </Route>
           <Route exact path="/works" component={WorksPage} />
         </Switch>

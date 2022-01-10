@@ -21,14 +21,16 @@ function Upload({ isUpload }: { isUpload: boolean }) {
   const thumbnailRef = useRef<HTMLInputElement>(null);
   const workRef = useRef<HTMLInputElement>(null);
   const history = useHistory();
-  const { author } = useUser();
+  const { author, isValidating } = useUser();
 
   useEffect(() => {
     document.title = 'CKMC 2022 - MyPage';
   }, []);
 
   useEffect(() => {
-    if (!author) return;
+    if (!author && !isValidating) {
+      history.goBack();
+    }
     if (!isUpload) {
       const getPreviousData = async () => {
         const response = await getFetcher(`/api/episode/${author.nickName}/${episodeIdx}`);
@@ -45,7 +47,7 @@ function Upload({ isUpload }: { isUpload: boolean }) {
       };
       getPreviousData();
     }
-  }, [author]);
+  }, [author, isValidating]);
 
   useEffect(() => {
     if (mode === 'link') {

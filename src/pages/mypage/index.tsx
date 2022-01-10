@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import NavigationBar from '../../components/common/NavigationBar';
 import styled from 'styled-components';
 import Input from '../../components/common/Input';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { uploadImage as uploadImageRemote } from '../../utils/imageUploader';
 import SelectedHashTags from '../../components/common/MyPage/SelectedHashTags';
 import { IcToggleDownBlue, IcToggleUpBlue } from '../../components/common/Icons';
@@ -25,12 +25,15 @@ function MyPage() {
   const workTitleRef = useRef<HTMLInputElement>(null);
   const workDetailRef = useRef<HTMLInputElement>(null);
   const { author, isValidating, error } = useUser();
+  const history = useHistory();
 
   useEffect(() => {
     if (author) {
       setContact(author.contact === '미입력 상태' ? '' : author.contact);
       setFileURL(author.work.thumbnail);
       setHashTags(author.work.hashTags);
+    } else if (!author && !isValidating) {
+      history.goBack();
     }
   }, [author, error]);
 
