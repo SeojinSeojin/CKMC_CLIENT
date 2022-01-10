@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import useResponsive from '../../hooks/useResponsive';
-import WorkBig from './big';
-import WorkSmall from './small';
+const WorkBig = React.lazy(() => import('./big'));
+const WorkSmall = React.lazy(() => import('./small'));
 
 function WorksPage() {
   const { isBig, isBigMiddle } = useResponsive();

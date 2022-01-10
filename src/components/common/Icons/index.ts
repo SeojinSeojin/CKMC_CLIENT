@@ -38,7 +38,6 @@ import { ReactComponent as IcPageViewer2Selected } from './ic-pageviewer-2-selec
 import { ReactComponent as IcPageViewer2 } from './ic-pageviewer-2.svg';
 import { ReactComponent as IcClose } from './ic-close.svg';
 import { ReactComponent as BtnRefresh } from './btn-refresh.svg';
-import { ReactComponent as ImgEventOffline } from './img-event-offline.svg';
 import { ReactComponent as ImgEventOnline } from './img-event-online.svg';
 
 export {
@@ -82,6 +81,5 @@ export {
   BtnLeftArrowSmall,
   BtnRightArrowSmall,
   BtnRefresh,
-  ImgEventOffline,
   ImgEventOnline,
 };

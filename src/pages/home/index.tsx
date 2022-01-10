@@ -2,8 +2,8 @@ import React from 'react';
 import CursorContainer from '../../components/common/Cursor';
 import NavigationBar from '../../components/common/NavigationBar';
 import useResponsive from '../../hooks/useResponsive';
-import HomeBig from './big';
-import HomeSmall from './small';
+const HomeBig = React.lazy(() => import('./big'));
+const HomeSmall = React.lazy(() => import('./small'));
 
 export default function Home() {
   const { isBig, isBigMiddle, isSmall, isSmallMiddle } = useResponsive();

@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import NavigationBar from '../../components/common/NavigationBar';
 import CursorContainer from '../../components/common/Cursor';
 import useResponsive from '../../hooks/useResponsive';
-import GuestBig from './big';
-import GuestSmall from './small';
 import Background from '../../components/common/Background';
+const GuestBig = React.lazy(() => import('./big'));
+const GuestSmall = React.lazy(() => import('./small'));
 
 export default function GuestPage() {
   const { isGuestSmall } = useResponsive();

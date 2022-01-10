@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import styled from 'styled-components';
 import CursorContainer from '../../components/common/Cursor';
-import { IcArrowRight, ImgEventOffline, ImgEventOnline } from '../../components/common/Icons';
+import { IcArrowRight, ImgEventOnline } from '../../components/common/Icons';
 import NavigationBar from '../../components/common/NavigationBar';
 import useResponsive from '../../hooks/useResponsive';
 import { openInstagram, openTwitter } from '../../utils/openExternalSiteInOuterWindow';
@@ -20,6 +20,10 @@ const WhiteWrapper = styled.div`
 
   & strong {
     font-family: 'NEXON Lv1 Gothic OTF Bold';
+  }
+
+  & img {
+    width: 100%;
   }
 
   @media (max-width: 1200px) {
@@ -258,7 +262,7 @@ function EventPage() {
               3. <strong>이벤트관</strong>에 가서 응모권을 제출한 뒤 경품을 뽑는다.
             </div>
           </Container3>
-          <ImgEventOffline />
+          <img src="/statics/img-event-offline.webp" alt="offline event" />
         </WhiteWrapper>
       </FlexCenterLayoutRelative>
     </>

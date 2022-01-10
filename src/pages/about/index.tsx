@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import CursorContainer from '../../components/common/Cursor';
 import NavigationBar from '../../components/common/NavigationBar';
 import useResponsive from '../../hooks/useResponsive';
-import AboutBig from './big';
-import AboutSmall from './small';
+const AboutBig = React.lazy(() => import('./big'));
+const AboutSmall = React.lazy(() => import('./small'));
 
 function AboutPage() {
   const { isBig, isBigMiddle, isSmall, isSmallMiddle } = useResponsive();
