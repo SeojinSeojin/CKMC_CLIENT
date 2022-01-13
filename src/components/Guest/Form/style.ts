@@ -90,6 +90,7 @@ export const Sender = styled.input`
   border-radius: 0;
   -webkit-border-radius: 0px;
   -webkit-appearance: none;
+  z-index: 100;
 
   &::placeholder {
     color: rgba(256, 256, 256, 0.5);
