@@ -4,7 +4,7 @@ import ReactGA from 'react-ga';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useAnalytics } from './hooks/useAnalytics';
-import Home from './pages/home';
+import HomeAfter from './pages/home-after';
 
 const EpisodePage = React.lazy(() => import('./pages/episode'));
 const EventPage = React.lazy(() => import('./pages/event'));
@@ -32,7 +32,7 @@ function App() {
       <ToastContainer />
       <Suspense fallback={<></>}>
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={HomeAfter} />
           <Route exact path="/about" component={AboutPage} />
           <Route exact path="/about/map" component={MapPage} />
           <Route exact path="/author/:authorId" component={AuthorPage} />
