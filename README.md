@@ -29,8 +29,7 @@
 |![image](https://user-images.githubusercontent.com/48249505/151221915-761002e8-d7fa-445e-8f4e-d1262264d6d4.png)|![image](https://user-images.githubusercontent.com/48249505/151224280-1ac0ca55-3771-49fa-bad1-5fba42af722e.png)
 |![image](https://user-images.githubusercontent.com/48249505/151222301-855c1987-db1a-4b60-87ee-f6513831e469.png)|![image](https://user-images.githubusercontent.com/48249505/151222227-61505acc-6187-4a6c-a04d-362cb5a9a339.png)|
 |![image](https://user-images.githubusercontent.com/48249505/151222503-8675b24e-235f-4ac4-9ea8-0322df256a8c.png)|![image](https://user-images.githubusercontent.com/48249505/151222551-8bc6f8ec-97aa-465a-aa5e-208e95640045.png)|
-|![image](https://user-images.githubusercontent.com/48249505/151222878-569f0e83-56b6-4785-ac0b-d1946808b40a.png)|![image](https://user-images.githubusercontent.com/48249505/151223980-9b8fb3b9-e7d9-42bc-8cae-ae2975f6acd1.png)
-|
+|![image](https://user-images.githubusercontent.com/48249505/151222878-569f0e83-56b6-4785-ac0b-d1946808b40a.png)|![image](https://user-images.githubusercontent.com/48249505/151223980-9b8fb3b9-e7d9-42bc-8cae-ae2975f6acd1.png)|
 |![image](https://user-images.githubusercontent.com/48249505/151223704-e0066404-6a69-48e8-a7c9-51d8d2d92ca0.png)|![image](https://user-images.githubusercontent.com/48249505/151223798-1423dfe1-7f26-4554-b8b4-9656a6f840cd.png)|
 
 ### 백엔드 레포지토리
